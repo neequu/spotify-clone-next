@@ -12,13 +12,19 @@ const config: Config = {
         'gray-main': '#181818',
         'gray-bg': '#040404',
         accent: '#1ed760',
-        'accent-dark': '#3ba36688',
+        'accent-dark': '#3bb79988',
       },
       gap: {
         'layout-gap': '.5rem',
       },
       padding: {
         'layout-p': '1rem',
+      },
+      gridTemplateRows: {
+        mobile: '1fr repeat(2, min-content)',
+      },
+      gridTemplateColumns: {
+        md: 'min-content, 1fr',
       },
     },
   },

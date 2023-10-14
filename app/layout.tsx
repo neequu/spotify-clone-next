@@ -22,12 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${font.className} bg-gray-bg flex flex-col p-2`}>
-        <div className='flex flex-1 gap-layout-gap'>
+      <body className={`${font.className} bg-gray-bg flex flex-col md:p-2`}>
+        <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-layout-gap'>
           <TheSidebar />
           {children}
+          <ThePlayer />
         </div>
-        <ThePlayer />
       </body>
     </html>
   );

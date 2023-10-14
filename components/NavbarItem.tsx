@@ -21,13 +21,12 @@ const NavbarItem = ({
     <div className=''>
       <Link
         className={twMerge(
-          `flex items-center gap-4 pr-36 text-neutral-400 font-semibold transition-colors hover:text-white`,
+          `flex items-center gap-4 text-neutral-400 font-semibold transition-colors hover:text-white`,
           active && 'text-white'
         )}
         href={to}>
         {active ? <IconActive size={28} /> : <Icon size={28} />}
-
-        {name}
+        <span className='hidden md:block'>{name}</span>
       </Link>
     </div>
   );

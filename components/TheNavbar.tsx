@@ -6,6 +6,8 @@ import {
   PiMagnifyingGlass,
   PiHouseFill,
   PiMagnifyingGlassFill,
+  PiPlaylist,
+  PiPlaylistFill,
 } from 'react-icons/pi';
 import NavbarItem from './NavbarItem';
 
@@ -33,10 +35,17 @@ const TheNavbar = () => {
   );
 
   return (
-    <nav className='bg-gray-main rounded p-layout-p flex flex-col gap-4 shadow'>
+    <nav className='bg-gray-main rounded p-layout-p flex md:flex-col gap-4 shadow md:pr-36 justify-center'>
       {routes.map((r) => (
         <NavbarItem key={r.name} {...r} />
       ))}
+      <NavbarItem
+        name='Library'
+        active={pathname === '/library'}
+        to='/library'
+        icon={PiPlaylist}
+        activeIcon={PiPlaylistFill}
+      />
     </nav>
   );
 };
