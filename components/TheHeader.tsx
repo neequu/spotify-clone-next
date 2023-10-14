@@ -1,7 +1,14 @@
-import React from 'react';
+import HeaderNavButton from './HeaderNavButton';
 
 const TheHeader = () => {
-  return <div className='bg-gray-main'>TheHeader</div>;
+  return (
+    <header className='p-layout-p'>
+      <div className='flex gap-2'>
+        <HeaderNavButton />
+        <HeaderNavButton forward={true} />
+      </div>
+    </header>
+  );
 };
 
 export default TheHeader;

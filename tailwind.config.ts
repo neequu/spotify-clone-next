@@ -9,12 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'gray-main': '#444',
-        'gray-bg': '#111',
+        'gray-main': '#181818',
+        'gray-bg': '#040404',
         accent: '#1ed760',
+        'accent-dark': '#3ba36688',
       },
       gap: {
         'layout-gap': '.5rem',
+      },
+      padding: {
+        'layout-p': '1rem',
       },
     },
   },

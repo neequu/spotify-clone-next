@@ -7,7 +7,7 @@ import ThePlayer from '@/components/ThePlayer';
 
 const font = Poppins({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '500', '700'],
 });
 
 export const metadata: Metadata = {
@@ -25,10 +25,7 @@ export default function RootLayout({
       <body className={`${font.className} bg-gray-bg flex flex-col p-2`}>
         <div className='flex flex-1 gap-layout-gap'>
           <TheSidebar />
-          <div className='flex-1 flex flex-col rounded overflow-hidden'>
-            <TheHeader />
-            {children}
-          </div>
+          {children}
         </div>
         <ThePlayer />
       </body>

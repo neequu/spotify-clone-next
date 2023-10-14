@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LikedSongsPage = () => {
-  return <div>LikedSongsPage</div>;
+  return <main>LikedSongsPage</main>;
 };
 
 export default LikedSongsPage;
