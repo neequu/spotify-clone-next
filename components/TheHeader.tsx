@@ -4,10 +4,25 @@ import HeaderNavButton from './HeaderNavButton';
 import { PiUserCircle } from 'react-icons/pi';
 import useAuthModal from '@/hooks/useAuthModal';
 import { useRouter } from 'next/navigation';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useUser } from '@/hooks/useUser';
 
 const TheHeader = () => {
   const AuthModal = useAuthModal();
   const router = useRouter();
+  const supabaseClient = useSupabaseClient();
+  const { user } = useUser();
+
+  const handleSignOut = async () => {
+    const { error } = await supabaseClient.auth.signOut();
+    router.refresh();
+
+    // todo: reset playing song
+
+    if (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <header className='p-layout-p font-medium'>
@@ -16,8 +31,8 @@ const TheHeader = () => {
           <HeaderNavButton />
           <HeaderNavButton forward={true} />
         </div>
-        {true ? (
-          <button type='button' className='py-1' onClick={AuthModal.onOpen}>
+        {user ? (
+          <button type='button' className='py-1' onClick={handleSignOut}>
             <PiUserCircle size={24} />
           </button>
         ) : (
@@ -26,13 +41,13 @@ const TheHeader = () => {
               Sign in
             </button>
             <button
+              onClick={AuthModal.onOpen}
               type='button'
               className='bg-white text-black px-4 py-1 rounded-full'>
               Sign up
             </button>
           </div>
         )}
-        {}
       </div>
     </header>
   );
