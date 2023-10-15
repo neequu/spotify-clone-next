@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         'gray-main': '#181818',
         'gray-bg': '#040404',
+        'gray-md': '#252525',
         accent: '#1ed760',
         'accent-dark': '#3bb79988',
       },
@@ -25,6 +26,9 @@ const config: Config = {
       },
       gridTemplateColumns: {
         md: 'min-content, 1fr',
+      },
+      screens: {
+        md: '680px',
       },
     },
   },

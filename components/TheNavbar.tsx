@@ -35,7 +35,7 @@ const TheNavbar = () => {
   );
 
   return (
-    <nav className='bg-gray-main rounded p-layout-p flex md:flex-col gap-4 shadow md:pr-36 justify-center'>
+    <nav className='bg-gray-main rounded p-layout-p flex md:flex-col gap-4 shadow justify-center'>
       {routes.map((r) => (
         <NavbarItem key={r.name} {...r} />
       ))}

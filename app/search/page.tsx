@@ -6,7 +6,7 @@ const SearchPage = () => {
     <div className='flex-1 flex flex-col rounded overflow-hidden bg-gray-main'>
       <TheHeader />
       <main className='flex-1 px-layout-p'>
-        <h1 className='text-xl'>search</h1>
+        <h1 className='text-2xl font-semibold'>Search</h1>
         <SearchElement />
       </main>
     </div>

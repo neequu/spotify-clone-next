@@ -30,7 +30,7 @@ const TheHeader = () => {
             </button>
             <button
               type='button'
-              className='bg-white text-black px-2 py-1 rounded-full'>
+              className='bg-white text-black px-4 py-1 rounded-full'>
               Sign up
             </button>
           </div>

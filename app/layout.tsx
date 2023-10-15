@@ -22,8 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${font.className} bg-gray-bg flex flex-col md:p-2`}>
-        <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-layout-gap'>
+      <body
+        className={`${font.className} bg-gray-bg flex flex-col md:px-2 md:pt-2 min-w-[275px]`}>
+        <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
           <TheSidebar />
           {children}
           <ThePlayer />
