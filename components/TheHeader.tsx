@@ -2,9 +2,12 @@
 import { useState } from 'react';
 import HeaderNavButton from './HeaderNavButton';
 import { PiUserCircle } from 'react-icons/pi';
+import useAuthModal from '@/hooks/useAuthModal';
+import { useRouter } from 'next/navigation';
 
 const TheHeader = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const AuthModal = useAuthModal();
+  const router = useRouter();
 
   return (
     <header className='p-layout-p font-medium'>
@@ -13,19 +16,13 @@ const TheHeader = () => {
           <HeaderNavButton />
           <HeaderNavButton forward={true} />
         </div>
-        {isLoggedIn ? (
-          <button
-            type='button'
-            className='py-1'
-            onClick={() => setIsLoggedIn(false)}>
+        {true ? (
+          <button type='button' className='py-1' onClick={AuthModal.onOpen}>
             <PiUserCircle size={24} />
           </button>
         ) : (
           <div className='flex items-center gap-3 md:gap-4 self-end'>
-            <button
-              type='button'
-              className=''
-              onClick={() => setIsLoggedIn(true)}>
+            <button type='button' className='' onClick={AuthModal.onOpen}>
               Sign in
             </button>
             <button
