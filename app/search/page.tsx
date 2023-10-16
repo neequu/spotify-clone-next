@@ -1,5 +1,6 @@
 import SearchElement from '@/components/SearchElement';
 import TheHeader from '@/components/TheHeader';
+import toast from 'react-hot-toast';
 
 const SearchPage = () => {
   return (

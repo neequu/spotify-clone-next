@@ -45,6 +45,7 @@ const TheNavbar = () => {
         to='/library'
         icon={PiPlaylist}
         activeIcon={PiPlaylistFill}
+        className='md:hidden'
       />
     </nav>
   );

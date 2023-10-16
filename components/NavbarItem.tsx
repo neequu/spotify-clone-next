@@ -9,6 +9,7 @@ interface NavbarItem {
   to: string;
   icon: IconType;
   activeIcon: IconType;
+  className?: string;
 }
 const NavbarItem = ({
   name,
@@ -16,19 +17,19 @@ const NavbarItem = ({
   to,
   icon: Icon,
   activeIcon: IconActive,
+  className,
 }: NavbarItem) => {
   return (
-    <div className=''>
-      <Link
-        className={twMerge(
-          `flex items-center gap-4 md:pr-36 text-neutral-400 font-semibold transition-colors hover:text-white`,
-          active && 'text-white'
-        )}
-        href={to}>
-        {active ? <IconActive size={28} /> : <Icon size={28} />}
-        <span className='hidden md:block'>{name}</span>
-      </Link>
-    </div>
+    <Link
+      className={twMerge(
+        `flex items-center gap-4 md:pr-36 text-neutral-400 font-semibold transition-colors hover:text-white`,
+        active && 'text-white',
+        className
+      )}
+      href={to}>
+      {active ? <IconActive size={28} /> : <Icon size={28} />}
+      <span className='hidden md:block'>{name}</span>
+    </Link>
   );
 };
 

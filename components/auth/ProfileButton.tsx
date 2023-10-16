@@ -2,11 +2,13 @@
 
 import { PiUserCircle } from 'react-icons/pi';
 import { useRouter } from 'next/navigation';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import toast from 'react-hot-toast';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Database } from '@/types/supabase';
 
 const ProfileButton = () => {
   const router = useRouter();
-  const supabaseClient = useSupabaseClient();
+  const supabaseClient = createClientComponentClient<Database>();
   const handleSignOut = async () => {
     const { error } = await supabaseClient.auth.signOut();
     router.refresh();
@@ -15,6 +17,9 @@ const ProfileButton = () => {
 
     if (error) {
       console.log(error);
+      toast.error(error.message);
+    } else {
+      toast.success('Signed Out!');
     }
   };
   return (
