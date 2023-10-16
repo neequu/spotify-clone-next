@@ -6,7 +6,8 @@ import LibrarySongList from './LibrarySongList';
 import LibraryUploadButton from './LibraryUploadButton';
 
 const TheLibrary = async () => {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
   const { data, error } = await supabase.auth.getSession();
   const user = data.session?.user;
 

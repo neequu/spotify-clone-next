@@ -19,11 +19,11 @@ const Modal = ({
     <Dialog.Root open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
       <Dialog.Portal>
         <Dialog.Overlay className='bg-neutral-900/90 backdrop-blur-sm fixed inset-0 grid place-content-center'>
-          <Dialog.Content className='drop-shadow-md bg-neutral-800 border border-neutral-700 rounded-md outline-none md:place-content-center md:max-w-[500px] max-w-[min(400px,calc(100vw-2rem))] p-6 relative w-screen'>
+          <Dialog.Content className='drop-shadow-md bg-neutral-800 border border-neutral-700 rounded-md outline-none md:place-content-center md:max-w-[400px] max-w-[min(400px,calc(100vw-2rem))] p-6 relative w-screen'>
             <Dialog.Title className='text-center text-xl mb-2'>
               {title}
             </Dialog.Title>
-            <Dialog.Description className='border-b text-neutral-400 border-neutral-700 pb-4 mb-4 text-center text-sm'>
+            <Dialog.Description className='border-b text-neutral-400 border-neutral-700 pb-4 mb-6 text-center text-sm'>
               {description}
             </Dialog.Description>
             <div>{children}</div>

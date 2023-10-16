@@ -24,7 +24,7 @@ const ProfileButton = () => {
   };
   return (
     <div>
-      <button type='button' className='py-1' onClick={handleSignOut}>
+      <button type='button'  onClick={handleSignOut}>
         <PiUserCircle size={24} />
       </button>
     </div>

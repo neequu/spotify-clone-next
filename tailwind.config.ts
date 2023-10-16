@@ -8,11 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-poppins)'],
+      },
       colors: {
         'gray-main': '#181818',
         'gray-bg': '#040404',
         'gray-md': '#252525',
         accent: '#1ed760',
+        accent2: '#509960',
+        'accent2-dark': '#509960cc',
         'accent-dark': '#3bb79988',
       },
       gap: {
