@@ -22,7 +22,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         transition-colors
         bg-accent2
         text-sm
-        font-light
       `,
           disabled && 'opacity-75 cursor-not-allowed',
           className
