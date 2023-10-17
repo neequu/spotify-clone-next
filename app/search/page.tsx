@@ -2,7 +2,7 @@ import SearchElement from '@/components/SearchElement';
 import TheHeader from '@/components/TheHeader';
 import toast from 'react-hot-toast';
 
-const SearchPage = () => {
+const SearchPage = async () => {
   return (
     <div className='flex-1 flex flex-col rounded overflow-hidden bg-gray-main'>
       <TheHeader />

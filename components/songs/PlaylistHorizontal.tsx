@@ -10,9 +10,11 @@ interface PlaylistHorizontalProps {
 
 const PlaylistHorizontal = ({ image, name, to }: PlaylistHorizontalProps) => {
   return (
-    <Link href={to}>
+    <Link href={to} className='block w-min'>
       <div className='flex group items-center relative bg-gray-md bg-opacity-30 backdrop-blur-40 w-60 p-1.5 rounded gap-4 hover:backdrop-brightness-110 transition'>
-        <Image src={image} alt={name} width={60} height={60} quality={100} />
+        <div className='w-[60px] aspect-square relative rounded overflow-hidden'>
+          <Image src={image} alt={name} fill />
+        </div>
         <p>{name}</p>
       </div>
     </Link>

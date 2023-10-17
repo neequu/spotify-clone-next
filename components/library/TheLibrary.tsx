@@ -4,12 +4,15 @@ import { PiPlaylist } from 'react-icons/pi';
 
 import LibrarySongList from './LibrarySongList';
 import LibraryUploadButton from './LibraryUploadButton';
+import { getSongsByUserId } from '@/app/actions';
 
 const TheLibrary = async () => {
   const cookieStore = cookies();
   const supabase = createServerComponentClient({ cookies: () => cookieStore });
   const { data, error } = await supabase.auth.getSession();
   const user = data.session?.user;
+
+  const userSongs = await getSongsByUserId(user);
 
   return (
     <section className='bg-gray-main flex-1 rounded shadow p-layout-p hidden md:flex flex-col gap-2'>
@@ -21,7 +24,7 @@ const TheLibrary = async () => {
         <LibraryUploadButton user={user} />
       </div>
       <div className='mt-4'>
-        <LibrarySongList />
+        <LibrarySongList userSongs={userSongs} />
       </div>
     </section>
   );

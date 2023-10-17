@@ -4,7 +4,7 @@ import TheHeader from '@/components/TheHeader';
 
 export default function Home() {
   return (
-    <div className='flex-1 flex flex-col rounded overflow-hidden bg-gradient-to-b from-accent-dark from-1% via-[#30705599] via-4%  to-gray-main to-[24%]'>
+    <div className='flex-1 flex flex-col rounded overflow-hidden bg-gradient-to-b from-accent-dark from-[45px] via-[#30705599] via-[130px]  to-gray-main to-[300px]'>
       <TheHeader />
       <main className='flex-1 px-4 pt-4'>
         <h1 className='text-2xl font-semibold'>Welcome back!</h1>
@@ -15,9 +15,9 @@ export default function Home() {
             to='/liked-songs'
           />
         </section>
-        <section className='mt-8'>
+        <section className='mt-8 h-[500vh]'>
           <h2 className='text-xl font-semibold'>Newest songs</h2>
-          <div className='flex gap-4 flex-wrap mt-4'>
+          <div className='mt-4'>
             <SongGrig />
           </div>
         </section>

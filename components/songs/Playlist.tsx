@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import PlayButton from '../PlayButton';
 
 import { Song } from '@/types/types';
-import getImage from '@/app/actions';
+import { getImage } from '@/app/actions';
 
 interface PlaylistProps {
   songData: Song;
@@ -13,7 +12,7 @@ interface PlaylistProps {
 const Playlist = ({ songData }: PlaylistProps) => {
   const image = getImage(songData);
   return (
-    <Link href={`/songs/${songData.id}`}>
+    <Link href={`/songs/${songData.id}`} className='w-min'>
       <div
         className='md:max-w-40 max-w-20 aspect-square 
       grid 
@@ -21,13 +20,12 @@ const Playlist = ({ songData }: PlaylistProps) => {
       bg-gray-md bg-opacity-30 backdrop-blur-40 hover:bg-neutral-800 transition
       p-2 pb-8 
       rounded'>
-        <div className='relative'>
+        <div className='relative max-w-[220px] aspect-square'>
           <Image
             src={image}
             alt={songData.title}
-            width={200}
-            height={200}
-            className='rounded-md aspect-square object-cover'
+            fill
+            className='rounded-md object-cover'
             priority
           />
           <PlayButton />

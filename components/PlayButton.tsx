@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { PiPlayFill } from 'react-icons/pi';
 
 const PlayButton = () => {
@@ -13,7 +12,8 @@ const PlayButton = () => {
       absolute
     text-black bg-accent 
     rounded-full 
-    p-2
+
+      p-2
     bottom-2
     right-2'>
       <PiPlayFill size={20} />
