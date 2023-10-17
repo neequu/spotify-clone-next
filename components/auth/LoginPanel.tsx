@@ -5,7 +5,7 @@ const LoginPanel = () => {
   const AuthModal = useAuthModal();
 
   return (
-    <div className='flex items-center gap-3 md:gap-4 self-end'>
+    <div className='flex items-center gap-3 md:gap-4 self-end font-bold'>
       <button
         type='button'
         className='hover:text-neutral-300 transition-colors'

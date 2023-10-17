@@ -19,7 +19,7 @@ const GithubButton = () => {
     <button
       onClick={auth}
       type='submit'
-      className='flex font-light text-sm gap-2 justify-center items-center w-full bg-neutral-900 hover:bg-opacity-60 transition-colors py-2 rounded-sm'>
+      className='flex text-sm gap-2 justify-center items-center w-full bg-neutral-900 hover:bg-opacity-60 transition-colors py-2 rounded-sm'>
       <RiGithubFill size={22} />
       Sign in with Github
     </button>

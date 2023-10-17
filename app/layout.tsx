@@ -1,14 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import TheSidebar from '@/components/TheSidebar';
 import ThePlayer from '@/components/ThePlayer';
 import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToastProvider';
 
-const font = Poppins({
+const font = Lato({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
+  weight: ['300', '400', '700'],
 });
 
 export const metadata: Metadata = {

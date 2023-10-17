@@ -4,7 +4,11 @@ import Button from '../Button';
 
 const UploadForm = () => {
   return (
-    <form action='/api/upload-song' method='post' className='grid gap-y-3'>
+    <form
+      encType='multipart/form-data'
+      action='/api/upload-song'
+      method='post'
+      className='grid gap-y-3'>
       <Input id='title' name='title' placeholder='Song title' />
       <Input id='artist' name='artist' placeholder='Song artist' />
       <div>

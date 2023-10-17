@@ -11,7 +11,7 @@ const Input = ({
     <input
       type={type}
       className={twMerge(
-        `flex w-full rounded-md bg-neutral-700 p-1.5 text-sm file:text-sm file:font-medium placeholder:text-neutral-400 outline-none border-transparent border focus:border-neutral-600  disabled:opacity-50`,
+        `flex w-full rounded-md bg-neutral-700 p-1.5 text-sm file:text-sm placeholder:text-neutral-400 outline-none border-transparent border focus:border-neutral-600  disabled:opacity-50`,
         className
       )}
       disabled={disabled}

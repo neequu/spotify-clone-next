@@ -13,13 +13,13 @@ export async function POST(request: Request) {
   const title = formData.get('title');
   const artist = formData.get('artist');
   const image = formData.get('image');
+
   const cookieStore = cookies();
   const supabase = createRouteHandlerClient<Database[]>({
     cookies: () => cookieStore,
   });
   const { data, error } = await supabase.auth.getSession();
   const user = data.session?.user;
-
   const uniqueId = uniqid();
 
   if (!song || !image || !user) {
@@ -31,25 +31,26 @@ export async function POST(request: Request) {
   const { data: songData, error: songError } = await supabase.storage
     .from('songs')
     .upload(`song-${title}-${artist}-${uniqueId}`, song, {
-      cacheControl: '7200',
+      cacheControl: '3600',
+      upsert: false,
     });
 
   const { data: imageData, error: imageError } = await supabase.storage
     .from('images')
     .upload(`image-${title}-${artist}-${uniqueId}`, image, {
-      cacheControl: '7200',
+      cacheControl: '3600',
+      upsert: false,
     });
 
   const { error: uploadError } = await supabase.from('songs').insert({
     user_id: user?.id,
     title: title,
     artist: artist,
-    image_path: imageData,
-    song_path: songData,
+    image_path: imageData?.path,
+    song_path: songData?.path,
   });
 
   console.log(songError, imageError, uploadError);
-
   return NextResponse.redirect(`${requestUrl.origin}`, {
     status: 301,
   });

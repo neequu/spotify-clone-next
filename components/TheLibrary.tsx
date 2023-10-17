@@ -14,8 +14,8 @@ const TheLibrary = async () => {
   return (
     <section className='bg-gray-main flex-1 rounded shadow p-layout-p hidden md:flex flex-col gap-2'>
       <div className='flex justify-between items-center'>
-        <div className='text-neutral-400 flex items-center gap-2'>
-          <PiPlaylist size={22} />
+        <div className='text-neutral-400 flex items-center gap-2 font-bold'>
+          <PiPlaylist size={24} />
           Your library
         </div>
         <LibraryUploadButton user={user} />

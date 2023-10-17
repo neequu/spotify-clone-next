@@ -17,7 +17,7 @@ const TheHeader = async () => {
   const user = session?.user;
 
   return (
-    <header className='p-layout-p font-medium'>
+    <header className='p-layout-p'>
       <div className='flex items-center md:justify-between justify-end'>
         <div className='hidden md:flex gap-2'>
           <HeaderNavButton />
