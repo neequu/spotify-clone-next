@@ -1,6 +1,6 @@
 'use client';
 
-import Modal from '../Modal';
+import Modal from './Modal';
 import useAuthModal from '@/hooks/useAuthModal';
 import AuthForm from '../form/AuthForm';
 const AuthModal = () => {

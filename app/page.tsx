@@ -1,5 +1,5 @@
-import Playlist from '@/components/Playlist';
-import PlaylistHorizontal from '@/components/PlaylistHorizontal';
+import PlaylistHorizontal from '@/components/songs/PlaylistHorizontal';
+import SongGrig from '@/components/songs/SongGrig';
 import TheHeader from '@/components/TheHeader';
 
 export default function Home() {
@@ -18,10 +18,7 @@ export default function Home() {
         <section className='mt-8'>
           <h2 className='text-xl font-semibold'>Newest songs</h2>
           <div className='flex gap-4 flex-wrap mt-4'>
-            <Playlist to='/' image='/images/liked-songs.png' name='liked' />
-            {/* <Playlist to='/' /> */}
-            {/* <Playlist to='/' /> */}
-            {/* <Playlist to='/' /> */}
+            <SongGrig />
           </div>
         </section>
       </main>

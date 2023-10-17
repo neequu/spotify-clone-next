@@ -1,4 +1,4 @@
-import TheLibrary from './TheLibrary';
+import TheLibrary from './library/TheLibrary';
 import TheNavbar from './TheNavbar';
 
 const TheSidebar = () => {

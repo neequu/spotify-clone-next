@@ -1,7 +1,7 @@
 // 'use client';
 import useUploadModal from '@/hooks/useUploadModal';
 
-import Modal from '../Modal';
+import Modal from './Modal';
 import UploadForm from '../form/UploadForm';
 
 const UploadModal = () => {
