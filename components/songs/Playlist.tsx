@@ -4,7 +4,7 @@ import React from 'react';
 import PlayButton from '../PlayButton';
 
 import { Song } from '@/types/types';
-import getImage from '@/actions/get-image';
+import getImage from '@/app/actions';
 
 interface PlaylistProps {
   songData: Song;
