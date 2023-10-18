@@ -65,7 +65,6 @@ export async function getSongsByTitle(query: string) {
       .order('created_at', {
         ascending: false,
       });
-
     if (songsError) {
       throw new Error('error fetching songs by title');
     }

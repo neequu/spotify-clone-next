@@ -1,17 +1,20 @@
 import SearchElement from '@/components/SearchElement';
 import SearchResults from '@/components/SearchResults';
 import TheHeader from '@/components/TheHeader';
-import { getSongs, getSongsByTitle } from '../actions';
+import { getSongsByTitle } from '../actions';
+
+export const revalidate = 0;
 
 interface SearchPageProps {
-  params: {
-    q: string;
+  searchParams: {
+    s: string;
   };
 }
 
-const SearchPage = async ({ params }: SearchPageProps) => {
-  // const searchResults = await getSongsByTitle(params.q);
-  const searchResults = await getSongs();
+const SearchPage = async ({ searchParams }: SearchPageProps) => {
+  const searchResults = searchParams.s
+    ? await getSongsByTitle(searchParams.s)
+    : [];
   return (
     <div className='flex-1 flex flex-col rounded overflow-hidden bg-gray-main'>
       <TheHeader />

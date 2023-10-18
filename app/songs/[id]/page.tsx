@@ -1,4 +1,4 @@
-const page = ({ params }) => {
+const page = ({ params }: { params: { id: number } }) => {
   return <div>{params.id} hello</div>;
 };
 

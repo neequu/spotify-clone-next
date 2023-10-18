@@ -7,22 +7,19 @@ const SearchResults = async ({
 }: {
   searchResults: Song[] | undefined;
 }) => {
-  const searchResultsPresent = searchResults && searchResults?.length;
-
-  if (!searchResultsPresent) {
-    return <div>no songs</div>;
-  }
+  const searchResultsPresent = searchResults && !!searchResults?.length;
 
   return (
     <section
       className='
     md:my-[26px] my-4
     grid gap-3'>
-      {searchResults.map((song) => (
-        <LibrarySongItem key={song.id} song={song}>
-          <LikeButton songId={song.id} />
-        </LibrarySongItem>
-      ))}
+      {searchResultsPresent &&
+        searchResults.map((song) => (
+          <LibrarySongItem key={song.id} song={song}>
+            <LikeButton songId={song.id} />
+          </LibrarySongItem>
+        ))}
     </section>
   );
 };
