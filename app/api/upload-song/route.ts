@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import uniqid from 'uniqid';
 
 import type { Database } from '@/types/supabase';
+import { revalidatePath } from 'next/cache';
 
 export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
@@ -14,10 +15,7 @@ export async function POST(request: Request) {
   const artist = formData.get('artist');
   const image = formData.get('image');
 
-  const cookieStore = cookies();
-  const supabase = createRouteHandlerClient<Database[]>({
-    cookies: () => cookieStore,
-  });
+  const supabase = createRouteHandlerClient<Database[]>({ cookies });
   const { data, error } = await supabase.auth.getSession();
   const user = data.session?.user;
   const uniqueId = uniqid();
@@ -49,6 +47,8 @@ export async function POST(request: Request) {
     image_path: imageData?.path,
     song_path: songData?.path,
   });
+
+  revalidatePath(requestUrl.origin);
 
   console.log(songError, imageError, uploadError);
   return NextResponse.redirect(`${requestUrl.origin}`, {

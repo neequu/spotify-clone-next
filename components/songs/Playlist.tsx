@@ -9,8 +9,8 @@ interface PlaylistProps {
   songData: Song;
 }
 
-const Playlist = ({ songData }: PlaylistProps) => {
-  const image = getImage(songData);
+const Playlist = async ({ songData }: PlaylistProps) => {
+  const image = await getImage(songData);
   return (
     <Link href={`/songs/${songData.id}`} className='w-min'>
       <div
@@ -18,7 +18,7 @@ const Playlist = ({ songData }: PlaylistProps) => {
       grid 
       group 
       bg-gray-md bg-opacity-30 backdrop-blur-40 hover:bg-neutral-800 transition
-      md:p-2 pb-8 
+      md:p-2 md:pb-9 pb-5
       rounded'>
         <div className='relative max-w-[220px] aspect-square'>
           <Image

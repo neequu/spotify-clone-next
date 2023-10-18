@@ -1,13 +1,12 @@
-'use client';
-import { PiHeartStraight } from 'react-icons/pi';
+import { getLikedSongById, likeSong } from '@/app/actions';
+import LikeButtonInner from './LikeButtonInner';
 
-const LikeButton = () => {
+const LikeButton = async ({ songId }: { songId: number }) => {
+  const song = await getLikedSongById(songId);
   return (
-    <button
-      type='button'
-      className='text-neutral-400 absolute top-1/2 -translate-y-1/2 right-4 opacity-0 group-hover:opacity-100 transition hover:text-white'>
-      <PiHeartStraight size={18} />
-    </button>
+    <div>
+      <LikeButtonInner songId={songId} isLiked={!!song?.length} />
+    </div>
   );
 };
 

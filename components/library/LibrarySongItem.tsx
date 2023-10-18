@@ -7,11 +7,11 @@ interface LibrarySongItemProps {
   children?: React.ReactNode;
 }
 
-const LibrarySongItem = ({ song, children }: LibrarySongItemProps) => {
-  const image = getImage(song);
+const LibrarySongItem = async ({ song, children }: LibrarySongItemProps) => {
+  const image = await getImage(song);
 
   return (
-    <li className='relative group p-1 rounded-md overflow-hidden flex items-center gap-3 hover:bg-neutral-800 transition-colors'>
+    <li className='select-none relative group p-1 rounded-md overflow-hidden flex items-center gap-3 hover:bg-neutral-800 transition-colors'>
       <div className='w-11 md:w-12 aspect-square relative'>
         <Image
           src={image}

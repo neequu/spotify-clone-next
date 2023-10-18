@@ -18,10 +18,10 @@ const SearchElement = () => {
   }, [value, debouncedValue, router]);
 
   return (
-    <form className='flex items-center bg-neutral-800 rounded-md shadow transition border border-transparent group [&:has(input:focus-visible)]:border-neutral-500'>
+    <form className='flex items-center bg-neutral-800 rounded-md shadow transition border border-transparent group [&:has(input:focus-visible)]:border-neutral-500 mt-4'>
       <label
         htmlFor='song-query'
-        className='px-2 md:px-4 text-neutral-500 group-[&:has(input:focus-visible)]:text-white transition-colors'>
+        className='p-2 md:p-4 text-neutral-500 group-[&:has(input:focus-visible)]:text-white transition-colors'>
         <PiMagnifyingGlass size={20} />
       </label>
       <input

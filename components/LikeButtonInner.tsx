@@ -1,0 +1,61 @@
+'use client';
+import { PiHeartStraight, PiHeartStraightFill } from 'react-icons/pi';
+import { likeSong, unlikeSong } from '@/app/actions';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+
+const LikeButtonInner = ({
+  isLiked,
+  songId,
+}: {
+  isLiked: boolean;
+  songId: number;
+}) => {
+  const router = useRouter();
+
+  const [liked, setLiked] = useState(isLiked);
+
+  const handleLike = async () => {
+    setLiked(true);
+    try {
+      await likeSong(songId);
+      toast.success('Added to library');
+      router.refresh();
+    } catch (e: any) {
+      setLiked(false);
+      toast.error(e.message);
+    }
+  };
+
+  const handleRemoveLike = async () => {
+    setLiked(false);
+    try {
+      await unlikeSong(songId);
+      toast.success('Removed from library');
+      router.refresh();
+    } catch (e: any) {
+      setLiked(true);
+      toast.error(e.message);
+    }
+  };
+
+  const handleLikeButtonClick = () => {
+    isLiked ? handleRemoveLike() : handleLike();
+  };
+
+  return (
+    <button
+      onClick={handleLikeButtonClick}
+      type='button'
+      className={`${
+        liked
+          ? 'text-accent hover:scale-110'
+          : 'text-neutral-400 hover:text-white'
+      } absolute top-1/2 -translate-y-1/2 right-4 opacity-100 group-hover:opacity-100 transition`}>
+      {liked ? <PiHeartStraightFill /> : <PiHeartStraight size={18} />}
+    </button>
+  );
+};
+
+export default LikeButtonInner;

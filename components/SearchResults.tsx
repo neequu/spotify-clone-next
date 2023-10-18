@@ -14,10 +14,13 @@ const SearchResults = async ({
   }
 
   return (
-    <section className='md:mt-8 mt-4  grid gap-3'>
+    <section
+      className='
+    md:my-[26px] my-4
+    grid gap-3'>
       {searchResults.map((song) => (
         <LibrarySongItem key={song.id} song={song}>
-          <LikeButton />
+          <LikeButton songId={song.id} />
         </LibrarySongItem>
       ))}
     </section>

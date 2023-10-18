@@ -1,11 +1,14 @@
+'use server';
 import {
   User,
   createServerComponentClient,
 } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import uniqid from 'uniqid';
 
 import { Database } from '@/types/supabase';
 import { Song } from '@/types/types';
+import { revalidatePath } from 'next/cache';
 // create cookies and supabase server client
 const supabase = createServerComponentClient<Database>({
   cookies,
@@ -43,7 +46,7 @@ export async function getSongsByUserId(user: User | undefined) {
       });
 
     if (songsError) {
-      throw new Error('error fetching songs');
+      throw new Error('error fetching all songs');
     }
 
     return songsData || [];
@@ -64,7 +67,7 @@ export async function getSongsByTitle(query: string) {
       });
 
     if (songsError) {
-      throw new Error('error fetching songs');
+      throw new Error('error fetching songs by title');
     }
 
     return songsData || [];
@@ -72,13 +75,83 @@ export async function getSongsByTitle(query: string) {
     console.log(e);
   }
 }
+// get user's  liked songs
+export async function getLikedSongById(id: number) {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.user) return null;
+
+    const { data: songData, error: songsError } = await supabase
+      .from('liked_songs')
+      .select()
+      .eq('user_id', session?.user.id)
+      .eq('song_id', id);
+    // .single();
+
+    if (songsError) {
+      throw new Error('error fetching liked songs');
+    }
+
+    return songData || null;
+  } catch (e: any) {
+    console.log(e);
+  }
+}
+export async function likeSong(songId: number) {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.user) return null;
+
+    const { error } = await supabase.from('liked_songs').insert({
+      song_id: songId,
+      user_id: session?.user.id!,
+    });
+
+    if (error) {
+      throw new Error('error liking a song');
+    }
+
+    // revalidatePath(location.pathname)
+    return { message: 'ok' };
+  } catch (e: any) {
+    console.log(e);
+  }
+}
+// remove like from a song
+export async function unlikeSong(songId: number) {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.user) return null;
+
+    const { error } = await supabase
+      .from('liked_songs')
+      .delete()
+      .eq('user_id', session.user.id)
+      .eq('song_id', songId);
+
+    if (error) {
+      throw new Error('error unliking a song');
+    }
+
+    return { message: 'ok' };
+  } catch (e: any) {
+    console.log(e);
+  }
+}
 // get static url of image from a song
-export function getImage(song: Song) {
+export async function getImage(song: Song) {
   const { data } = supabase.storage
     .from('images')
     .getPublicUrl(song.image_path!);
 
   return data.publicUrl;
 }
-
-//
