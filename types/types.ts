@@ -1,13 +1,13 @@
 import { Stripe } from 'stripe';
 
 export interface Song {
-  id: number;
-  user_id: string;
-  artist: string;
-  title: string;
-  song_path: string;
-  image_path: string;
+  artist: string | null;
   created_at: string;
+  id: number;
+  image_path: string | null;
+  song_path: string | null;
+  title: string | null;
+  user_id: string | null;
 }
 
 export interface Product {

@@ -1,7 +1,7 @@
 import Input from '../Input';
-import Button from '../Button';
 
 const UploadForm = () => {
+  const disabled = false;
   return (
     <form
       encType='multipart/form-data'
@@ -17,6 +17,7 @@ const UploadForm = () => {
           name='song'
           type='file'
           accept='audio/mpeg,audio/wav,audio/ogg'
+          className='[&::file-selector-button]:hidden'
         />
       </div>
       <div>
@@ -26,10 +27,28 @@ const UploadForm = () => {
           type='file'
           name='image'
           accept='image/jpeg,image/png,image/svg+xml'
+          className='[&::file-selector-button]:hidden'
         />
       </div>
       <div className='mt-3'>
-        <Button type='submit'>Upload songs</Button>
+        <button
+          type='submit'
+          className='
+          w-full 
+          rounded-md
+          border
+          border-transparent
+          disabled:cursor-not-allowed 
+          disabled:opacity-50
+          py-1
+          hover:bg-accent2-dark
+          transition-colors
+          bg-accent2
+          text-sm
+        '
+          disabled={disabled}>
+          Upload songs
+        </button>
       </div>
     </form>
   );

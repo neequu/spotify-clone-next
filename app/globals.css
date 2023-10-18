@@ -9,6 +9,4 @@ html, body {
 }
 
 
-input::file-selector-button {
-  display: none;
-}
+

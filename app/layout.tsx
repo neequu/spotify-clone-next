@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Spotify clone using next.js 13, supabase, prisma and',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

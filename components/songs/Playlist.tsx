@@ -18,32 +18,39 @@ const Playlist = ({ songData }: PlaylistProps) => {
       grid 
       group 
       bg-gray-md bg-opacity-30 backdrop-blur-40 hover:bg-neutral-800 transition
-      p-2 pb-8 
+      md:p-2 pb-8 
       rounded'>
         <div className='relative max-w-[220px] aspect-square'>
           <Image
             src={image}
-            alt={songData.title}
+            alt={songData.title || 'song cover art'}
             fill
-            className='rounded-md object-cover'
+            className='md:rounded-md object-cover'
             priority
           />
           <PlayButton />
         </div>
         <div className='flex flex-col w-full mt-3'>
           <p
-            className='w-[144px] 
-            truncate font-bold'
-            title={songData.title}>
+            className='
+            md:w-[144px] 
+            w-[100px] 
+            truncate font-bold
+            text-sm
+            md:text-base
+            mb-0.5'
+            title={songData.title || ''}>
             {songData.title}
           </p>
           <p
             className='
-            w-[144px] 
+            md:w-[144px] 
+            w-[100px] 
             truncate
-          text-sm 
-          text-neutral-400'
-            title={songData.artist}>
+            md:text-sm 
+            text-xs
+            text-neutral-400'
+            title={songData.artist || ''}>
             {songData.artist}
           </p>
         </div>

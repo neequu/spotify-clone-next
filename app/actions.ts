@@ -58,7 +58,7 @@ export async function getSongsByTitle(query: string) {
     const { data: songsData, error: songsError } = await supabase
       .from('songs')
       .select()
-      .eq('title', `${query.toLowerCase()}`)
+      .ilike('title', `%${query.toLowerCase()}%`)
       .order('created_at', {
         ascending: false,
       });
@@ -76,7 +76,7 @@ export async function getSongsByTitle(query: string) {
 export function getImage(song: Song) {
   const { data } = supabase.storage
     .from('images')
-    .getPublicUrl(song.image_path);
+    .getPublicUrl(song.image_path!);
 
   return data.publicUrl;
 }

@@ -1,14 +1,26 @@
 import SearchElement from '@/components/SearchElement';
+import SearchResults from '@/components/SearchResults';
 import TheHeader from '@/components/TheHeader';
-import toast from 'react-hot-toast';
+import { getSongs, getSongsByTitle } from '../actions';
 
-const SearchPage = async () => {
+interface SearchPageProps {
+  params: {
+    q: string;
+  };
+}
+
+const SearchPage = async ({ params }: SearchPageProps) => {
+  // const searchResults = await getSongsByTitle(params.q);
+  const searchResults = await getSongs();
   return (
     <div className='flex-1 flex flex-col rounded overflow-hidden bg-gray-main'>
       <TheHeader />
-      <main className='flex-1 px-layout-p'>
-        <h1 className='text-2xl font-semibold'>Search</h1>
-        <SearchElement />
+      <main className='flex-1 md:px-layout-p px-2'>
+        <h1 className='md:text-2xl text-xl font-semibold'>Search</h1>
+        <section className='mt-4'>
+          <SearchElement />
+        </section>
+        <SearchResults searchResults={searchResults} />
       </main>
     </div>
   );

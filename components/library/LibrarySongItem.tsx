@@ -4,21 +4,23 @@ import Image from 'next/image';
 
 interface LibrarySongItemProps {
   song: Song;
+  children?: React.ReactNode;
 }
 
-const LibrarySongItem = ({ song }: LibrarySongItemProps) => {
+const LibrarySongItem = ({ song, children }: LibrarySongItemProps) => {
   const image = getImage(song);
 
   return (
-    <li className='p-1 rounded-md overflow-hidden flex items-center gap-2 hover:bg-neutral-800 transition-colors'>
-      <div className='w-12 h-12 relative'>
+    <li className='relative group p-1 rounded-md overflow-hidden flex items-center gap-3 hover:bg-neutral-800 transition-colors'>
+      <div className='w-11 md:w-12 aspect-square relative'>
         <Image
           src={image}
-          alt={song.title}
+          alt={song.title || 'song cover image'}
           className='rounded-md aspect-square object-cover'
           priority
           fill
           sizes='10vw'
+          quality={60}
         />
       </div>
       <div className='flex flex-col gap-1'>
@@ -27,7 +29,7 @@ const LibrarySongItem = ({ song }: LibrarySongItemProps) => {
             truncate
           text-sm
           select-none'
-          title={song.title}>
+          title={song.title || ''}>
           {song.title}
         </p>
         <p
@@ -35,10 +37,11 @@ const LibrarySongItem = ({ song }: LibrarySongItemProps) => {
             truncate 
             select-none
             text-sm text-neutral-400'
-          title={song.artist}>
+          title={song.artist || ''}>
           {song.artist}
         </p>
       </div>
+      {children}
     </li>
   );
 };
