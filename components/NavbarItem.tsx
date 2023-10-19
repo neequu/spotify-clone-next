@@ -21,7 +21,7 @@ const NavbarItem = ({
   return (
     <Link
       className={twMerge(
-        `flex items-center gap-4 md:pr-36 text-neutral-400 font-semibold transition-colors hover:text-white`,
+        `flex items-center gap-4 md:pr-60 text-neutral-400 font-semibold transition-colors hover:text-white`,
         active && 'text-white',
         className
       )}

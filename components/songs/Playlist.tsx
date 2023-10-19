@@ -12,15 +12,11 @@ interface PlaylistProps {
 const Playlist = async ({ songData }: PlaylistProps) => {
   const image = await getImage(songData);
   return (
-    <Link href={`/songs/${songData.id}`} className='w-min'>
+    <Link href={`/songs/${songData.id}`}>
       <div
-        className='md:max-w-40 max-w-20 aspect-square 
-      grid 
-      group 
-      bg-gray-md bg-opacity-30 backdrop-blur-40 hover:bg-neutral-800 transition
-      md:p-2 md:pb-9 pb-5
-      rounded'>
-        <div className='relative max-w-[220px] aspect-square'>
+        className='grid group bg-gray-md bg-opacity-30 backdrop-blur-40 hover:bg-neutral-800 transition
+      md:p-2 md:pb-9 pb-5 rounded'>
+        <div className='relative min-w-[200px] aspect-square'>
           <Image
             src={image}
             alt={songData.title || 'song cover art'}

@@ -11,12 +11,12 @@ const LibrarySongItem = async ({ song, children }: LibrarySongItemProps) => {
   const image = await getImage(song);
 
   return (
-    <li className='select-none relative group p-1 rounded-md overflow-hidden flex items-center gap-3 hover:bg-neutral-800 transition-colors'>
+    <li className='select-none relative group p-1 rounded overflow-hidden flex items-center gap-3 hover:bg-neutral-800 transition-colors'>
       <div className='w-11 md:w-12 aspect-square relative'>
         <Image
           src={image}
           alt={song.title || 'song cover image'}
-          className='rounded-md aspect-square object-cover'
+          className='rounded aspect-square object-cover'
           priority
           fill
           sizes='10vw'

@@ -5,6 +5,7 @@ import TheSidebar from '@/components/TheSidebar';
 import ThePlayer from '@/components/ThePlayer';
 import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToastProvider';
+import TheHeader from '@/components/TheHeader';
 
 const font = Figtree({
   subsets: ['latin'],
@@ -23,12 +24,15 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${font.className} bg-gray-bg flex flex-col md:px-2 md:pt-2 min-w-[275px]`}>
-        <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap bg-pink-300 md:bg-transparent'>
+        className={`${font.className} bg-gray-bg flex flex-col min-w-[275px] md:pt-2 md:px-2`}>
+        <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
           <ToastProvider />
           <ModalProvider />
           <TheSidebar />
-          {children}
+          <div className='flex-1 flex flex-col'>
+            <TheHeader />
+            {children}
+          </div>
           <ThePlayer />
         </div>
       </body>
