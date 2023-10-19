@@ -17,20 +17,19 @@ const LibrarySongItem = ({ song, children }: LibrarySongItemProps) => {
 
   return (
     <li className='select-none relative group p-1 rounded overflow-hidden flex items-center gap-3 hover:bg-neutral-800 transition-colors'>
-      <div className='w-11 md:w-12 aspect-square relative'>
+      <div className='min-w-[clamp(30px,6vw,50px)] aspect-square relative'>
         <Image
           src={songImage.publicUrl}
           alt={song.title || 'song cover image'}
           className='rounded aspect-square object-cover'
           priority
           fill
-          sizes='10vw'
           quality={60}
         />
       </div>
-      <div className='flex flex-col gap-1'>
+      <div className='grid gap-1'>
         <p
-          className='max-w-[176px] 
+          className='w-full
             truncate
           text-sm
           select-none'
@@ -38,7 +37,8 @@ const LibrarySongItem = ({ song, children }: LibrarySongItemProps) => {
           {song.title}
         </p>
         <p
-          className='max-w-[176px] 
+          className='
+          w-full 
             truncate 
             select-none
             text-sm text-neutral-400'

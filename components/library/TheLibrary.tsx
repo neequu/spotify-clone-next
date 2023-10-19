@@ -15,11 +15,11 @@ const TheLibrary = async () => {
   const userSongs = await getSongsByUserId(user);
 
   return (
-    <section className='bg-gray-main flex-1 rounded shadow p-layout-p hidden md:flex flex-col gap-6'>
+    <section className='bg-gray-main flex-1 rounded shadow lg:p-layout-p md:p-2 hidden md:flex flex-col gap-6'>
       <div className='flex justify-between items-center'>
         <div className='text-neutral-400 flex items-center gap-2 font-bold'>
           <PiPlaylist size={24} />
-          Your library
+          <span className='hidden lg:block'>Your library</span>
         </div>
         <LibraryUploadButton user={user} />
       </div>

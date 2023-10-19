@@ -17,7 +17,7 @@ const ThePlayer = () => {
     .getPublicUrl(song.image_path!);
 
   return (
-    <footer className='md:col-span-2 sticky bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black flex items-center px-4'>
+    <footer className='md:col-span-2 z-50 sticky bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black flex items-center px-4'>
       <div className='select-none overflow-hidden flex items-center gap-3'>
         <div className='w-11 md:w-12 aspect-square relative'>
           <Image
