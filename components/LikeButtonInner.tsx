@@ -5,11 +5,13 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
+export const revalidate = 0;
+
 const LikeButtonInner = ({
   isLiked,
   songId,
 }: {
-  isLiked: boolean;
+  isLiked: boolean | undefined;
   songId: number;
 }) => {
   const router = useRouter();
@@ -17,7 +19,6 @@ const LikeButtonInner = ({
   const [liked, setLiked] = useState(isLiked);
 
   const handleLike = async () => {
-    setLiked(true);
     try {
       await likeSong(songId);
       toast.success('Added to library');
@@ -29,7 +30,6 @@ const LikeButtonInner = ({
   };
 
   const handleRemoveLike = async () => {
-    setLiked(false);
     try {
       await unlikeSong(songId);
       toast.success('Removed from library');
@@ -42,6 +42,7 @@ const LikeButtonInner = ({
 
   const handleLikeButtonClick = () => {
     isLiked ? handleRemoveLike() : handleLike();
+    setLiked(!isLiked);
   };
 
   return (

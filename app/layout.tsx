@@ -1,14 +1,13 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Lato } from 'next/font/google';
+import { Figtree } from 'next/font/google';
 import TheSidebar from '@/components/TheSidebar';
 import ThePlayer from '@/components/ThePlayer';
 import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToastProvider';
 
-const font = Lato({
+const font = Figtree({
   subsets: ['latin'],
-  weight: ['300', '400', '700'],
 });
 
 export const metadata: Metadata = {

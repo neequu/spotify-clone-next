@@ -81,7 +81,7 @@ export async function getLikedSongById(id: number) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session?.user) return null;
+    if (!session?.user) return [];
 
     const { data: songData, error: songsError } = await supabase
       .from('liked_songs')
@@ -94,7 +94,7 @@ export async function getLikedSongById(id: number) {
       throw new Error('error fetching liked songs');
     }
 
-    return songData || null;
+    return songData || [];
   } catch (e: any) {
     console.log(e);
   }
@@ -105,7 +105,7 @@ export async function likeSong(songId: number) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session?.user) return null;
+    if (!session?.user) return [];
 
     const { error } = await supabase.from('liked_songs').insert({
       song_id: songId,
@@ -129,7 +129,7 @@ export async function unlikeSong(songId: number) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session?.user) return null;
+    if (!session?.user) return [];
 
     const { error } = await supabase
       .from('liked_songs')
@@ -142,6 +142,33 @@ export async function unlikeSong(songId: number) {
     }
 
     return { message: 'ok' };
+  } catch (e: any) {
+    console.log(e);
+  }
+}
+// get liked songs
+export async function getlikedSongs() {
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.user) return [];
+
+    const { data, error } = await supabase
+      .from('liked_songs')
+      .select('*, songs(*)')
+      .eq('user_id', session.user.id);
+
+    if (error) {
+      throw new Error('error unliking a song');
+    }
+
+    if (!data.length) return [];
+
+    return data.map((i) => ({
+      ...i.songs,
+    }));
   } catch (e: any) {
     console.log(e);
   }

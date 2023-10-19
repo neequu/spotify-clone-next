@@ -1,6 +1,7 @@
 import { Song } from '@/types/types';
 import LibrarySongItem from './library/LibrarySongItem';
 import LikeButton from './LikeButton';
+export const revalidate = 0;
 
 const SearchResults = async ({
   searchResults,
