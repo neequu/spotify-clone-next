@@ -1,18 +1,13 @@
 'use server';
-import {
-  User,
-  createServerComponentClient,
-} from '@supabase/auth-helpers-nextjs';
+import { User } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import uniqid from 'uniqid';
-
 import { Database } from '@/types/supabase';
-import { Song } from '@/types/supabase';
-import { revalidatePath } from 'next/cache';
-// create cookies and supabase server client
-const supabase = createServerComponentClient<Database>({
+import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
+
+const supabase = createServerActionClient<Database>({
   cookies,
 });
+
 // get all songs from database
 export async function getSongs() {
   try {
@@ -172,12 +167,4 @@ export async function getlikedSongs() {
   } catch (e: any) {
     console.log(e);
   }
-}
-// get static url of image from a song
-export async function getImage(song: Song) {
-  const { data } = supabase.storage
-    .from('images')
-    .getPublicUrl(song.image_path!);
-
-  return data.publicUrl;
 }

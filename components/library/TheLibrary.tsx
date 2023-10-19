@@ -1,11 +1,11 @@
-import { cookies } from 'next/headers';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { PiPlaylist } from 'react-icons/pi';
 
 import LibrarySongList from './LibrarySongList';
 import LibraryUploadButton from './LibraryUploadButton';
 import { getSongsByUserId } from '@/app/actions';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/types/supabase';
+import { cookies } from 'next/headers';
 
 const TheLibrary = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });

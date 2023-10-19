@@ -2,23 +2,28 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PlayButton from '../PlayButton';
 
-import { Song } from '@/types/supabase';
-import { getImage } from '@/app/actions';
+import { Database, Song } from '@/types/supabase';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 interface PlaylistProps {
   songData: Song;
 }
+const Playlist = ({ songData }: PlaylistProps) => {
+  const supabase = createServerComponentClient<Database>({ cookies });
 
-const Playlist = async ({ songData }: PlaylistProps) => {
-  const image = await getImage(songData);
+  const { data: songImage } = supabase.storage
+    .from('images')
+    .getPublicUrl(songData.image_path!);
+
   return (
     <Link href={`/songs/${songData.id}`}>
       <div
         className='grid group bg-gray-md bg-opacity-30 backdrop-blur-40 hover:bg-neutral-800 transition
       md:p-2 md:pb-9 pb-5 rounded'>
-        <div className='relative min-w-[200px] aspect-square'>
+        <div className='relative min-w-[50px] aspect-square'>
           <Image
-            src={image}
+            src={songImage.publicUrl}
             alt={songData.title || 'song cover art'}
             fill
             className='md:rounded-md object-cover'
@@ -29,8 +34,7 @@ const Playlist = async ({ songData }: PlaylistProps) => {
         <div className='flex flex-col w-full mt-3'>
           <p
             className='
-            md:w-[144px] 
-            w-[100px] 
+
             truncate font-bold
             text-sm
             md:text-base
@@ -40,8 +44,7 @@ const Playlist = async ({ songData }: PlaylistProps) => {
           </p>
           <p
             className='
-            md:w-[144px] 
-            w-[100px] 
+
             truncate
             md:text-sm 
             text-xs
