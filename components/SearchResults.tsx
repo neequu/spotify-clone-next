@@ -1,4 +1,4 @@
-import { Song } from '@/types/types';
+import { Song } from '@/types/supabase';
 import LibrarySongItem from './library/LibrarySongItem';
 import LikeButton from './LikeButton';
 export const revalidate = 0;
@@ -11,7 +11,7 @@ const SearchResults = async ({
   const searchResultsPresent = searchResults && !!searchResults?.length;
 
   return (
-    <section
+    <ul
       className='
     md:my-[26px] my-4
     grid gap-3'>
@@ -21,7 +21,7 @@ const SearchResults = async ({
             <LikeButton songId={song.id} />
           </LibrarySongItem>
         ))}
-    </section>
+    </ul>
   );
 };
 

@@ -2,10 +2,11 @@
 import { RiGithubFill } from 'react-icons/ri';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Database } from '@/types/supabase';
 
 const GithubButton = () => {
   async function auth() {
-    const supabase = createClientComponentClient();
+    const supabase = createClientComponentClient<Database>();
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'github',

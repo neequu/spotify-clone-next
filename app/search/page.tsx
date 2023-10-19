@@ -20,8 +20,12 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       <TheHeader />
       <main className='flex-1 md:px-layout-p px-2'>
         <h1 className='md:text-2xl text-xl font-semibold'>Search</h1>
-        <SearchElement />
-        <SearchResults searchResults={searchResults} />
+        <section>
+          <SearchElement />
+        </section>
+        <section>
+          <SearchResults searchResults={searchResults} />
+        </section>
       </main>
     </div>
   );

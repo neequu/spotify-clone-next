@@ -1,4 +1,4 @@
-import { Song } from '@/types/types';
+import { Song } from '@/types/supabase';
 import LibrarySongItem from './LibrarySongItem';
 
 interface LibrarySongListProps {

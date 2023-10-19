@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PlayButton from '../PlayButton';
 
-import { Song } from '@/types/types';
+import { Song } from '@/types/supabase';
 import { getImage } from '@/app/actions';
 
 interface PlaylistProps {
@@ -28,7 +28,7 @@ const Playlist = async ({ songData }: PlaylistProps) => {
             className='md:rounded-md object-cover'
             priority
           />
-          <PlayButton />
+          <PlayButton songId={songData.id} />
         </div>
         <div className='flex flex-col w-full mt-3'>
           <p

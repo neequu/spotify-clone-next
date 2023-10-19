@@ -17,10 +17,9 @@ export default function Home() {
         </section>
         <section className='md:mt-8 mt-6 h-[200vh] '>
           <h2 className='text-xl font-semibold'>Newest songs</h2>
-          <div className='md:mt-4 mt-2'>{/* <SongGrig /> */}</div>
-          {[...Array(100)].fill(0).map((x) => (
-            <p>{x}</p>
-          ))}
+          <div className='md:mt-4 mt-2'>
+            <SongGrig />
+          </div>
         </section>
       </main>
     </div>

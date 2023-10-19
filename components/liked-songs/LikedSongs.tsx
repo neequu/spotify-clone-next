@@ -7,15 +7,17 @@ const LikedSongs = ({ likedSongs }: { likedSongs: Song[] | undefined }) => {
 
   return (
     <section className='mt-8 grid gap-3'>
-      {hasSongs ? (
-        likedSongs.map((song) => (
-          <LibrarySongItem song={song} key={song.id}>
-            <LikeButton songId={song.id} key={song.id + 'btn'} />
-          </LibrarySongItem>
-        ))
-      ) : (
-        <div>You havent added anything yet</div>
-      )}
+      <ul>
+        {hasSongs ? (
+          likedSongs.map((song) => (
+            <LibrarySongItem song={song} key={song.id}>
+              <LikeButton songId={song.id} key={song.id + 'btn'} />
+            </LibrarySongItem>
+          ))
+        ) : (
+          <div>You havent added anything yet</div>
+        )}
+      </ul>
     </section>
   );
 };

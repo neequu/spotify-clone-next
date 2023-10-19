@@ -7,7 +7,7 @@ import { cookies } from 'next/headers';
 import uniqid from 'uniqid';
 
 import { Database } from '@/types/supabase';
-import { Song } from '@/types/types';
+import { Song } from '@/types/supabase';
 import { revalidatePath } from 'next/cache';
 // create cookies and supabase server client
 const supabase = createServerComponentClient<Database>({

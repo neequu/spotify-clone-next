@@ -1,5 +1,5 @@
 import { getImage } from '@/app/actions';
-import { Song } from '@/types/types';
+import { Song } from '@/types/supabase';
 import Image from 'next/image';
 
 interface LibrarySongItemProps {

@@ -5,9 +5,10 @@ import { PiPlaylist } from 'react-icons/pi';
 import LibrarySongList from './LibrarySongList';
 import LibraryUploadButton from './LibraryUploadButton';
 import { getSongsByUserId } from '@/app/actions';
+import { Database } from '@/types/supabase';
 
 const TheLibrary = async () => {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
   const { data, error } = await supabase.auth.getSession();
   const user = data.session?.user;
 
