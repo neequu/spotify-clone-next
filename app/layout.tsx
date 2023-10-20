@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
 import TheSidebar from '@/components/TheSidebar';
-import ThePlayer from '@/components/ThePlayer';
+import ThePlayer from '@/components/Player';
 import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToastProvider';
 import TheHeader from '@/components/TheHeader';

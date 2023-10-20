@@ -1,4 +1,4 @@
-import GithubButton from '../auth/GithubButton';
+import GithubButton from '../buttons/GithubButton';
 
 const AuthForm = () => {
   return (

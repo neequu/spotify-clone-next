@@ -2,8 +2,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/types/supabase';
 import { cookies } from 'next/headers';
 
-import HeaderNavButton from './HeaderNavButton';
-import ProfileButton from './auth/ProfileButton';
+import HeaderNavButton from './buttons/HeaderNavButton';
+import ProfileButton from './buttons/ProfileButton';
 import LoginPanel from './auth/LoginPanel';
 
 export const dynamic = 'force-dynamic';

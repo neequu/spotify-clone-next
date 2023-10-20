@@ -1,6 +1,7 @@
 import { Song } from '@/types/supabase';
-import LibrarySongItem from './library/LibrarySongItem';
-import LikeButton from './LikeButton';
+import LibrarySongItem from './SongMediaItem';
+import LikeButton from './buttons/liked/LikeButton';
+import { getLikedSongById } from '@/app/actions';
 export const revalidate = 0;
 
 const SearchResults = async ({
@@ -16,9 +17,13 @@ const SearchResults = async ({
     md:my-[26px] my-4
     grid gap-3'>
       {searchResultsPresent &&
-        searchResults.map((song) => (
+        searchResults.map(async (song) => (
           <LibrarySongItem key={song.id} song={song}>
-            <LikeButton songId={song.id} />
+            <LikeButton
+              key={song.id}
+              songId={song.id}
+              likedSong={await getLikedSongById(song.id)}
+            />
           </LibrarySongItem>
         ))}
     </ul>

@@ -2,21 +2,28 @@
 import { PiHeartStraight, PiHeartStraightFill } from 'react-icons/pi';
 import { likeSong, unlikeSong } from '@/app/actions';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export const revalidate = 0;
 
-const LikeButtonInner = ({
-  isLiked,
-  songId,
-}: {
-  isLiked: boolean | undefined;
+interface LikeButtonProps {
+  likedSong: {
+    created_at: string;
+    song_id: number;
+    user_id: string;
+  } | null;
   songId: number;
-}) => {
-  const router = useRouter();
+}
 
-  const [liked, setLiked] = useState(isLiked);
+const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
+  const router = useRouter();
+  const isLiked = !!likedSong;
+  const [liked, setLiked] = useState(!!likedSong);
+
+  useEffect(() => {
+    setLiked(!!likedSong);
+  }, [likedSong]);
 
   const handleLike = async () => {
     try {
@@ -53,10 +60,10 @@ const LikeButtonInner = ({
         liked
           ? 'text-accent hover:scale-110'
           : 'text-neutral-400 hover:text-white'
-      } absolute top-1/2 -translate-y-1/2 right-4 opacity-100 group-hover:opacity-100 transition`}>
+      } transition`}>
       {liked ? <PiHeartStraightFill /> : <PiHeartStraight size={18} />}
     </button>
   );
 };
 
-export default LikeButtonInner;
+export default LikeButton;

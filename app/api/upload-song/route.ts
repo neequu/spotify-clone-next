@@ -50,7 +50,6 @@ export async function POST(request: Request) {
 
   revalidatePath(requestUrl.origin);
 
-  console.log(songError, imageError, uploadError);
   return NextResponse.redirect(`${requestUrl.origin}`, {
     status: 301,
   });

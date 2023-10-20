@@ -76,22 +76,22 @@ export async function getLikedSongById(id: number) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session?.user) return [];
+    if (!session?.user) return null;
 
     const { data: songData, error: songsError } = await supabase
       .from('liked_songs')
       .select()
       .eq('user_id', session?.user.id)
-      .eq('song_id', id);
-    // .single();
-
+      .eq('song_id', id)
+      .maybeSingle();
     if (songsError) {
       throw new Error('error fetching liked songs');
     }
 
-    return songData || [];
+    return songData || null;
   } catch (e: any) {
     console.log(e);
+    return null;
   }
 }
 export async function likeSong(songId: number) {
@@ -139,6 +139,7 @@ export async function unlikeSong(songId: number) {
     return { message: 'ok' };
   } catch (e: any) {
     console.log(e);
+    return [];
   }
 }
 // get liked songs
@@ -166,5 +167,6 @@ export async function getlikedSongs() {
     }));
   } catch (e: any) {
     console.log(e);
+    return [];
   }
 }

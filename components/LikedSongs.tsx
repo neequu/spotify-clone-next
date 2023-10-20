@@ -1,6 +1,7 @@
 import { Song } from '@/types/supabase';
-import LibrarySongItem from '../library/LibrarySongItem';
-import LikeButton from '../LikeButton';
+import LibrarySongItem from './SongMediaItem';
+import LikeButton from './buttons/liked/LikeButton';
+import { getLikedSongById } from '@/app/actions';
 
 const LikedSongs = ({ likedSongs }: { likedSongs: Song[] | undefined }) => {
   const hasSongs = likedSongs && !!likedSongs.length;
@@ -9,9 +10,13 @@ const LikedSongs = ({ likedSongs }: { likedSongs: Song[] | undefined }) => {
     <section className='mt-8 grid gap-3'>
       <ul>
         {hasSongs ? (
-          likedSongs.map((song) => (
+          likedSongs.map(async (song) => (
             <LibrarySongItem song={song} key={song.id}>
-              <LikeButton songId={song.id} key={song.id + 'btn'} />
+              <LikeButton
+                key={song.id}
+                songId={song.id}
+                likedSong={await getLikedSongById(song.id)}
+              />
             </LibrarySongItem>
           ))
         ) : (

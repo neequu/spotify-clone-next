@@ -1,5 +1,5 @@
 import Input from '../Input';
-import SubmitButton from '../SubmitButton';
+import SubmitButton from '../buttons/SubmitButton';
 
 const UploadForm = () => {
   return (

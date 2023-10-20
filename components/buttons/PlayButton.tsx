@@ -1,15 +1,16 @@
 'use client';
-import usePlayer from '@/hooks/usePlayer';
+import usePlaySong from '@/hooks/usePlaySong';
+import { Song } from '@/types/supabase';
 import { PiPlayFill } from 'react-icons/pi';
 
-const PlayButton = ({ songId }: { songId: number }) => {
-  const player = usePlayer();
+const PlayButton = ({ song, songs }: { song: Song; songs: Song[] }) => {
+  const onPlay = usePlaySong(songs);
   return (
     <button
       type='button'
       onClick={(e) => {
         e.preventDefault();
-        player.setId(songId);
+        onPlay(song.id);
       }}
       className='
       group-hover:opacity-100 opacity-0 

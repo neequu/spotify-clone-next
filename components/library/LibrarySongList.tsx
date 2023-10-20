@@ -1,5 +1,5 @@
 import { Song } from '@/types/supabase';
-import LibrarySongItem from './LibrarySongItem';
+import LibrarySongItem from '../SongMediaItem';
 
 interface LibrarySongListProps {
   userSongs: Song[] | undefined;
