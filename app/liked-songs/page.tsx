@@ -13,7 +13,7 @@ const LikedSongsPage = async () => {
   return (
     // <div className='flex-1 flex flex-col rounded overflow-hidden bg-gray-main md:bg-gradient-to-b from-[#2070cccc] from-[45px] via-[#1050aa99] via-[150px]  to-gray-main to-[300px]'>
     // <TheHeader />
-    <main className='flex-1 md:px-layout-p px-2 md:pt-4 bg-gray-main'>
+    <main className='flex-1 md:px-layout-p px-2 md:pt-4 bg-gray-main select-none'>
       <div className='flex items-end gap-4'>
         <div className='relative flex-1 max-w-[200px] aspect-square shadow-xl'>
           <Image

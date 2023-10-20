@@ -1,16 +1,15 @@
 import { Database, Song } from '@/types/supabase';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-const useLoadSong = (song: Song) => {
+const useSongUrl = (song: Song | undefined) => {
+  if (!song) return null;
   const supabaseClient = createClientComponentClient<Database>();
 
-  if (!song || !song?.song_path) return '';
-
-  const { data } = supabaseClient.storage
+  const { data: songImage } = supabaseClient.storage
     .from('songs')
-    .getPublicUrl(song.song_path);
+    .getPublicUrl(song.image_path!);
 
-  return data.publicUrl;
+  return songImage;
 };
 
-export default useLoadSong;
+export default useSongUrl;

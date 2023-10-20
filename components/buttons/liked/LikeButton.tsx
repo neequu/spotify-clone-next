@@ -18,7 +18,6 @@ interface LikeButtonProps {
 
 const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
   const router = useRouter();
-  const isLiked = !!likedSong;
   const [liked, setLiked] = useState(!!likedSong);
 
   useEffect(() => {

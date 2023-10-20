@@ -16,7 +16,7 @@ const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
     .getPublicUrl(song.image_path!);
 
   return (
-    <li className='select-none relative group p-1 rounded overflow-hidden flex justify-between items-center hover:bg-neutral-800 transition-colors pr-2'>
+    <li className='select-none relative group p-1 rounded overflow-hidden flex justify-between items-center hover:bg-neutral-800 transition-colors pr-4'>
       <div className='flex items-center gap-3'>
         <div className='min-w-[clamp(30px,6vw,50px)] aspect-square relative'>
           <Image

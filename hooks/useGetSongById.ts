@@ -73,14 +73,19 @@ const useGetSongById = (id: number | undefined) => {
     getLikedSongById();
   }, [song, supabaseClient]);
 
-  return useMemo(
-    () => ({
-      isLoading,
-      song,
-      likedSong,
-    }),
-    [isLoading, song, likedSong]
-  );
+  // return useMemo(
+  //   () => ({
+  //     isLoading,
+  //     song,
+  //     likedSong,
+  //   }),
+  //   [isLoading, song, likedSong]
+  // );
+  return {
+    isLoading,
+    song,
+    likedSong,
+  };
 };
 
 export default useGetSongById;

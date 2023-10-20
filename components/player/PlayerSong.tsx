@@ -1,41 +1,24 @@
 'use client';
-import useGetSongById from '@/hooks/useGetSongById';
-import usePlayer from '@/hooks/usePlayer';
-import { Database } from '@/types/supabase';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+
+import { Song } from '@/types/supabase';
 import Image from 'next/image';
 import LikeButton from '../buttons/liked/LikeButton';
+import usePlayer from '@/hooks/usePlayer';
+import useCoverImageUrl from '@/hooks/useCoverImageUrl';
 
-const PlayerSong = () => {
-  const player = usePlayer();
-  const { song, likedSong } = useGetSongById(player.activeId);
-  console.log(likedSong);
-  if (!song) return null;
+export const revalidate = 0;
 
-  const currentIndex = player.ids.findIndex((id) => id === player.activeId);
+interface PlayerSongProps {
+  song: Song;
+  likedSong: {
+    created_at: string;
+    song_id: number;
+    user_id: string;
+  } | null;
+}
 
-  const onPlayNext = () => {
-    if (!player.ids.length) return;
-
-    const nextSong = player.ids[currentIndex + 1];
-    if (!nextSong) {
-      return player.setId(player.ids[0]);
-    }
-  };
-
-  const onPlayPrevious = () => {
-    if (!player.ids.length) return;
-
-    const prevSong = player.ids[currentIndex - 1];
-    if (!prevSong) {
-      return player.setId(player.ids[currentIndex - 1]);
-    }
-  };
-
-  const supabaseClient = createClientComponentClient<Database>();
-  const { data: songImage } = supabaseClient.storage
-    .from('images')
-    .getPublicUrl(song.image_path!);
+const PlayerSong = ({ song, likedSong }: PlayerSongProps) => {
+  const songImage = useCoverImageUrl(song);
   return (
     <div
       className='select-none overflow-hidden flex flex-1 items-center gap-6'

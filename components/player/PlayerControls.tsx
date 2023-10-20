@@ -1,32 +1,21 @@
 'use client';
-import {
-  AiFillStepBackward,
-  AiFillPauseCircle,
-  AiFillPlayCircle,
-} from 'react-icons/ai';
-import { useState } from 'react';
-import usePlayer from '@/hooks/usePlayer';
+import { BiPause, BiPlay, BiSkipNext } from 'react-icons/bi';
 
-const PlayerControls = () => {
-  const [playing, setPlaying] = useState(true);
+const PlayerControls = ({ playing }: { playing: boolean }) => {
   return (
-    <div className='flex-1 flex justify-center gap-4 items-center'>
+    <div className='flex-1 flex justify-center gap-3 items-center'>
+      <button
+        type='button'
+        className='text-neutral-400 hover:text-white transition-colors rotate-180'>
+        <BiSkipNext size={34} />
+      </button>
+      <button type='button' className='bg-white text-black rounded-full '>
+        {playing ? <BiPause size={30} /> : <BiPlay size={30} />}
+      </button>
       <button
         type='button'
         className='text-neutral-400 hover:text-white transition-colors'>
-        <AiFillStepBackward size={22} />
-      </button>
-      <button type='button' className='bg-white text-black rounded-full p-1'>
-        {playing ? (
-          <AiFillPauseCircle size={22} />
-        ) : (
-          <AiFillPlayCircle size={22} />
-        )}
-      </button>
-      <button
-        type='button'
-        className='rotate-180 text-neutral-400 hover:text-white transition-colors'>
-        <AiFillStepBackward size={22} />
+        <BiSkipNext size={34} />
       </button>
     </div>
   );
