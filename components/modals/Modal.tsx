@@ -1,5 +1,11 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { PiXBold } from 'react-icons/pi';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+
 interface ModalProps {
   isOpen: boolean;
   onChange: (open: boolean) => void;
@@ -16,28 +22,17 @@ const Modal = ({
   children,
 }: ModalProps) => {
   return (
-    <Dialog.Root open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
-      <Dialog.Portal>
-        <Dialog.Overlay className='bg-neutral-900/90 backdrop-blur-sm fixed inset-0 grid place-content-center'>
-          <Dialog.Content className='drop-shadow-md bg-neutral-800 border border-neutral-700 rounded-md outline-none md:place-content-center md:max-w-[400px] max-w-[min(400px,calc(100vw-2rem))] p-6 relative w-screen'>
-            <Dialog.Title className='text-center text-xl mb-2'>
-              {title}
-            </Dialog.Title>
-            <Dialog.Description className='border-b text-neutral-400 border-neutral-700 pb-4 mb-6 text-center text-sm'>
-              {description}
-            </Dialog.Description>
-            <div>{children}</div>
-            <Dialog.Close asChild>
-              <button
-                type='button'
-                className='text-neutral-400 hover:text-neutral-500 transition-colors absolute top-2 right-2'>
-                <PiXBold size={20} />
-              </button>
-            </Dialog.Close>
-          </Dialog.Content>
-        </Dialog.Overlay>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <>
+      <Dialog open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{title}</DialogTitle>
+            <DialogDescription>{description}</DialogDescription>
+          </DialogHeader>
+          {children}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

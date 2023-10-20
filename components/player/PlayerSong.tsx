@@ -7,29 +7,31 @@ import Image from 'next/image';
 import LikeButton from '../buttons/liked/LikeButton';
 
 const PlayerSong = () => {
-  // const player = usePlayer();
-  // const { song, likedSong } = useGetSongById(player.activeId);
-  // console.log(likedSong);
-  // if (!song) return null;
+  const player = usePlayer();
+  const { song, likedSong } = useGetSongById(player.activeId);
+  console.log(likedSong);
+  if (!song) return null;
 
-  const likedSong = {
-    id: 22,
-    created_at: '2023-10-19T21:11:14.285065+00:00',
-    title: 'test',
-    artist: 'yeah',
-    song_path: 'song-test-yeah-778lnxoft5k',
-    image_path: 'image-test-yeah-778lnxoft5k',
-    user_id: 'c3fcb383-0c2c-447f-a5f0-7ccdbf49ecba',
+  const currentIndex = player.ids.findIndex((id) => id === player.activeId);
+
+  const onPlayNext = () => {
+    if (!player.ids.length) return;
+
+    const nextSong = player.ids[currentIndex + 1];
+    if (!nextSong) {
+      return player.setId(player.ids[0]);
+    }
   };
-  const song = {
-    id: 22,
-    created_at: '2023-10-19T21:11:14.285065+00:00',
-    title: 'test',
-    artist: 'yeah',
-    song_path: 'song-test-yeah-778lnxoft5k',
-    image_path: 'image-test-yeah-778lnxoft5k',
-    user_id: 'c3fcb383-0c2c-447f-a5f0-7ccdbf49ecba',
+
+  const onPlayPrevious = () => {
+    if (!player.ids.length) return;
+
+    const prevSong = player.ids[currentIndex - 1];
+    if (!prevSong) {
+      return player.setId(player.ids[currentIndex - 1]);
+    }
   };
+
   const supabaseClient = createClientComponentClient<Database>();
   const { data: songImage } = supabaseClient.storage
     .from('images')

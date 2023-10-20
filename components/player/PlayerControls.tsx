@@ -1,8 +1,14 @@
 'use client';
-import { PiPlayFill, PiPauseFill } from 'react-icons/pi';
-import { AiFillStepBackward } from 'react-icons/ai';
+import {
+  AiFillStepBackward,
+  AiFillPauseCircle,
+  AiFillPlayCircle,
+} from 'react-icons/ai';
+import { useState } from 'react';
+import usePlayer from '@/hooks/usePlayer';
+
 const PlayerControls = () => {
-  const playing = false;
+  const [playing, setPlaying] = useState(true);
   return (
     <div className='flex-1 flex justify-center gap-4 items-center'>
       <button
@@ -11,7 +17,11 @@ const PlayerControls = () => {
         <AiFillStepBackward size={22} />
       </button>
       <button type='button' className='bg-white text-black rounded-full p-1'>
-        {playing ? <PiPauseFill size={22} /> : <PiPlayFill size={22} />}
+        {playing ? (
+          <AiFillPauseCircle size={22} />
+        ) : (
+          <AiFillPlayCircle size={22} />
+        )}
       </button>
       <button
         type='button'

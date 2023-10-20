@@ -14,7 +14,7 @@ export default function Home() {
           to='/liked-songs'
         />
       </section>
-      <section className='md:mt-8 mt-6 h-[200vh] '>
+      <section className='md:mt-8 mt-6 pb-4'>
         <h2 className='text-xl font-semibold'>Newest songs</h2>
         <div className='md:mt-4 mt-2'>
           <SongGrig />

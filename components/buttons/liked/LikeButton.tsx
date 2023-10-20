@@ -48,8 +48,8 @@ const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
   };
 
   const handleLikeButtonClick = () => {
-    isLiked ? handleRemoveLike() : handleLike();
-    setLiked(!isLiked);
+    liked ? handleRemoveLike() : handleLike();
+    setLiked((p) => !p);
   };
 
   return (
