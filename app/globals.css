@@ -8,26 +8,22 @@ html, body {
   min-height: 100vh;
 }
 
-
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
+::-webkit-scrollbar { width: 8px; }
 /* Track */
-::-webkit-scrollbar-track {
-  display: none;
-  background: #252525;
-}
-
+::-webkit-scrollbar-track { display: none; background: #252525;}
 /* Handle */
-::-webkit-scrollbar-thumb {
-  background: #151515;
-  border-radius: 2px;
-  width: 1px;
-}
-
+::-webkit-scrollbar-thumb {background: #151515;border-radius: 2px;width: 1px;}
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #444;
+::-webkit-scrollbar-thumb:hover { background: #444; }
+
+@layer components {
+  .gradient-green {
+    @apply bg-gray-main bg-gradient-to-b from-accent-dark  from-[40px] via-[#30705599] via-[100px]  to-gray-main to-[196px];
+  }
+  .gradient-dark {
+    @apply bg-gradient-to-b from-gray-main via-neutral-800 to-gray-main;
+  }
+  .gradient-purple {
+    @apply bg-gradient-to-r from-purple-800 via-violet-900 to-purple-800;
+  }
 }

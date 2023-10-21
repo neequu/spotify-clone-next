@@ -1,7 +1,7 @@
 'use server';
 import { User } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import { Database } from '@/types/supabase';
+import { Database, Song } from '@/types/supabase';
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 
 const supabase = createServerActionClient<Database>({
@@ -167,9 +167,11 @@ export async function getlikedSongs() {
 
     if (!data.length) return [];
 
-    return data.map((i) => ({
+    const likedSongs = data.map((i) => ({
       ...i.songs,
     }));
+
+    return (likedSongs as Song[]) || [];
   } catch (e: any) {
     console.log(e);
     return [];

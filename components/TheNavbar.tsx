@@ -35,7 +35,7 @@ const TheNavbar = () => {
   );
 
   return (
-    <nav className='md:bg-gray-main rounded lg:p-layout-p md:p-3 flex md:flex-col md:gap-5 gap-[clamp(4rem,12vw,6rem)] md:shadow '>
+    <nav className='md:bg-gray-main rounded lg:p-layout-p md:p-3 flex md:flex-col md:gap-5 gap-[clamp(1rem,12vw,6rem)] md:shadow '>
       {routes.map((r) => (
         <NavbarItem key={r.name} {...r} />
       ))}

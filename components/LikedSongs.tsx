@@ -3,7 +3,11 @@ import LibrarySongItem from './SongMediaItem';
 import LikeButton from './buttons/liked/LikeButton';
 import { getLikedSongById } from '@/app/actions';
 
-const LikedSongs = ({ likedSongs }: { likedSongs: Song[] | undefined }) => {
+interface LikedSongsProps {
+  likedSongs: Song[];
+}
+
+const LikedSongs = ({ likedSongs }: LikedSongsProps) => {
   const hasSongs = likedSongs && !!likedSongs.length;
 
   return (
