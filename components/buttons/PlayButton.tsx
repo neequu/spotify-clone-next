@@ -21,7 +21,8 @@ const PlayButton = ({ song, songs }: { song: Song; songs: Song[] }) => {
     rounded-full 
       p-2
     bottom-2
-    right-2'>
+    right-2'
+      aria-label={`play ${song.title} by ${song.title}`}>
       <PiPlayFill size={20} />
     </button>
   );

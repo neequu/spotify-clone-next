@@ -1,7 +1,7 @@
 import SearchElement from '@/components/SearchElement';
 import SearchResults from '@/components/SearchResults';
 import TheHeader from '@/components/TheHeader';
-import { getSongsByTitle } from '../actions';
+import { getSongsByTitle } from '../../actions';
 
 export const revalidate = 0;
 

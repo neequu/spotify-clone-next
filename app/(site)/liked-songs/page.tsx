@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getlikedSongs } from '../actions';
+import { getlikedSongs } from '../../actions';
 import LikedSongs from '@/components/LikedSongs';
 
 const LikedSongsPage = async () => {
