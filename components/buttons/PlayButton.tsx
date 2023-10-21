@@ -14,6 +14,7 @@ const PlayButton = ({ song, songs }: { song: Song; songs: Song[] }) => {
       }}
       className='
       group-hover:opacity-100 opacity-0 
+      group-hover:translate-y-0 translate-y-2
       hover:scale-105 transition
       absolute
     text-black bg-accent 

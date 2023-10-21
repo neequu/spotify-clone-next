@@ -5,11 +5,11 @@ const useSongUrl = (song: Song | undefined) => {
   if (!song) return null;
   const supabaseClient = createClientComponentClient<Database>();
 
-  const { data: songImage } = supabaseClient.storage
+  const { data: songUrl } = supabaseClient.storage
     .from('songs')
-    .getPublicUrl(song.image_path!);
+    .getPublicUrl(song.song_path!);
 
-  return songImage;
+  return songUrl;
 };
 
 export default useSongUrl;

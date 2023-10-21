@@ -6,7 +6,7 @@ import { Slider } from '@/components/ui/slider';
 import useSound from 'use-sound';
 import usePlayer from '@/hooks/usePlayer';
 import { Song } from '@/types/supabase';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useGetSongById from '@/hooks/useGetSongById';
 
 interface PlayerContentProps {
@@ -39,8 +39,9 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
   };
 
   const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(50);
+  const [volume, setVolume] = useState(0.5);
   const [prevVolume, setPrevVolume] = useState<number>(50);
+
   const [play, { pause, sound }] = useSound(songUrl, {
     volume,
     onplay: () => setPlaying(true),
@@ -62,10 +63,26 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
     }
   };
 
+  useEffect(() => {
+    sound?.play();
+
+    return () => {
+      sound?.unload();
+    };
+  }, [sound]);
+
+  const handlePlay = () => {
+    if (!playing) {
+      play();
+    } else {
+      pause();
+    }
+  };
+
   return (
     <>
       <PlayerSong song={song} likedSong={likedSong} />
-      <PlayerControls playing />
+      <PlayerControls playing={playing} handlePlay={handlePlay} />
       <div className='flex-1 flex justify-end gap-2'>
         <button
           type='button'
@@ -73,7 +90,7 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
           className=' text-neutral-400 hover:text-white transition-colors'>
           {volume === 0 ? (
             <BiVolumeMute size={20} />
-          ) : volume >= 50 ? (
+          ) : volume >= 0.5 ? (
             <BiVolumeFull size={20} />
           ) : (
             <BiVolumeLow size={20} />
@@ -82,8 +99,8 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
         <Slider
           className='max-w-[100px]'
           defaultValue={[volume]}
-          max={100}
-          step={1}
+          max={1}
+          step={0.01}
           onValueChange={(e) => setVolume(e[0])}
           value={[volume]}
         />
