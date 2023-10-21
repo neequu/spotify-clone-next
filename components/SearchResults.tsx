@@ -12,10 +12,7 @@ const SearchResults = async ({
   const searchResultsPresent = searchResults && !!searchResults?.length;
 
   return (
-    <ul
-      className='
-    md:my-[26px] my-4
-    grid gap-3'>
+    <ul className='md:my-[26px] my-4 grid gap-3 items-start'>
       {searchResultsPresent &&
         searchResults.map(async (song) => (
           <LibrarySongItem key={song.id} song={song}>

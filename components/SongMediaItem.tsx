@@ -18,7 +18,7 @@ const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
   return (
     <li className='select-none relative group p-1 rounded overflow-hidden flex justify-between items-center hover:bg-neutral-800 transition-colors pr-4'>
       <div className='flex items-center gap-3'>
-        <div className='min-w-[clamp(40px,6vw,50px)] aspect-square relative'>
+        <div className='min-w-[clamp(0px,6vw,50px)] aspect-square relative'>
           <Image
             src={songImage.publicUrl}
             alt={song.title || 'song cover image'}

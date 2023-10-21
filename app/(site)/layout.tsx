@@ -16,14 +16,14 @@ export default function RootLayout({
   return (
     <body
       className={`${font.className} bg-gray-main md:bg-gray-bg flex flex-col min-w-[140px] md:pt-2 md:px-2 text-white`}>
-      <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
+      <div className='grid md:grid-rows-none grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
         <ToastProvider />
         <ModalProvider />
-        <aside className='sticky md:top-2 z-50 md:h-[calc(100vh-8px)] h-[64px] bottom-0  order-2 md:-order-none md:bg-none bg-gray-main bg-opacity-20 backdrop-blur'>
+        <aside className='sticky md:top-2 z-50 h-[64px] md:h-[initial] bottom-0  order-2 md:-order-none md:bg-none bg-gray-main bg-opacity-20 backdrop-blur'>
           <TheSidebar />
         </aside>
 
-        <div className='flex-1 flex flex-col'>
+        <div className='flex flex-col'>
           <TheHeader />
           {children}
         </div>

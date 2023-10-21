@@ -20,7 +20,7 @@ const TheLibrary = async ({ children }: TheLibraryProps) => {
   const userSongs = (await getSongsByUserId(user)) || [];
 
   return (
-    <section className={`md:flex flex-col gap-6`}>
+    <section className={`md:flex flex-col gap-6 flex-1 `}>
       <div className='flex justify-between items-center'>
         {children}
         <LibraryUploadButton user={user} />
