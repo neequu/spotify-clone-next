@@ -1,6 +1,5 @@
 import SearchElement from '@/components/SearchElement';
 import SearchResults from '@/components/SearchResults';
-import TheHeader from '@/components/TheHeader';
 import { getSongsByTitle } from '../../actions';
 
 export const revalidate = 0;
@@ -14,6 +13,7 @@ interface SearchPageProps {
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const query = searchParams.s;
   const searchResults = query ? await getSongsByTitle(query) : [];
+
   return (
     <main className='flex-1 md:px-layout-p px-2 gradient-dark'>
       <h1 className='md:text-2xl text-xl font-semibold'>Search</h1>

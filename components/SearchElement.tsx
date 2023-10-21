@@ -3,6 +3,7 @@ import useDebounce from '@/hooks/useDebounce';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { PiMagnifyingGlass } from 'react-icons/pi';
+import { PiCircleDashed } from 'react-icons/pi';
 
 const SearchElement = ({ query }: { query: string }) => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const SearchElement = ({ query }: { query: string }) => {
   }, [value, debouncedValue, router]);
 
   return (
-    <form className='flex items-center bg-neutral-800 rounded-md shadow transition border border-transparent group [&:has(input:focus-visible)]:border-neutral-500 mt-4'>
+    <form className='flex items-center bg-neutral-800 rounded-md shadow transition border border-transparent group [&:has(input:focus-visible)]:border-neutral-500 mt-4 pr-4'>
       <label
         htmlFor='song-query'
         className='p-2 md:p-4 text-neutral-500 group-[&:has(input:focus-visible)]:text-white transition-colors'>
@@ -34,6 +35,13 @@ const SearchElement = ({ query }: { query: string }) => {
         autoFocus
         className='bg-transparent w-full placeholder:text-neutral-500 md:py-3 py-2 outline-none text-sm md:text-base'
       />
+      {value !== debouncedValue ? (
+        <div className='text-2xl animate-spin text-neutral-400'>
+          <PiCircleDashed />
+        </div>
+      ) : (
+        ''
+      )}
     </form>
   );
 };
