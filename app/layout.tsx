@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${font.className} bg-gray-bg flex flex-col min-w-[275px] md:pt-2 md:px-2`}>
+        className={`${font.className} bg-gray-main md:bg-gray-bg flex flex-col min-w-[275px] md:pt-2 md:px-2`}>
         <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
           <ToastProvider />
           <ModalProvider />

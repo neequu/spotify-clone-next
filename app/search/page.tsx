@@ -12,22 +12,18 @@ interface SearchPageProps {
 }
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
-  const searchResults = searchParams.s
-    ? await getSongsByTitle(searchParams.s)
-    : [];
+  const query = searchParams.s;
+  const searchResults = query ? await getSongsByTitle(query) : [];
   return (
-    // <div className='flex-1 flex flex-col rounded overflow-hidden bg-gray-main'>
-    // <TheHeader />
     <main className='flex-1 md:px-layout-p px-2 bg-gray-main'>
       <h1 className='md:text-2xl text-xl font-semibold'>Search</h1>
       <section>
-        <SearchElement />
+        <SearchElement query={query} />
       </section>
       <section>
         <SearchResults searchResults={searchResults} />
       </section>
     </main>
-    // </div>
   );
 };
 

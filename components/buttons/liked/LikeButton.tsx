@@ -4,6 +4,7 @@ import { likeSong, unlikeSong } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import useAuthModal from '@/hooks/useAuthModal';
 
 export const revalidate = 0;
 
@@ -17,6 +18,7 @@ interface LikeButtonProps {
 }
 
 const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
+  const authModal = useAuthModal();
   const router = useRouter();
   const [liked, setLiked] = useState(!!likedSong);
 
@@ -26,7 +28,11 @@ const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
 
   const handleLike = async () => {
     try {
-      await likeSong(songId);
+      const res = await likeSong(songId);
+      if (res.error) {
+        authModal.onOpen();
+        throw new Error(res.error);
+      }
       toast.success('Added to library');
       router.refresh();
     } catch (e: any) {
@@ -37,7 +43,11 @@ const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
 
   const handleRemoveLike = async () => {
     try {
-      await unlikeSong(songId);
+      const res = await unlikeSong(songId);
+      if (res.error) {
+        authModal.onOpen();
+        throw new Error(res.error);
+      }
       toast.success('Removed from library');
       router.refresh();
     } catch (e: any) {
@@ -55,6 +65,7 @@ const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
     <button
       onClick={handleLikeButtonClick}
       type='button'
+      aria-label='like'
       className={`${
         liked
           ? 'text-accent hover:scale-110'

@@ -14,6 +14,7 @@ const HeaderNavButton = ({ forward }: HeaderNavButtonProps) => {
 
   return (
     <button
+      aria-label='navigate'
       type='button'
       onClick={() => navigate()}
       className={twMerge(

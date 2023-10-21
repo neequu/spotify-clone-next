@@ -23,8 +23,11 @@ const ProfileButton = () => {
     }
   };
   return (
-    <button type='button' onClick={handleSignOut} className='my-[1px]'>
-      <PiUserCircle size={30} />
+    <button
+      type='button'
+      onClick={handleSignOut}
+      className='md:my-[1px] text-2xl'>
+      <PiUserCircle />
     </button>
   );
 };

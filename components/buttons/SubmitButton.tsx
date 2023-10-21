@@ -1,19 +1,12 @@
 'use client';
-import {
-  // ts-ignore because experimental_useFormStatus is not in the types
-  // @ts-ignore
-  experimental_useFormStatus as useFormStatus,
-  useFormState,
-} from 'react-dom';
 
 export default function SubmitButton() {
-  const { pending } = useFormStatus();
-
   return (
     <button
       type='submit'
-      aria-disabled={pending}
-      disabled={pending}
+      aria-label='upload song'
+      aria-disabled={false}
+      disabled={false}
       className='
             w-full 
             rounded-md
@@ -27,8 +20,7 @@ export default function SubmitButton() {
             bg-accent2
             text-sm
           '>
-      {pending ? 'pending' : 'eh'}
-      Upload songs
+      {false ? 'Uploading...' : 'Upload songs'}
     </button>
   );
 }

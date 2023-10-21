@@ -4,7 +4,7 @@ import Playlist from './Playlist';
 const SongGrig = async () => {
   const songs = await getSongs();
   return (
-    <div className='grid grid-cols-songs gap-4'>
+    <div className='grid grid-cols-songs md:grid-cols-songs-md gap-4'>
       {songs?.map((song) => (
         <Playlist song={song} songs={songs} key={song.id} />
       ))}

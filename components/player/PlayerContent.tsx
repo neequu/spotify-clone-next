@@ -85,6 +85,7 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
       <PlayerControls playing={playing} handlePlay={handlePlay} />
       <div className='flex-1 flex justify-end gap-2'>
         <button
+          aria-label='mute song'
           type='button'
           onClick={handleMute}
           className=' text-neutral-400 hover:text-white transition-colors'>

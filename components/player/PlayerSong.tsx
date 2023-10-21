@@ -3,7 +3,6 @@
 import { Song } from '@/types/supabase';
 import Image from 'next/image';
 import LikeButton from '../buttons/liked/LikeButton';
-import usePlayer from '@/hooks/usePlayer';
 import useCoverImageUrl from '@/hooks/useCoverImageUrl';
 
 export const revalidate = 0;
@@ -29,9 +28,7 @@ const PlayerSong = ({ song, likedSong }: PlayerSongProps) => {
             src={songImage.publicUrl}
             alt={song?.title || 'song cover image'}
             className='rounded aspect-square object-cover'
-            priority
             fill
-            sizes='10vw'
             quality={60}
           />
         </div>

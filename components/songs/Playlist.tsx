@@ -24,12 +24,12 @@ const Playlist = ({ song, songs }: { song: Song; songs: Song[] }) => {
             src={songImage.publicUrl}
             alt={song.title || 'song cover art'}
             fill
-            className='md:rounded-md object-cover'
-            priority
+            sizes='33vw'
+            className='md:rounded-md rounded-t-sm object-cover'
           />
           <PlayButton songs={songs} song={song} />
         </div>
-        <div className='grid mt-3'>
+        <div className='grid mt-3 px-1.5 md:px-0'>
           <p
             className='
             truncate 

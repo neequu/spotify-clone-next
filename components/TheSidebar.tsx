@@ -3,7 +3,7 @@ import TheNavbar from './TheNavbar';
 
 const TheSidebar = () => {
   return (
-    <aside className='sticky md:top-2 z-50 md:h-[calc(100vh-8px)] h-[64px] bottom-0 flex items-center md:items-stretch justify-center md:justify-normal flex-col gap-layout-gap order-2 md:-order-none'>
+    <aside className='sticky md:top-2 z-50 md:h-[calc(100vh-8px)] h-[64px] bottom-0 flex items-center md:items-stretch justify-center md:justify-normal flex-col gap-layout-gap order-2 md:-order-none md:bg-none bg-gray-main bg-opacity-20 backdrop-blur'>
       <TheNavbar />
       <TheLibrary />
     </aside>

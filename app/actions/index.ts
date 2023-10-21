@@ -100,7 +100,9 @@ export async function likeSong(songId: number) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session?.user) return [];
+    if (!session?.user) {
+      throw new Error(`You don't have acess to like the song`);
+    }
 
     const { error } = await supabase.from('liked_songs').insert({
       song_id: songId,
@@ -115,6 +117,7 @@ export async function likeSong(songId: number) {
     return { message: 'ok' };
   } catch (e: any) {
     console.log(e);
+    return { error: e.message };
   }
 }
 // remove like from a song
@@ -124,7 +127,9 @@ export async function unlikeSong(songId: number) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session?.user) return [];
+    if (!session?.user) {
+      throw new Error(`You don't have acess to unlike the song`);
+    }
 
     const { error } = await supabase
       .from('liked_songs')
@@ -139,7 +144,7 @@ export async function unlikeSong(songId: number) {
     return { message: 'ok' };
   } catch (e: any) {
     console.log(e);
-    return [];
+    return { error: e.message };
   }
 }
 // get liked songs

@@ -23,6 +23,7 @@ const LibraryUploadButton = ({ user }: LibraryUploadButtonProps) => {
     <button
       onClick={handleClick}
       type='button'
+      aria-label='add song'
       className='text-neutral-400 hover:text-white transition-colors'>
       <PiPlus size={22} />
     </button>

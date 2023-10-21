@@ -3,17 +3,14 @@ import useDebounce from '@/hooks/useDebounce';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { PiMagnifyingGlass } from 'react-icons/pi';
-import { useSearchParams } from 'next/navigation';
 
-const SearchElement = () => {
-  const searchParams = useSearchParams();
-  const search = searchParams.get('s');
-
+const SearchElement = ({ query }: { query: string }) => {
   const router = useRouter();
-  const [value, setValue] = useState(search || '');
+  const [value, setValue] = useState(query);
   const debouncedValue = useDebounce(value);
 
   useEffect(() => {
+    if (!debouncedValue) return;
     const url = debouncedValue
       ? `${location.pathname}?s=${debouncedValue}`
       : location.pathname;
