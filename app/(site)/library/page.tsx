@@ -1,13 +1,12 @@
-import TheHeader from '@/components/TheHeader';
+import TheLibrary from '@/components/library/TheLibrary';
 
 const page = () => {
   return (
-    <div className='flex-1 flex flex-col rounded overflow-hidden bg-gray-main'>
-      <TheHeader />
-      <main className='flex-1 px-4'>
+    <main className='flex-1 md:px-layout-p px-2 gradient-dark'>
+      <TheLibrary>
         <h1 className='text-xl font-semibold'>Your library</h1>
-      </main>
-    </div>
+      </TheLibrary>
+    </main>
   );
 };
 

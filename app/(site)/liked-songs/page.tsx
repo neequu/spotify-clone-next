@@ -22,7 +22,7 @@ const LikedSongsPage = async () => {
         />
         <div>
           <p className='mb-4'>Playlist</p>
-          <h1 className='text-6xl font-bold mb-6'>Liked Songs</h1>
+          <h1 className='md:text-6xl font-bold mb-6 text-xl'>Liked Songs</h1>
           <p>{formattedString()}</p>
         </div>
       </div>

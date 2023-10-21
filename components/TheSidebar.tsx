@@ -1,12 +1,23 @@
 import TheLibrary from './library/TheLibrary';
 import TheNavbar from './TheNavbar';
 
+import { PiPlaylist } from 'react-icons/pi';
+
 const TheSidebar = () => {
   return (
-    <aside className='sticky md:top-2 z-50 md:h-[calc(100vh-8px)] h-[64px] bottom-0 flex items-center md:items-stretch justify-center md:justify-normal flex-col gap-layout-gap order-2 md:-order-none md:bg-none bg-gray-main bg-opacity-20 backdrop-blur'>
+    <div className='h-full flex items-center md:items-stretch justify-center md:justify-normal flex-col gap-layout-gap'>
       <TheNavbar />
-      <TheLibrary />
-    </aside>
+      <div className='bg-gray-main flex-1 rounded lg:p-layout-p md:p-3'>
+        <div className='hidden md:block'>
+          <TheLibrary>
+            <div className='text-neutral-400 flex items-center gap-2 font-bold'>
+              <PiPlaylist size={24} />
+              <span className='hidden lg:block'>Your library</span>
+            </div>
+          </TheLibrary>
+        </div>
+      </div>
+    </div>
   );
 };
 

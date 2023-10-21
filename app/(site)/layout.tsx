@@ -19,7 +19,10 @@ export default function RootLayout({
       <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
         <ToastProvider />
         <ModalProvider />
-        <TheSidebar />
+        <aside className='sticky md:top-2 z-50 md:h-[calc(100vh-8px)] h-[64px] bottom-0  order-2 md:-order-none md:bg-none bg-gray-main bg-opacity-20 backdrop-blur'>
+          <TheSidebar />
+        </aside>
+
         <div className='flex-1 flex flex-col'>
           <TheHeader />
           {children}

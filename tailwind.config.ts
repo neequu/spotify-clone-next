@@ -19,6 +19,7 @@ const config: Config = {
       colors: {
         'gray-main': '#181818',
         'gray-bg': '#040404',
+        page: '#212121',
         'gray-md': '#252525',
         accent: '#1ed760',
         accent2: '#509960',
