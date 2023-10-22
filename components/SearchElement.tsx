@@ -46,8 +46,8 @@ const SearchElement = ({
           {typing ? <CircleDashed className='w-5  md:w-6 animate-spin' /> : ''}
         </div>
       </form>
-      <p className='mt-4 text-red-500'>
-        {resultsLength === 0 ? 'no results' : ''}
+      <p className='mt-4 text-red-500 text-center text-sm md:text-start md:text-base'>
+        {resultsLength === 0 ? 'Nothing found' : ''}
       </p>
     </>
   );

@@ -11,7 +11,7 @@ const LikedSongs = ({ likedSongs }: LikedSongsProps) => {
   const hasSongs = likedSongs && !!likedSongs.length;
 
   return (
-    <section className='mt-12 grid gap-3'>
+    <section className='mt-8 md:mt-12 grid gap-3 border-t border-neutral-800 pt-2'>
       <ul>
         {hasSongs ? (
           likedSongs.map(async (song) => (
