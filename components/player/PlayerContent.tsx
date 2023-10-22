@@ -1,13 +1,14 @@
-import PlayerControls from '../player/PlayerControls';
-import PlayerSong from '../player/PlayerSong';
-import { BiVolumeMute, BiVolumeFull, BiVolumeLow } from 'react-icons/bi';
-import { Slider } from '@/components/ui/slider';
 // @ts-ignore
 import useSound from 'use-sound';
 import usePlayer from '@/hooks/usePlayer';
 import { Song } from '@/types/supabase';
 import { useEffect, useState } from 'react';
 import useGetSongById from '@/hooks/useGetSongById';
+import PlayerControls from '../player/PlayerControls';
+import PlayerSong from '../player/PlayerSong';
+import { BiVolumeMute, BiVolumeFull, BiVolumeLow } from 'react-icons/bi';
+import { Slider } from '@/components/ui/slider';
+import { VolumeFull, VolumeLow, VolumeMute } from '../icons/volume';
 
 interface PlayerContentProps {
   song: Song;
@@ -22,10 +23,13 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
 
   const onPlayNext = () => {
     if (!player.ids.length) return;
-
+    console.log(player);
     const nextSong = player.ids[currentIndex + 1];
+    console.log(nextSong);
     if (!nextSong) {
-      return player.setId(player.ids[0]);
+      player.setId(player.ids[0]);
+      console.log(player);
+      return;
     }
   };
 
@@ -83,28 +87,30 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
     <>
       <PlayerSong song={song} likedSong={likedSong} />
       <PlayerControls playing={playing} handlePlay={handlePlay} />
-      <div className='flex-1 flex justify-end gap-2'>
-        <button
-          aria-label='mute song'
-          type='button'
-          onClick={handleMute}
-          className=' text-neutral-400 hover:text-white transition-colors'>
-          {volume === 0 ? (
-            <BiVolumeMute size={20} />
-          ) : volume >= 0.5 ? (
-            <BiVolumeFull size={20} />
-          ) : (
-            <BiVolumeLow size={20} />
-          )}
-        </button>
-        <Slider
-          className='max-w-[100px]'
-          defaultValue={[volume]}
-          max={1}
-          step={0.01}
-          onValueChange={(e) => setVolume(e[0])}
-          value={[volume]}
-        />
+      <div className='flex-1 flex items-center justify-end'>
+        <div className='group flex h-min w-[130px] gap-2'>
+          <button
+            aria-label='mute song'
+            type='button'
+            onClick={handleMute}
+            className=' text-neutral-400 hover:text-white transition-colors'>
+            {volume === 0 ? (
+              <VolumeMute />
+            ) : volume >= 0.5 ? (
+              <VolumeFull />
+            ) : (
+              <VolumeLow />
+            )}
+          </button>
+          <Slider
+            className='max-w-[100px]'
+            defaultValue={[volume]}
+            max={1}
+            step={0.01}
+            onValueChange={(e) => setVolume(e[0])}
+            value={[volume]}
+          />
+        </div>
       </div>
     </>
   );

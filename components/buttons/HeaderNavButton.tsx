@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { PiCaretLeft } from 'react-icons/pi';
+import { ChevronLeft } from 'lucide-react';
 
 interface HeaderNavButtonProps {
   forward?: boolean;
@@ -16,9 +16,10 @@ const HeaderNavButton = ({ forward }: HeaderNavButtonProps) => {
       aria-label='navigate'
       type='button'
       onClick={() => navigate()}
-      className={`bg-black bg-opacity-30 hover:bg-opacity-50 transition-all rounded-full p-1.5
-      ${forward && 'rotate-180'}`}>
-      <PiCaretLeft size={18} />
+      className={`bg-black bg-opacity-30 hover:bg-opacity-50 transition-all rounded-full p-1 ${
+        forward && 'rotate-180'
+      }`}>
+      <ChevronLeft className='w-5 h-5' />
     </button>
   );
 };

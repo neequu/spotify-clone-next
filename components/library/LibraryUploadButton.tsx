@@ -2,7 +2,7 @@
 import useAuthModal from '@/hooks/useAuthModal';
 import useUploadModal from '@/hooks/useUploadModal';
 import { User } from '@supabase/auth-helpers-nextjs';
-import { PiPlus } from 'react-icons/pi';
+import { Plus } from 'lucide-react';
 
 interface LibraryUploadButtonProps {
   user: User | undefined;
@@ -25,7 +25,7 @@ const LibraryUploadButton = ({ user }: LibraryUploadButtonProps) => {
       type='button'
       aria-label='add song'
       className='text-neutral-400 hover:text-white transition-colors'>
-      <PiPlus size={22} />
+      <Plus className='w-5' />
     </button>
   );
 };

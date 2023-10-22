@@ -1,5 +1,8 @@
 'use client';
-import { BiPause, BiPlay, BiSkipNext } from 'react-icons/bi';
+
+import Pause from '../icons/Pause';
+import Play from '../icons/Play';
+import StepBack from '../icons/StepBack';
 
 const PlayerControls = ({
   playing,
@@ -13,23 +16,20 @@ const PlayerControls = ({
       <button
         aria-label='previous song'
         type='button'
-        className='text-neutral-400 hover:text-white transition-colors rotate-180'>
-        <BiSkipNext size={34} />
+        className='text-neutral-400 hover:text-white transition-colors'>
+        <StepBack />
       </button>
       <button
         aria-label='pause or play song'
         onClick={handlePlay}
-        type='button'
-        className={`bg-white text-black rounded-full grid place-content-center ${
-          playing ? 'p-[1px]' : 'pl-[2px] py-[1px]'
-        }`}>
-        {playing ? <BiPause size={30} /> : <BiPlay size={30} />}
+        type='button'>
+        {playing ? <Pause /> : <Play />}
       </button>
       <button
         aria-label='next song'
         type='button'
-        className='text-neutral-400 hover:text-white transition-colors'>
-        <BiSkipNext size={34} />
+        className='text-neutral-400 hover:text-white transition-colors rotate-180'>
+        <StepBack />
       </button>
     </div>
   );

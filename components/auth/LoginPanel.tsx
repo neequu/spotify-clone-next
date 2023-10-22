@@ -1,6 +1,6 @@
 'use client';
 import useAuthModal from '@/hooks/useAuthModal';
-import { BiLockAlt } from 'react-icons/bi';
+import { Lock } from 'lucide-react';
 
 const LoginPanel = () => {
   const AuthModal = useAuthModal();
@@ -27,8 +27,8 @@ const LoginPanel = () => {
         aria-label='login or sign up'
         onClick={AuthModal.onOpen}
         type='button'
-        className='bg-white text-black p-[2px] rounded-full text-xl md:hidden'>
-        <BiLockAlt />
+        className='md:hidden rounded-full overflow-hidden'>
+        <Lock className='w-6 h-6 bg-white text-black p-1' />
       </button>
     </div>
   );

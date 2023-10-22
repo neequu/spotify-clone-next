@@ -2,8 +2,7 @@
 import useDebounce from '@/hooks/useDebounce';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { PiMagnifyingGlass } from 'react-icons/pi';
-import { PiCircleDashed } from 'react-icons/pi';
+import { Search, CircleDashed } from 'lucide-react';
 
 const SearchElement = ({ query }: { query: string }) => {
   const router = useRouter();
@@ -24,7 +23,7 @@ const SearchElement = ({ query }: { query: string }) => {
       <label
         htmlFor='song-query'
         className='p-2 md:p-4 text-neutral-500 group-[&:has(input:focus-visible)]:text-white transition-colors'>
-        <PiMagnifyingGlass size={20} />
+        <Search className='w-5 aspect-square md:w-6' strokeWidth='1.5' />
       </label>
       <input
         onChange={(e) => setValue(e.target.value)}
@@ -35,13 +34,13 @@ const SearchElement = ({ query }: { query: string }) => {
         autoFocus
         className='bg-transparent w-full placeholder:text-neutral-500 md:py-3 py-2 outline-none text-sm md:text-base'
       />
-      {value !== debouncedValue ? (
-        <div className='text-2xl animate-spin text-neutral-400'>
-          <PiCircleDashed />
-        </div>
-      ) : (
-        ''
-      )}
+      <div className='text-2xl text-neutral-400 w-10 flex justify-end'>
+        {value !== debouncedValue ? (
+          <CircleDashed className='w-5  md:w-6 animate-spin' />
+        ) : (
+          ''
+        )}
+      </div>
     </form>
   );
 };

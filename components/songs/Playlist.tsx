@@ -14,7 +14,6 @@ const Playlist = ({ song, songs }: { song: Song; songs: Song[] }) => {
     .getPublicUrl(song.image_path!);
 
   return (
-    // <Link href={`/songs/${song.id}`}>
     <Link href={`/`}>
       <div
         className='grid group bg-gray-md bg-opacity-30 backdrop-blur-40 hover:bg-neutral-800 transition

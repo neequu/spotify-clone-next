@@ -1,12 +1,10 @@
 import Link from 'next/link';
-import { IconType } from 'react-icons';
 
 interface NavbarItem {
   name: string;
   active: boolean;
   to: string;
-  icon: IconType;
-  activeIcon: IconType;
+  icon: any;
   className?: string;
 }
 const NavbarItem = ({
@@ -14,7 +12,6 @@ const NavbarItem = ({
   active,
   to,
   icon: Icon,
-  activeIcon: IconActive,
   className,
 }: NavbarItem) => {
   return (
@@ -22,7 +19,7 @@ const NavbarItem = ({
       className={`flex items-center gap-4 md:pr-[clamp(4rem,14vw,15rem)] text-neutral-400 font-semibold transition-colors hover:text-white
       ${active && 'text-white'} ${className}`}
       href={to}>
-      {active ? <IconActive size={28} /> : <Icon size={28} />}
+      <Icon strokeWidth={active ? '2' : '1'} />
       <span className='hidden md:block'>{name}</span>
     </Link>
   );

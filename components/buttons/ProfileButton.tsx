@@ -1,6 +1,6 @@
 'use client';
 
-import { PiUserCircle } from 'react-icons/pi';
+import { UserCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -23,11 +23,8 @@ const ProfileButton = () => {
     }
   };
   return (
-    <button
-      type='button'
-      onClick={handleSignOut}
-      className='md:my-[1px] text-2xl'>
-      <PiUserCircle />
+    <button type='button' onClick={handleSignOut} className='md:my-[1px]'>
+      <UserCircle strokeWidth={1.5} />
     </button>
   );
 };
