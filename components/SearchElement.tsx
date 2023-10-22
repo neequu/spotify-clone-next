@@ -22,7 +22,7 @@ const SearchElement = ({ query }: { query: string }) => {
     <form className='flex items-center bg-neutral-800 rounded-md shadow transition border border-transparent group [&:has(input:focus-visible)]:border-neutral-500 mt-4 pr-4'>
       <label
         htmlFor='song-query'
-        className='p-2 md:p-4 text-neutral-500 group-[&:has(input:focus-visible)]:text-white transition-colors'>
+        className='px-2 md:px-4 text-neutral-500 group-[&:has(input:focus-visible)]:text-white transition-colors'>
         <Search className='w-5 aspect-square md:w-6' strokeWidth='1.5' />
       </label>
       <input
@@ -32,7 +32,7 @@ const SearchElement = ({ query }: { query: string }) => {
         id='song-query'
         placeholder='What do you want to search for?'
         autoFocus
-        className='bg-transparent w-full placeholder:text-neutral-500 md:py-3 py-2 outline-none text-sm md:text-base'
+        className='bg-transparent w-full placeholder:text-neutral-500 md:py-3 py-[9px] outline-none text-sm md:text-base'
       />
       <div className='text-2xl text-neutral-400 w-10 flex justify-end'>
         {value !== debouncedValue ? (
