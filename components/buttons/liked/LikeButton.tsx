@@ -1,5 +1,5 @@
 'use client';
-import { PiHeartStraight, PiHeartStraightFill } from 'react-icons/pi';
+import { Heart, HeartFill } from '@/components/icons/heart';
 import { likeSong, unlikeSong } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -71,7 +71,7 @@ const LikeButton = ({ likedSong, songId }: LikeButtonProps) => {
           ? 'text-accent hover:scale-110'
           : 'text-neutral-400 hover:text-white'
       } transition`}>
-      {liked ? <PiHeartStraightFill /> : <PiHeartStraight size={18} />}
+      {liked ? <HeartFill /> : <Heart />}
     </button>
   );
 };
