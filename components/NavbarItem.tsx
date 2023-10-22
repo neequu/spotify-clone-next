@@ -18,7 +18,7 @@ const NavbarItem = ({
 }: NavbarItem) => {
   return (
     <Link
-      className={`flex items-center gap-4 md:pr-[clamp(4rem,14vw,15rem)] text-neutral-400 font-semibold transition-colors hover:text-white
+      className={`flex items-center gap-4 lg:pr-48 md:pr-24 text-neutral-400 font-semibold transition-colors hover:text-white
       ${active && 'text-white'} ${className}`}
       href={to}>
       {active && ActiveIcon ? <ActiveIcon /> : <Icon />}
