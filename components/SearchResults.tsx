@@ -6,10 +6,12 @@ export const revalidate = 0;
 
 const SearchResults = async ({
   searchResults,
+  resultsLength,
 }: {
-  searchResults: Song[] | undefined;
+  searchResults: Song[] | undefined | null;
+  resultsLength: number | undefined;
 }) => {
-  const searchResultsPresent = searchResults && !!searchResults?.length;
+  const searchResultsPresent = searchResults && !!resultsLength;
 
   return (
     <ul className='md:my-[26px] my-4 grid md:gap-3 gap-0 items-start'>
