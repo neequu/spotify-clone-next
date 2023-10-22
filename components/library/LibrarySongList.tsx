@@ -9,9 +9,7 @@ const LibrarySongList = ({ userSongs }: LibrarySongListProps) => {
   const hasSongs = userSongs && userSongs?.length;
 
   return (
-    <ul
-      className='flex flex-col overflow-y-auto flex-1 
-      '>
+    <ul className='md:overflow-auto md:h-[81vh]'>
       {hasSongs &&
         userSongs.map((song) => <SongMediaItem song={song} key={song.id} />)}
     </ul>

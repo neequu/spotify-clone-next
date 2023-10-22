@@ -4,7 +4,7 @@ import SongGrig from '@/components/songs/SongGrig';
 
 export default function Home() {
   return (
-    <main className='flex-1 md:px-layout-p px-2 pt-14 md:rounded md:gradient-green gradient-dark'>
+    <main className='md:px-4 px-2 md:rounded pt-[60px] pb-[64px] md:pb-0 md:gradient-green gradient-dark flex-1 overflow-auto h-screen'>
       <h1 className='md:text-2xl xs:text-xl font-semibold'>Welcome back!</h1>
       <section className='mt-4 flex gap-4'>
         <PlaylistHorizontal

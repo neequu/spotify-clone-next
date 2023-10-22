@@ -16,7 +16,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const searchResults = query ? await getSongsByTitle(query) : [];
 
   return (
-    <main className='flex-1 md:px-layout-p px-2 gradient-dark pt-14'>
+    <main className='flex-1 md:px-layout-p px-2 gradient-dark pt-[60px] overflow-auto h-screen pb-[64px] md:pb-0'>
       <h1 className='md:text-2xl xs:text-xl font-semibold'>Search</h1>
       <section>
         <SearchElement query={query} />

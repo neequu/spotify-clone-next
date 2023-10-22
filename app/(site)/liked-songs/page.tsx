@@ -11,7 +11,7 @@ const LikedSongsPage = async () => {
   };
 
   return (
-    <main className='flex-1 md:px-layout-p px-2 select-none md:gradient-purple gradient-purple-mobile pt-14'>
+    <main className='flex-1 md:px-4 px-2 select-none md:gradient-purple gradient-purple-mobile pt-[60px] overflow-auto h-screen pb-[64px] md:pb-0'>
       <div className='flex items-end gap-4'>
         <Image
           src='/images/liked-songs.png'

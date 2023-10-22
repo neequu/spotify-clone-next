@@ -17,8 +17,7 @@ const TheLibrary = async ({ children }: TheLibraryProps) => {
   const userSongs = (await getSongsByUserId(user)) || [];
 
   return (
-    <section
-      className={`md:flex flex-col gap-4 flex-1 md:h-[calc(100vh-132px)] lg:h-[calc(100vh-148px)]`}>
+    <section className='grid gap-3'>
       <div className='flex justify-between items-center'>
         {children}
         <LibraryUploadButton user={user} />
@@ -28,8 +27,7 @@ const TheLibrary = async ({ children }: TheLibraryProps) => {
           You need to sign in to use your library
         </div>
       ) : (
-        <div></div>
-        // <LibrarySongList userSongs={userSongs} />
+        <LibrarySongList userSongs={userSongs} />
       )}
     </section>
   );
