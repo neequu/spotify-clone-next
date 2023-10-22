@@ -18,12 +18,12 @@ export default function RootLayout({
       className={`${font.className} bg-gray-main md:bg-gray-bg flex flex-col min-w-[170px] md:pt-2 md:px-2 text-white`}>
       <ToastProvider />
       <ModalProvider />
-      <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
-        <aside className='sticky md:top-2 z-50 h-[64px] md:h-[initial] bottom-0  order-2 md:-order-none md:bg-none bg-gray-main bg-opacity-20 backdrop-blur'>
+      <div className='flex flex-1 flex-col md:flex-row gap-x-layout-gap'>
+        <aside className='sticky self-start md:top-2 z-50 h-[64px] md:h-[initial] bottom-0  order-2 md:-order-none md:bg-none bg-gray-main bg-opacity-20 backdrop-blur'>
           <TheSidebar />
         </aside>
 
-        <div className='flex flex-col relative'>
+        <div className='flex flex-1 flex-col relative'>
           <TheHeader />
           {children}
         </div>

@@ -11,12 +11,12 @@ const LibrarySongList = ({ userSongs }: LibrarySongListProps) => {
   return (
     <ul
       className='flex flex-col overflow-y-auto flex-1 
-      lg:max-h-[566px] md:max-h-[582px]
-    '>
+      '>
       {hasSongs &&
         userSongs.map((song) => <SongMediaItem song={song} key={song.id} />)}
     </ul>
   );
 };
 
+// lg:max-h-[566px] md:max-h-[582px]
 export default LibrarySongList;
