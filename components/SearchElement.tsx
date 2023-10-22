@@ -18,6 +18,8 @@ const SearchElement = ({ query }: { query: string }) => {
     router.push(url);
   }, [value, debouncedValue, router]);
 
+  const typing = value !== debouncedValue;
+
   return (
     <form className='flex items-center bg-neutral-800 rounded-md shadow transition border border-transparent group [&:has(input:focus-visible)]:border-neutral-500 mt-4 pr-4'>
       <label
@@ -35,11 +37,7 @@ const SearchElement = ({ query }: { query: string }) => {
         className='bg-transparent w-full placeholder:text-neutral-500 md:py-3 py-[9px] outline-none text-sm md:text-base'
       />
       <div className='text-2xl text-neutral-400 w-10 flex justify-end'>
-        {value !== debouncedValue ? (
-          <CircleDashed className='w-5  md:w-6 animate-spin' />
-        ) : (
-          ''
-        )}
+        {typing ? <CircleDashed className='w-5  md:w-6 animate-spin' /> : ''}
       </div>
     </form>
   );

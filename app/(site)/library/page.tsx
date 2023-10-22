@@ -3,7 +3,7 @@ import PlaylistHorizontal from '@/components/songs/PlaylistHorizontal';
 
 const page = () => {
   return (
-    <main className='flex-1 md:px-layout-p px-2 gradient-dark pt-14'>
+    <main className='flex-1 md:px-4 px-2 gradient-dark pt-[60px] overflow-auto h-screen pb-[64px] md:pb-0'>
       <h1 className='xs:text-xl font-semibold mb-4'>Your library</h1>
       <div className='flex'>
         <PlaylistHorizontal

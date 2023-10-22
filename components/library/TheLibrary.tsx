@@ -23,7 +23,7 @@ const TheLibrary = async ({ children }: TheLibraryProps) => {
         <LibraryUploadButton user={user} />
       </div>
       {!data.session || error ? (
-        <div className='text-sm text-neutral-400'>
+        <div className='text-sm text-neutral-400 h-screen'>
           You need to sign in to use your library
         </div>
       ) : (
