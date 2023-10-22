@@ -9,15 +9,11 @@ export const revalidate = 0;
 
 interface PlayerSongProps {
   song: Song;
-  likedSong: {
-    created_at: string;
-    song_id: number;
-    user_id: string;
-  } | null;
 }
 
-const PlayerSong = ({ song, likedSong }: PlayerSongProps) => {
+const PlayerSong = ({ song }: PlayerSongProps) => {
   const songImage = useCoverImageUrl(song);
+  const likedSong = null;
   return (
     <div
       className='select-none overflow-hidden flex flex-1 items-center gap-6'

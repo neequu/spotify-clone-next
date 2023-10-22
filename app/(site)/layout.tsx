@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <body
-      className={`${font.className} bg-gray-main md:bg-gray-bg flex flex-col min-w-[170px] md:pt-2 md:px-2 text-white`}>
+      className={`${font.className} bg-gray-main md:bg-gray-bg flex flex-col min-w-[170px]  md:px-2 text-white`}>
       <ToastProvider />
       <ModalProvider />
       <div className='flex flex-1 flex-col md:flex-row gap-x-layout-gap'>
@@ -23,7 +23,7 @@ export default function RootLayout({
           <TheSidebar />
         </aside>
 
-        <div className='flex flex-1 flex-col relative'>
+        <div className='flex flex-1 flex-col relative '>
           <TheHeader />
           {children}
         </div>

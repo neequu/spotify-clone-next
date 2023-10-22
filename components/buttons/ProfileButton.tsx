@@ -3,16 +3,19 @@
 import { UserCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import {
+  User,
+  createClientComponentClient,
+} from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/types/supabase';
+import Image from 'next/image';
 
-const ProfileButton = () => {
+const ProfileButton = ({ user }: { user: User }) => {
   const router = useRouter();
   const supabaseClient = createClientComponentClient<Database>();
   const handleSignOut = async () => {
     const { error } = await supabaseClient.auth.signOut();
     router.refresh();
-
     // todo: reset playing song
 
     if (error) {
@@ -23,9 +26,15 @@ const ProfileButton = () => {
     }
   };
   return (
-    <button type='button' onClick={handleSignOut} className='md:my-[1px]'>
-      <UserCircle strokeWidth={1.5} />
-    </button>
+    <div
+      onClick={handleSignOut}
+      className='w-7 aspect-square relative rounded-full overflow-hidden'>
+      {user?.user_metadata?.avatar_url ? (
+        <Image src={`${user.user_metadata.avatar_url}`} alt='user image' fill />
+      ) : (
+        <UserCircle strokeWidth={1.5} />
+      )}
+    </div>
   );
 };
 

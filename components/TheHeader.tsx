@@ -17,13 +17,13 @@ const TheHeader = async () => {
   const user = session?.user;
 
   return (
-    <header className='p-layout-p fixed right-0 left-0 lg:left-[323px] md:left-[266px] md:top-0 z-50'>
+    <header className='p-layout-p sticky right-0 left-0 top-2 z-50'>
       <div className='flex items-center md:justify-between justify-end'>
         <div className='hidden md:flex gap-2'>
           <HeaderNavButton />
           <HeaderNavButton forward={true} />
         </div>
-        {user ? <ProfileButton /> : <LoginPanel />}
+        {user ? <ProfileButton user={user} /> : <LoginPanel />}
       </div>
     </header>
   );
