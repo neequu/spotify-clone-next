@@ -36,12 +36,12 @@ const PlayerControls = ({
   }, [time]);
 
   return (
-    <div className='flex-1 flex flex-col justify-center'>
+    <div className='flex flex-col justify-center sm:flex-1'>
       <div className='flex justify-center gap-3 items-center'>
         <button
           aria-label='previous song'
           type='button'
-          className='text-neutral-400 hover:text-white transition-colors'
+          className='text-neutral-400 hover:text-white transition-colors hidden sm:block'
           onClick={onPlayPrevious}>
           <StepBack />
         </button>
@@ -54,12 +54,12 @@ const PlayerControls = ({
         <button
           aria-label='next song'
           type='button'
-          className='text-neutral-400 hover:text-white transition-colors rotate-180'
+          className='text-neutral-400 hover:text-white transition-colors rotate-180 hidden sm:block'
           onClick={onPlayNext}>
           <StepBack />
         </button>
       </div>
-      <div className='flex select-none gap-2 text-neutral-300 text-[0.65rem] items-center'>
+      <div className='hidden sm:flex select-none gap-2 text-neutral-300 text-[0.65rem] items-center'>
         <span>0</span>
         <Slider
           min={0}

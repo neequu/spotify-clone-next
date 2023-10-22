@@ -12,7 +12,7 @@ interface PlayerVolumeProps {
 
 const PlayerVolume = ({ handleMute, volume, setVolume }: PlayerVolumeProps) => {
   return (
-    <div className='flex-1 flex items-center justify-end'>
+    <div className='hidden sm:flex flex-1 items-center justify-end'>
       <div className='group flex h-min w-[130px] gap-2'>
         <button
           aria-label='mute song'

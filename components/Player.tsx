@@ -16,7 +16,7 @@ const ThePlayer = () => {
   if (!song || !songUrl) return null;
 
   return (
-    <footer className='md:col-span-2 z-50  fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black hidden bare:grid grid-cols-3 px-4'>
+    <footer className='md:col-span-2 z-50 fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black hidden bare:flex px-4'>
       <PlayerContent
         // likedSong={likedSong}
         song={song}

@@ -43,7 +43,7 @@ const config: Config = {
       screens: {
         bare: '170px',
         xs: '300px',
-        sm: '375px',
+        sm: '475px',
         md: '680px',
       },
     },
