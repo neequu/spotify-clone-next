@@ -11,7 +11,7 @@ const LikedSongsPage = async () => {
   };
 
   return (
-    <main className='flex-1 md:px-layout-p px-2 md:pt-4 select-none gradient-purple'>
+    <main className='flex-1 md:px-layout-p px-2 md:pt-4 select-none md:gradient-purple gradient-purple-mobile'>
       <div className='flex items-end gap-4 flex-wrap'>
         <Image
           src='/images/liked-songs.png'
@@ -21,9 +21,11 @@ const LikedSongsPage = async () => {
           className='md:rounded-md object-cover hidden md:block'
         />
         <div>
-          <p className='mb-4'>Playlist</p>
-          <h1 className='md:text-6xl font-bold mb-6 text-xl'>Liked Songs</h1>
-          <p>{formattedString()}</p>
+          <p className='mb-4 hidden md:block'>Playlist</p>
+          <h1 className='md:text-6xl font-bold md:mb-6 text-xl'>Liked Songs</h1>
+          <p className='text-xs md:text-base text-neutral-300 md:text-white'>
+            {formattedString()}
+          </p>
         </div>
       </div>
       <LikedSongs likedSongs={likedSongs} />

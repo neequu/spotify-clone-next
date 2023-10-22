@@ -16,7 +16,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
 
   return (
     <main className='flex-1 md:px-layout-p px-2 gradient-dark h-[300vh]'>
-      <h1 className='md:text-2xl text-xl font-semibold'>Search</h1>
+      <h1 className='md:text-2xl xs:text-xl font-semibold'>Search</h1>
       <section>
         <SearchElement query={query} />
       </section>

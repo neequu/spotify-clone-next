@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <body
-      className={`${font.className} bg-gray-main md:bg-gray-bg flex flex-col min-w-[140px] md:pt-2 md:px-2 text-white`}>
+      className={`${font.className} bg-gray-main md:bg-gray-bg flex flex-col min-w-[170px] md:pt-2 md:px-2 text-white`}>
       <div className='grid grid-rows-mobile md:grid-cols-md flex-1 gap-x-layout-gap'>
         <ToastProvider />
         <ModalProvider />

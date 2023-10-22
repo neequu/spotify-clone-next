@@ -13,19 +13,22 @@ const TheLibrary = async ({ children }: TheLibraryProps) => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data, error } = await supabase.auth.getSession();
 
-  if (!data.session || error) {
-    return <div>You need to sign in to use your library</div>;
-  }
-  const user = data.session.user;
+  const user = data.session?.user;
   const userSongs = (await getSongsByUserId(user)) || [];
 
   return (
-    <section className={`md:flex flex-col gap-6 flex-1 `}>
+    <section className={`md:flex flex-col gap-4 flex-1 `}>
       <div className='flex justify-between items-center'>
         {children}
         <LibraryUploadButton user={user} />
       </div>
-      <LibrarySongList userSongs={userSongs} />
+      {!data.session || error ? (
+        <div className='text-sm text-neutral-400'>
+          You need to sign in to use your library
+        </div>
+      ) : (
+        <LibrarySongList userSongs={userSongs} />
+      )}
     </section>
   );
 };

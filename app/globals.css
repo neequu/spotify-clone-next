@@ -19,5 +19,6 @@ html, body {
 @layer components {
   .gradient-green {@apply bg-gray-main bg-gradient-to-b from-accent-dark  from-[40px] via-[#30705599] via-[100px]  to-gray-main to-[196px];}
   .gradient-dark {@apply bg-gradient-to-b from-gray-main via-page to-gray-main;}
-  .gradient-purple { @apply bg-gradient-to-b from-purple-800 from-[12%] via-violet-900 via-[24%] to-gray-main to-[400px];}
+  .gradient-purple { @apply bg-gradient-to-b from-purple-800 from-[40px] via-violet-900 via-[80px] to-gray-main to-[220px];}
+  .gradient-purple-mobile { @apply bg-gradient-to-b from-purple-800 from-[14px] via-violet-900 via-[30px] to-gray-main to-[70px];}
 }

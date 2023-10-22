@@ -5,6 +5,7 @@ interface NavbarItem {
   active: boolean;
   to: string;
   icon: any;
+  activeIcon?: any;
   className?: string;
 }
 const NavbarItem = ({
@@ -12,6 +13,7 @@ const NavbarItem = ({
   active,
   to,
   icon: Icon,
+  activeIcon: ActiveIcon,
   className,
 }: NavbarItem) => {
   return (
@@ -19,7 +21,7 @@ const NavbarItem = ({
       className={`flex items-center gap-4 md:pr-[clamp(4rem,14vw,15rem)] text-neutral-400 font-semibold transition-colors hover:text-white
       ${active && 'text-white'} ${className}`}
       href={to}>
-      <Icon strokeWidth={active ? '2' : '1'} />
+      {active && ActiveIcon ? <ActiveIcon /> : <Icon />}
       <span className='hidden md:block'>{name}</span>
     </Link>
   );

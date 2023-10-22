@@ -41,6 +41,8 @@ const config: Config = {
         'songs-md': 'repeat(auto-fill,minmax(120px,1fr))',
       },
       screens: {
+        xs: '300px',
+        sm: '375px',
         md: '680px',
       },
     },

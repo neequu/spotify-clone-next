@@ -16,15 +16,15 @@ const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
     .getPublicUrl(song.image_path!);
 
   return (
-    <li className='select-none relative group p-1 rounded overflow-hidden flex justify-between items-center hover:bg-neutral-800 transition-colors pr-4'>
+    <li className='select-none min-h-[56px] relative group p-1 rounded overflow-hidden flex justify-between items-center hover:bg-neutral-800 transition-colors pr-4'>
       <div className='flex items-center gap-3'>
-        <div className='min-w-[clamp(0px,6vw,50px)] aspect-square relative'>
+        <div className='md:w-12 w-10 aspect-square relative'>
           <Image
             src={songImage.publicUrl}
             alt={song.title || 'song cover image'}
-            className='rounded aspect-square object-cover'
+            className='md:rounded aspect-square object-cover'
             fill
-            sizes='10vw'
+            sizes='50'
             quality={60}
           />
         </div>

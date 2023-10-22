@@ -1,12 +1,14 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import { Home, HomeFill } from '@/components/icons/house';
+import { Search, SearchFill } from '@/components/icons/search';
 
-import { Home, Search, ListMusic } from 'lucide-react';
 import NavbarItem from './NavbarItem';
+import { ListMusic } from 'lucide-react';
 
 const routes = [
-  { name: 'Home', to: '/', icon: Home },
-  { name: 'Search', to: '/search', icon: Search },
+  { name: 'Home', to: '/', icon: Home, activeIcon: HomeFill },
+  { name: 'Search', to: '/search', icon: Search, activeIcon: SearchFill },
 ];
 
 const TheNavbar = () => {
