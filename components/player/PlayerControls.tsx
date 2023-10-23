@@ -5,6 +5,7 @@ import Pause from '../icons/Pause';
 import Play from '../icons/Play';
 import StepBack from '../icons/StepBack';
 import { Slider } from '../ui/slider';
+import { Song } from '@/types/supabase';
 
 const PlayerControls = ({
   playing,
@@ -12,16 +13,46 @@ const PlayerControls = ({
   onPlayNext,
   onPlayPrevious,
   duration,
+  song,
 }: {
   playing: boolean;
   handlePlay: () => void;
   onPlayNext: () => void;
   onPlayPrevious: () => void;
+  song: Song;
   duration: number;
 }) => {
   const [time, setTime] = useState(0);
+  const maxTime = duration / 1000;
 
-  const maxTime = duration / (1000 * 60);
+  useEffect(() => {
+    if (Math.floor(maxTime) > time) return;
+    onPlayNext();
+  }, [time]);
+
+  useEffect(() => {
+    let timer: any;
+
+    if (playing) {
+      timer = setInterval(() => {
+        setTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+
+    return () => clearInterval(timer);
+  }, [playing]);
+
+  function formatTime(milliseconds: number): string {
+    const totalSeconds = Math.floor(milliseconds);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    // format
+    const formattedTime: string = `${minutes
+      .toString()
+      .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    return formattedTime;
+  }
 
   return (
     <div className='flex flex-col justify-center sm:flex-1'>
@@ -48,16 +79,15 @@ const PlayerControls = ({
         </button>
       </div>
       <div className='hidden sm:flex select-none gap-2 text-neutral-300 text-[0.65rem] items-center'>
-        <span>0</span>
+        <span>{formatTime(time)}</span>
         <Slider
           min={0}
-          max={maxTime}
+          max={Math.floor(maxTime)}
           className='w-full h-5'
-          // onChange={}
-          // step={1}
           value={[time]}
+          defaultValue={[time]}
         />
-        <span>{maxTime.toFixed(2)}</span>
+        <span>{formatTime(maxTime)}</span>
       </div>
     </div>
   );

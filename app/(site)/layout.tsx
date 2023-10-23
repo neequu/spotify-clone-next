@@ -1,5 +1,5 @@
 import TheSidebar from '@/components/TheSidebar';
-import ThePlayer from '@/components/Player';
+import ThePlayer from '@/components/player/Player';
 import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToastProvider';
 import TheHeader from '@/components/TheHeader';

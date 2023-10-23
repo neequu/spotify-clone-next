@@ -17,11 +17,13 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
   const currentIndex = player.ids.findIndex((id) => id === player.activeId);
 
   const onPlayNext = () => {
+    console.log('next');
     if (!player.ids.length) return;
     const nextSong = player.ids[currentIndex + 1];
+    console.log(nextSong);
     if (!nextSong) {
       player.setId(player.ids[0]);
-      return;
+      console.log(player.activeId);
     }
     handlePlay();
   };
@@ -68,7 +70,7 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
     return () => {
       sound?.unload();
     };
-  }, [sound]);
+  }, [sound, player.activeId]);
 
   const handlePlay = () => {
     if (!playing) {
@@ -80,13 +82,14 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
 
   return (
     <>
-      <PlayerSong song={song} />
+      <PlayerSong song={song} key={song.id} />
       <PlayerControls
         playing={playing}
         handlePlay={handlePlay}
         onPlayNext={onPlayNext}
         onPlayPrevious={onPlayPrevious}
         duration={duration}
+        song={song}
       />
       <PlayerVolume
         handleMute={handleMute}
