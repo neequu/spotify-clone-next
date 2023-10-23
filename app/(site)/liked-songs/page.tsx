@@ -1,21 +1,8 @@
 import Image from 'next/image';
 import { getlikedSongs } from '../../actions';
 import LikedSongs from '@/components/LikedSongs';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { Database } from '@/types/supabase';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 
 const LikedSongsPage = async () => {
-  const supabase = createServerComponentClient<Database>({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session) {
-    redirect('/');
-  }
-
   const likedSongs = await getlikedSongs();
 
   const formattedString = () => {
