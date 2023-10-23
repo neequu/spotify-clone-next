@@ -37,19 +37,18 @@ const ProfileButton = ({ user }: { user: User }) => {
       toast.success('Signed Out!');
     }
   };
+  const avatar = user?.user_metadata?.avatar_url;
   return (
-    <button
-      aria-label='show drpodown menu'
-      type='button'
-      className='w-7 aspect-square relative rounded-full overflow-hidden'>
-      {user?.user_metadata?.avatar_url ? (
+    <>
+      {avatar ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Image
-              src={`${user.user_metadata.avatar_url}`}
-              alt='user image'
-              fill
-            />
+            <button
+              aria-label='show drpodown menu'
+              type='button'
+              className='w-8 select-none aspect-square relative rounded-full overflow-hidden border-2 border-neutral-800'>
+              <Image src={`${avatar}`} alt='user image' fill />
+            </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className='w-56'>
             <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -59,9 +58,12 @@ const ProfileButton = ({ user }: { user: User }) => {
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <UserCircle strokeWidth={1.5} />
+        <button aria-label='show drpodown menu' type='button'>
+          <UserCircle strokeWidth={1.5} />
+        </button>
       )}
-    </button>
+    </>
+    // </button>
   );
 };
 

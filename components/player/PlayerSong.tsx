@@ -2,7 +2,6 @@
 
 import { Song } from '@/types/supabase';
 import Image from 'next/image';
-import LikeButton from '../buttons/liked/LikeButton';
 import useCoverImageUrl from '@/hooks/useCoverImageUrl';
 
 export const revalidate = 0;
@@ -13,7 +12,7 @@ interface PlayerSongProps {
 
 const PlayerSong = ({ song }: PlayerSongProps) => {
   const songImage = useCoverImageUrl(song);
-  const likedSong = null;
+
   return (
     <div
       className='select-none overflow-hidden flex items-center gap-6 flex-1 sm:pr-0 pr-4'
@@ -41,7 +40,6 @@ const PlayerSong = ({ song }: PlayerSongProps) => {
           </p>
         </div>
       </div>
-      <LikeButton key={song.id} likedSong={likedSong} songId={song.id} />
     </div>
   );
 };

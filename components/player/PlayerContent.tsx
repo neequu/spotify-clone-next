@@ -1,3 +1,4 @@
+'use client';
 // @ts-ignore
 import useSound from 'use-sound';
 import usePlayer from '@/hooks/usePlayer';
@@ -6,7 +7,6 @@ import { useEffect, useState } from 'react';
 import PlayerControls from '../player/PlayerControls';
 import PlayerSong from '../player/PlayerSong';
 import PlayerVolume from './PlayerVolume';
-
 interface PlayerContentProps {
   song: Song;
   songUrl: string;

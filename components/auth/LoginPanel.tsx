@@ -10,17 +10,10 @@ const LoginPanel = () => {
       <div className='hidden md:flex items-center gap-3 md:gap-4 self-end font-bold'>
         <button
           aria-label='sign in'
-          type='button'
-          className='hover:text-neutral-300 transition-colors'
-          onClick={AuthModal.onOpen}>
-          Sign in
-        </button>
-        <button
-          aria-label='sign up'
           onClick={AuthModal.onOpen}
           type='button'
           className='bg-white text-black  hover:bg-accent transition-colors px-4 py-1 rounded-full'>
-          Sign up
+          Sign In
         </button>
       </div>
       <button

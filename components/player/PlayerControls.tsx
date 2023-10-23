@@ -23,18 +23,6 @@ const PlayerControls = ({
 
   const maxTime = duration / (1000 * 60);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setTime((p) => p + 1);
-    }, 1000);
-
-    console.log(time);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [time]);
-
   return (
     <div className='flex flex-col justify-center sm:flex-1'>
       <div className='flex justify-center gap-3 items-center'>
