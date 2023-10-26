@@ -17,7 +17,7 @@ const TheHeader = async () => {
   const user = session?.user;
 
   return (
-    <header className='p-4 absolute right-0 left-0 top-0 z-50'>
+    <header className='md:p-4 p-2 absolute right-0 left-0 top-0 z-50'>
       <div className='flex items-center md:justify-between justify-end'>
         <div className='hidden md:flex gap-2'>
           <HeaderNavButton />

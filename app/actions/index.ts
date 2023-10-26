@@ -3,6 +3,8 @@ import { User } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { Database, Song } from '@/types/supabase';
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
+import uniqid from 'uniqid';
+import { revalidatePath } from 'next/cache';
 
 const supabase = createServerActionClient<Database>({
   cookies,
@@ -178,5 +180,48 @@ export async function getlikedSongs() {
   } catch (e: any) {
     console.log(e);
     return [];
+  }
+}
+
+export async function submitSong(formData: FormData) {
+  const song = formData.get('song');
+  const title = formData.get('title') as string;
+  const artist = formData.get('artist') as string;
+  const image = formData.get('image');
+
+  const uniqueId = uniqid();
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!song || !image || !session) {
+      throw new Error('missing fields or not logged in');
+    }
+
+    const { data: songData, error: songError } = await supabase.storage
+      .from('songs')
+      .upload(`song-${title}-${artist}-${uniqueId}`, song);
+
+    const { data: imageData, error: imageError } = await supabase.storage
+      .from('images')
+      .upload(`image-${title}-${artist}-${uniqueId}`, image);
+
+    const { error: uploadError } = await supabase.from('songs').insert({
+      title: title,
+      artist: artist,
+      image_path: imageData?.path,
+      song_path: songData?.path,
+      user_id: session.user?.id,
+    });
+
+    if (uploadError) {
+      throw new Error(uploadError.message);
+    }
+
+    revalidatePath('/');
+  } catch (e: any) {
+    console.log(e);
+    return { error: e.message };
   }
 }

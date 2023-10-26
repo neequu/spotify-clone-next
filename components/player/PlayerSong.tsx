@@ -18,7 +18,7 @@ const PlayerSong = ({ song }: PlayerSongProps) => {
       className='select-none overflow-hidden flex items-center gap-6 flex-1 sm:pr-0 pr-4'
       key={song.id}>
       <div className='flex items-center gap-3 flex-1 sm:flex-initial'>
-        <div className='w-12 md:w-[52px] aspect-square relative'>
+        <div className='min-w-[36px] md:w-[52px] aspect-square relative'>
           <Image
             src={songImage.publicUrl}
             alt={song?.title || 'song cover image'}
@@ -29,17 +29,18 @@ const PlayerSong = ({ song }: PlayerSongProps) => {
         </div>
         <div className='grid gap-1'>
           <p
-            className='w-full truncate leading-none text-[0.78125rem] select-none'
+            className='w-full truncate leading-tight md:text-[0.78125rem] text-[0.625rem] select-none'
             title={song.title || ''}>
             {song.title}
           </p>
           <p
-            className='w-full leading-none truncate select-none text-[0.78125rem] text-neutral-400'
+            className='w-full leading-tight truncate select-none md:text-[0.78125rem] text-[0.625rem] text-neutral-400'
             title={song.artist || ''}>
             {song.artist}
           </p>
         </div>
       </div>
+      <div></div>
     </div>
   );
 };

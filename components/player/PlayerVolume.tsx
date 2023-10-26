@@ -28,7 +28,7 @@ const PlayerVolume = ({ handleMute, volume, setVolume }: PlayerVolumeProps) => {
           )}
         </button>
         <Slider
-          className={cn(`max-w-[100px]`)}
+          className={cn(`sm:max-w-[100px] max-w-[70px]`)}
           defaultValue={[volume]}
           max={1}
           step={0.01}

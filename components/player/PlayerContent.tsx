@@ -17,13 +17,10 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
   const currentIndex = player.ids.findIndex((id) => id === player.activeId);
 
   const onPlayNext = () => {
-    console.log('next');
     if (!player.ids.length) return;
     const nextSong = player.ids[currentIndex + 1];
-    console.log(nextSong);
     if (!nextSong) {
       player.setId(player.ids[0]);
-      console.log(player.activeId);
     }
     handlePlay();
   };

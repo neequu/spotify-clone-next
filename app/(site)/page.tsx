@@ -4,6 +4,7 @@ import SongGrig from '@/components/songs/SongGrig';
 import { Database } from '@/types/supabase';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import { Suspense } from 'react';
 
 export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -27,7 +28,9 @@ export default async function Home() {
       <section className='md:mt-8 mt-6'>
         <h2 className='xs:text-xl font-semibold'>Newest songs</h2>
         <div className='md:mt-4 mt-2 '>
-          <SongGrig supabase={supabase} />
+          <Suspense fallback={<div>loading...</div>}>
+            <SongGrig supabase={supabase} />
+          </Suspense>
         </div>
       </section>
     </main>

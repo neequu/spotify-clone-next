@@ -32,7 +32,7 @@ const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
           <p
             className='w-full
           truncate
-          leading-none
+          leading-tight
           text-[0.78125rem]
           select-none'
             title={song.title || ''}>
@@ -41,7 +41,7 @@ const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
           <p
             className='
           w-full 
-          leading-none
+          leading-tight
           truncate 
           select-none
           text-[0.78125rem] text-neutral-400'

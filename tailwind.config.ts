@@ -37,8 +37,9 @@ const config: Config = {
       },
       gridTemplateColumns: {
         md: 'min-content, 1fr',
-        songs: 'repeat(auto-fill,minmax(96px,1fr))',
-        'songs-md': 'repeat(auto-fill,minmax(120px,1fr))',
+        songs: 'repeat(auto-fill,minmax(80px,1fr))',
+        'songs-md': 'repeat(auto-fill,minmax(110px,1fr))',
+        'songs-lg': 'repeat(auto-fill,minmax(140px,1fr))',
       },
       screens: {
         bare: '170px',

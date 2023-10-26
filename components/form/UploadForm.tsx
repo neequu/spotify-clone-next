@@ -1,13 +1,10 @@
+import { submitSong } from '@/app/actions';
 import Input from '../Input';
 import SubmitButton from '../buttons/SubmitButton';
 
 const UploadForm = () => {
   return (
-    <form
-      encType='multipart/form-data'
-      action='/api/upload-song'
-      method='post'
-      className='grid gap-y-3'>
+    <form action={submitSong} className='grid gap-y-3 md:text-sm text-xs'>
       <Input id='title' name='title' placeholder='Song title' />
       <Input id='artist' name='artist' placeholder='Song artist' />
       <div>

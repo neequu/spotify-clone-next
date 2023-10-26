@@ -16,5 +16,4 @@ const LibrarySongList = ({ userSongs }: LibrarySongListProps) => {
   );
 };
 
-// lg:max-h-[566px] md:max-h-[582px]
 export default LibrarySongList;
