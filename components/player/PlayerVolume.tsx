@@ -18,7 +18,7 @@ const PlayerVolume = ({ handleMute, volume, setVolume }: PlayerVolumeProps) => {
           aria-label='mute song'
           type='button'
           onClick={handleMute}
-          className=' text-neutral-400 hover:text-white transition-colors'>
+          className=' text-neutral-400 outline-none focus:shadow-focus rounded-full hover:text-white transition-colors'>
           {volume === 0 ? (
             <VolumeMute />
           ) : volume >= 0.5 ? (

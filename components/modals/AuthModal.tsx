@@ -3,6 +3,8 @@
 import Modal from './Modal';
 import useAuthModal from '@/hooks/useAuthModal';
 import AuthForm from '../form/AuthForm';
+// import dynamic from 'next/dynamic'
+
 const AuthModal = () => {
   const { isOpen, onClose } = useAuthModal();
 

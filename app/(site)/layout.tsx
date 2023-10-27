@@ -8,6 +8,10 @@ import { Figtree } from 'next/font/google';
 const font = Figtree({
   subsets: ['latin'],
 });
+
+export const dynamic = 'force-dynamic';
+// export const revalidate = 0;
+
 export default async function RootLayout({
   children,
 }: {

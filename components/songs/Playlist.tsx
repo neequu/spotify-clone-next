@@ -5,7 +5,7 @@ import PlayButton from '../buttons/PlayButton';
 import { Song } from '@/types/supabase';
 import { SupabaseClient } from '@supabase/auth-helpers-nextjs';
 
-const Playlist = ({
+const Playlist = async ({
   song,
   songs,
   supabase,

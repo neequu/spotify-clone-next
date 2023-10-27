@@ -35,8 +35,8 @@ const PlayerControls = ({
 
     if (playing) {
       timer = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
-      }, 1000);
+        setTime((prevTime) => prevTime + 0.01);
+      }, 10);
     }
 
     return () => clearInterval(timer);
@@ -60,20 +60,21 @@ const PlayerControls = ({
         <button
           aria-label='previous song'
           type='button'
-          className='text-neutral-400 hover:text-white transition-colors hidden sm:block'
+          className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors hidden sm:block'
           onClick={onPlayPrevious}>
           <StepBack />
         </button>
         <button
           aria-label='pause or play song'
           onClick={handlePlay}
+          className='outline-none focus:shadow-focus rounded-full'
           type='button'>
           {playing ? <Pause /> : <Play />}
         </button>
         <button
           aria-label='next song'
           type='button'
-          className='text-neutral-400 hover:text-white transition-colors rotate-180 hidden sm:block'
+          className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors rotate-180 hidden sm:block'
           onClick={onPlayNext}>
           <StepBack />
         </button>

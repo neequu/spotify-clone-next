@@ -6,12 +6,12 @@ import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 import uniqid from 'uniqid';
 import { revalidatePath } from 'next/cache';
 
-const supabase = createServerActionClient<Database>({
-  cookies,
-});
+const getSupabaseClient = async () =>
+  createServerActionClient<Database>({ cookies });
 
 // get all songs from database
 export async function getSongs() {
+  const supabase = await getSupabaseClient();
   try {
     const { data: songsData, error: songsError } = await supabase
       .from('songs')
@@ -31,6 +31,7 @@ export async function getSongs() {
 }
 // get songs of logged in user
 export async function getSongsByUserId(user: User | undefined) {
+  const supabase = await getSupabaseClient();
   try {
     if (!user) return;
 
@@ -53,6 +54,7 @@ export async function getSongsByUserId(user: User | undefined) {
 }
 // get songs of logged in user
 export async function getSongsByTitle(query: string) {
+  const supabase = await getSupabaseClient();
   if (!query) return [];
   try {
     const { data: songsData, error: songsError } = await supabase
@@ -73,6 +75,7 @@ export async function getSongsByTitle(query: string) {
 }
 // get user's  liked songs
 export async function getLikedSongById(id: number) {
+  const supabase = await getSupabaseClient();
   try {
     const {
       data: { session },
@@ -97,6 +100,7 @@ export async function getLikedSongById(id: number) {
   }
 }
 export async function likeSong(songId: number) {
+  const supabase = await getSupabaseClient();
   try {
     const {
       data: { session },
@@ -124,6 +128,7 @@ export async function likeSong(songId: number) {
 }
 // remove like from a song
 export async function unlikeSong(songId: number) {
+  const supabase = await getSupabaseClient();
   try {
     const {
       data: { session },
@@ -151,6 +156,7 @@ export async function unlikeSong(songId: number) {
 }
 // get liked songs
 export async function getlikedSongs() {
+  const supabase = await getSupabaseClient();
   try {
     const {
       data: { session },
@@ -184,6 +190,7 @@ export async function getlikedSongs() {
 }
 
 export async function submitSong(formData: FormData) {
+  const supabase = await getSupabaseClient();
   const song = formData.get('song');
   const title = formData.get('title') as string;
   const artist = formData.get('artist') as string;

@@ -16,6 +16,9 @@ const config: Config = {
       },
     },
     extend: {
+      boxShadow: {
+        focus: '0px 0px 10px 2px #609070',
+      },
       colors: {
         'gray-main': '#181818',
         'gray-bg': '#040404',

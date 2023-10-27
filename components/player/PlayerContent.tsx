@@ -17,21 +17,20 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
   const currentIndex = player.ids.findIndex((id) => id === player.activeId);
 
   const onPlayNext = () => {
-    if (!player.ids.length) return;
-    const nextSong = player.ids[currentIndex + 1];
-    if (!nextSong) {
-      player.setId(player.ids[0]);
-    }
-    handlePlay();
+    // if (!player.ids.length) return;
+    // const nextSong = player.ids[currentIndex + 1];
+    // if (!nextSong) {
+    //   player.setId(player.ids[0]);
+    // }
+    console.log('next');
   };
 
   const onPlayPrevious = () => {
-    if (!player.ids.length) return;
-
-    const prevSong = player.ids[currentIndex - 1];
-    if (!prevSong) {
-      return player.setId(player.ids[currentIndex - 1]);
-    }
+    // if (!player.ids.length) return;
+    // const prevSong = player.ids[currentIndex - 1];
+    // if (!prevSong) {
+    //   return player.setId(player.ids[currentIndex - 1]);
+    // }
   };
 
   const [playing, setPlaying] = useState(false);
