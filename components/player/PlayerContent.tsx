@@ -1,4 +1,3 @@
-'use client';
 // @ts-ignore
 import useSound from 'use-sound';
 import usePlayer from '@/hooks/usePlayer';

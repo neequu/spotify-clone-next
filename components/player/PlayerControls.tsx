@@ -22,49 +22,6 @@ const PlayerControls = ({
   song: Song;
   duration: number;
 }) => {
-  const [time, setTime] = useState(0);
-  const maxTime = duration / 1000;
-
-  useEffect(() => {
-    if (Math.floor(maxTime) > time) return;
-    onPlayNext();
-  }, [time]);
-
-  const checkKey = (k: KeyboardEvent) => {
-    if (k.code !== 'Space') return;
-
-    handlePlay();
-  };
-  useEffect(() => {
-    document.addEventListener('keydown', checkKey);
-
-    return () => document.removeEventListener('keydown', checkKey);
-  }, []);
-
-  useEffect(() => {
-    let timer: any;
-
-    if (playing) {
-      timer = setInterval(() => {
-        setTime((prevTime) => prevTime + 0.03);
-      }, 30);
-    }
-
-    return () => clearInterval(timer);
-  }, [playing]);
-
-  function formatTime(milliseconds: number): string {
-    const totalSeconds = Math.floor(milliseconds);
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-
-    // format
-    const formattedTime: string = `${minutes
-      .toString()
-      .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    return formattedTime;
-  }
-
   return (
     <div className='flex flex-col justify-center sm:flex-1'>
       <div className='flex justify-center gap-3 items-center'>

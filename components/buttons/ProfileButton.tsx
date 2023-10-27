@@ -51,7 +51,7 @@ const ProfileButton = ({ user }: { user: User }) => {
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className='w-56'>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
+            {/* <DropdownMenuItem>Profile</DropdownMenuItem> */}
             <DropdownMenuItem onClick={handleSignOut}>
               Sign Out
             </DropdownMenuItem>

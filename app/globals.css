@@ -24,35 +24,3 @@ html, body {
   .gradient-purple { @apply bg-gradient-to-b from-purple-800 from-[44px] via-violet-900 via-[88px] to-gray-main to-[268px];}
   .gradient-purple-mobile { @apply bg-gradient-to-b from-purple-800 from-[24px] via-violet-900 via-[60px] to-gray-main to-[140px];}
 }
-
-audio {
-  all: unset;
-}
-
-/* audio::-webkit-media-controls-mute-button
-
-audio::-webkit-media-controls-play-button
-
-audio::-webkit-media-controls-timeline-container
-
-audio::-webkit-media-controls-current-time-display
-
-audio::-webkit-media-controls-time-remaining-display
-
-audio::-webkit-media-controls-timeline
-
-audio::-webkit-media-controls-volume-slider-container
-
-audio::-webkit-media-controls-volume-slider
-
-audio::-webkit-media-controls-seek-back-button
-
-audio::-webkit-media-controls-seek-forward-button
-
-audio::-webkit-media-controls-fullscreen-button
-
-audio::-webkit-media-controls-rewind-button
-
-audio::-webkit-media-controls-return-to-realtime-button
-
-audio::-webkit-media-controls-toggle-closed-captions-button */

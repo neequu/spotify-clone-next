@@ -15,7 +15,7 @@ const PlayerSong = ({ song }: PlayerSongProps) => {
 
   return (
     <div
-      className='select-none overflow-hidden flex items-center gap-6 flex-1 sm:pr-0 pr-4'
+      className='select-none overflow-hidden flex items-center gap-6'
       key={song.id}>
       <div className='flex items-center gap-3 flex-1 sm:flex-initial'>
         <div className='min-w-[36px] md:w-[52px] aspect-square relative'>
