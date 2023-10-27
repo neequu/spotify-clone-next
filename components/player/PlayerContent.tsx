@@ -13,29 +13,28 @@ interface PlayerContentProps {
 }
 
 const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
-  const player = usePlayer();
-  const currentIndex = player.ids.findIndex((id) => id === player.activeId);
-
-  const onPlayNext = () => {
-    // if (!player.ids.length) return;
-    // const nextSong = player.ids[currentIndex + 1];
-    // if (!nextSong) {
-    //   player.setId(player.ids[0]);
-    // }
-    console.log('next');
-  };
-
-  const onPlayPrevious = () => {
-    // if (!player.ids.length) return;
-    // const prevSong = player.ids[currentIndex - 1];
-    // if (!prevSong) {
-    //   return player.setId(player.ids[currentIndex - 1]);
-    // }
-  };
-
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [prevVolume, setPrevVolume] = useState<number>(50);
+
+  const player = usePlayer();
+  const currentIndex = player.ids.indexOf(player.activeId!);
+
+  const onPlayNext = () => {
+    if (currentIndex < player.ids.length) {
+      player.setId(currentIndex + 1);
+    } else {
+      player.setId(player.ids[0]);
+    }
+  };
+
+  const onPlayPrevious = () => {
+    if (currentIndex > 1) {
+      player.setId(currentIndex - 1);
+    } else {
+      player.setId(player.ids[player.ids.length]);
+    }
+  };
 
   const [play, { pause, sound, duration }] = useSound(songUrl, {
     volume,
@@ -61,6 +60,7 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
   };
 
   useEffect(() => {
+    console.log(sound);
     sound?.play();
 
     return () => {
@@ -77,8 +77,8 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
   };
 
   return (
-    <>
-      <PlayerSong song={song} key={song.id} />
+    <div key={player.activeId} className='flex items-center h-full'>
+      <PlayerSong song={song} />
       <PlayerControls
         playing={playing}
         handlePlay={handlePlay}
@@ -92,7 +92,7 @@ const PlayerContent = ({ song, songUrl }: PlayerContentProps) => {
         setVolume={setVolume}
         volume={volume}
       />
-    </>
+    </div>
   );
 };
 

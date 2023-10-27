@@ -9,7 +9,10 @@ import LoginPanel from './auth/LoginPanel';
 // export const dynamic = 'force-dynamic';
 
 const TheHeader = async () => {
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  });
   const {
     data: { session },
   } = await supabase.auth.getSession();

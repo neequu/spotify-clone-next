@@ -1,7 +1,6 @@
 'use client';
 import usePlaySong from '@/hooks/usePlaySong';
 import { Song } from '@/types/supabase';
-import { Play } from 'lucide-react';
 
 const PlayButton = ({ song, songs }: { song: Song; songs: Song[] }) => {
   const onPlay = usePlaySong(songs);

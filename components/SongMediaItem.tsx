@@ -9,8 +9,10 @@ interface SongMediaItemProps {
 }
 
 const SongMediaItem = async ({ song, children }: SongMediaItemProps) => {
-  const supabase = createServerComponentClient<Database>({ cookies });
-
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  });
   const { data: songImage } = supabase.storage
     .from('images')
     .getPublicUrl(song.image_path!);

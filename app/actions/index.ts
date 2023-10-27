@@ -11,7 +11,8 @@ const getSupabaseClient = async () =>
 
 // get all songs from database
 export async function getSongs() {
-  const supabase = await getSupabaseClient();
+  'use server';
+  const supabase = createServerActionClient<Database>({ cookies });
   try {
     const { data: songsData, error: songsError } = await supabase
       .from('songs')

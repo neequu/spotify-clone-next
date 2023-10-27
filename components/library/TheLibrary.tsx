@@ -10,7 +10,10 @@ interface TheLibraryProps {
 }
 
 const TheLibrary = async ({ children }: TheLibraryProps) => {
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  });
   const { data, error } = await supabase.auth.getSession();
 
   const user = data.session?.user;

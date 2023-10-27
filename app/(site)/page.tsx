@@ -7,7 +7,10 @@ import { cookies } from 'next/headers';
 import { Suspense } from 'react';
 
 export default async function Home() {
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  });
   const {
     data: { session },
   } = await supabase.auth.getSession();

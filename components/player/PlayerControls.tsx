@@ -30,13 +30,24 @@ const PlayerControls = ({
     onPlayNext();
   }, [time]);
 
+  const checkKey = (k: KeyboardEvent) => {
+    if (k.code !== 'Space') return;
+
+    handlePlay();
+  };
+  useEffect(() => {
+    document.addEventListener('keydown', checkKey);
+
+    return () => document.removeEventListener('keydown', checkKey);
+  }, []);
+
   useEffect(() => {
     let timer: any;
 
     if (playing) {
       timer = setInterval(() => {
-        setTime((prevTime) => prevTime + 0.01);
-      }, 10);
+        setTime((prevTime) => prevTime + 0.03);
+      }, 30);
     }
 
     return () => clearInterval(timer);
@@ -79,8 +90,8 @@ const PlayerControls = ({
           <StepBack />
         </button>
       </div>
-      <div className='hidden sm:flex select-none gap-2 text-neutral-300 text-[0.65rem] items-center'>
-        <span>{formatTime(time)}</span>
+      <div className='hidden sm:flex select-none text-neutral-300 text-[0.625rem] items-center'>
+        <span className='w-10 flex justify-start'>{formatTime(time)}</span>
         <Slider
           min={0}
           max={Math.floor(maxTime)}
@@ -88,7 +99,7 @@ const PlayerControls = ({
           value={[time]}
           defaultValue={[time]}
         />
-        <span>{formatTime(maxTime)}</span>
+        <span className='w-10 flex justify-end'>{formatTime(maxTime)}</span>
       </div>
     </div>
   );
