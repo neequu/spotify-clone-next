@@ -1,4 +1,3 @@
-// 'use client';
 import useUploadModal from '@/hooks/useUploadModal';
 
 import Modal from './Modal';
@@ -18,7 +17,7 @@ const UploadModal = () => {
       description='You can add a song and a cover'
       isOpen={uploadModal.isOpen}
       onChange={handleChange}>
-      <UploadForm />
+      <UploadForm handleChange={handleChange} />
     </Modal>
   );
 };

@@ -10,8 +10,11 @@ const LibrarySongList = ({ userSongs }: LibrarySongListProps) => {
 
   return (
     <ul className='md:overflow-auto md:h-screen pb-[20vh]'>
-      {hasSongs &&
-        userSongs.map((song) => <SongMediaItem song={song} key={song.id} />)}
+      {hasSongs ? (
+        userSongs.map((song) => <SongMediaItem song={song} key={song.id} />)
+      ) : (
+        <p className='text-neutral-400'>You haven&#39;t added any songs yet!</p>
+      )}
     </ul>
   );
 };

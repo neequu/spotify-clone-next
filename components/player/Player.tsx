@@ -23,38 +23,41 @@ const ThePlayer = () => {
   const [prevVolume, setPrevVolume] = useState(volume);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const [currentId, setCurrentId] = useState(
-    player.ids.indexOf(player.activeId || 0)
-  );
   const songUrl = useSongUrl(song);
   if (!song) return null;
 
-  const onPlayNext = () => {
-    if (currentId < player.ids.length - 1) {
-      player.setId(currentId + 1);
-      setCurrentId((p) => p! + 1);
-    } else {
-      setCurrentId(0);
-      player.setId(0);
+  const onPlayNext = async () => {
+    if (!player.activeId) return;
+    // await new Promise((r) => setTimeout(r, 40));
+
+    const currentIndex = player.ids.indexOf(player.activeId);
+    if (currentIndex === player.ids.length - 1) {
+      const firstItem = player.ids[0];
+      player.setId(firstItem);
+      return;
     }
-    handlePlay();
+    player.setId(player.ids[currentIndex + 1]);
   };
 
-  const onPlayPrevious = () => {
-    if (currentId > 0) {
-      player.setId(currentId - 1);
-      setCurrentId((p) => p! - 1);
-    } else {
-      setCurrentId(player.ids.length - 1);
-      player.setId(player.ids.length - 1);
+  const onPlayPrevious = async () => {
+    if (!player.activeId) return;
+    // await new Promise((r) => setTimeout(r, 40));
+
+    const currentIndex = player.ids.indexOf(player.activeId);
+
+    if (currentIndex === 0) {
+      const lastItem = player.ids[player.ids.length - 1];
+      player.setId(lastItem);
+      return;
     }
+    player.setId(player.ids[currentIndex - 1]);
   };
 
-  const handlePlay = () => {
+  const handlePlay = async () => {
     audioRef.current?.play();
     setIsPlaying(true);
   };
-  const handlePause = () => {
+  const handlePause = async () => {
     audioRef.current?.pause();
     setIsPlaying(false);
   };
@@ -129,17 +132,17 @@ const ThePlayer = () => {
   return (
     <footer className='z-50 fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black hidden bare:flex px-4 items-center'>
       {JSON.stringify(player)}
-      {currentId}
       <div className='flex-1'>
         <PlayerSong song={song} />
       </div>
       <div className='flex flex-col flex-1'>
         <div className='flex items-center gap-2 justify-center mb-1'>
           <button
-            className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors hidden sm:block'
+            className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors hidden sm:block disabled:cursor-auto'
             type='button'
             aria-label='previous song'
-            onClick={onPlayPrevious}>
+            onClick={onPlayPrevious}
+            disabled={isLoading}>
             <StepBack />
           </button>
           <button
@@ -152,11 +155,13 @@ const ThePlayer = () => {
           <button
             aria-label='next song'
             type='button'
-            className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors rotate-180 hidden sm:block'
+            className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors rotate-180 hidden sm:block disabled:cursor-auto'
+            disabled={isLoading}
             onClick={onPlayNext}>
             <StepBack />
           </button>
           <audio
+            key={songUrl}
             ref={audioRef}
             src={songUrl}
             onEnded={onPlayNext}

@@ -1,6 +1,7 @@
 import { Song } from '@/types/supabase';
 import SongMediaItem from './SongMediaItem';
 import LikeButton from './buttons/liked/LikeButton';
+import PlayButton from './buttons/PlayButton';
 
 interface LikedSongsProps {
   likedSongs: Song[];
@@ -16,6 +17,7 @@ const LikedSongs = ({ likedSongs }: LikedSongsProps) => {
           likedSongs.map(async (song) => (
             <SongMediaItem song={song} key={song.id}>
               <LikeButton key={song.id} songId={song.id} />
+              <PlayButton song={song} songs={likedSongs} />
             </SongMediaItem>
           ))
         ) : (

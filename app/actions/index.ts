@@ -11,7 +11,6 @@ const getSupabaseClient = async () =>
 
 // get all songs from database
 export async function getSongs() {
-  'use server';
   const supabase = createServerActionClient<Database>({ cookies });
   try {
     const { data: songsData, error: songsError } = await supabase
@@ -24,7 +23,7 @@ export async function getSongs() {
     if (songsError) {
       throw new Error('error fetching songs');
     }
-
+    revalidatePath('/');
     return songsData || [];
   } catch (e: any) {
     console.log(e);

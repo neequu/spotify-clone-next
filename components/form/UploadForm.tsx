@@ -1,10 +1,24 @@
+'use client';
 import { submitSong } from '@/app/actions';
 import Input from '../Input';
 import SubmitButton from '../buttons/SubmitButton';
+import useUploadModal from '@/hooks/useUploadModal';
 
-const UploadForm = () => {
+const UploadForm = ({
+  handleChange,
+}: {
+  handleChange: (a: boolean) => void;
+}) => {
+  const uploadModal = useUploadModal();
+
   return (
-    <form action={submitSong} className='grid gap-y-3 md:text-sm text-xs'>
+    <form
+      onSubmit={() => {
+        handleChange(false);
+        uploadModal.onClose();
+      }}
+      action={submitSong}
+      className='grid gap-y-3 md:text-sm text-xs'>
       <Input id='title' name='title' placeholder='Song title' />
       <Input id='artist' name='artist' placeholder='Song artist' />
       <div>
@@ -28,7 +42,7 @@ const UploadForm = () => {
         />
       </div>
       <div className='mt-3'>
-        <SubmitButton />
+        <SubmitButton handleChange={handleChange} />
       </div>
     </form>
   );
