@@ -141,7 +141,7 @@ const ThePlayer = () => {
       <div className='flex flex-col flex-1'>
         <div className='flex items-center gap-2 justify-center mb-1'>
           <button
-            className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors hidden sm:block disabled:cursor-auto'
+            className='outline-none focus-visible:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors hidden sm:block disabled:cursor-auto'
             type='button'
             aria-label='previous song'
             onClick={onPlayPrevious}
@@ -150,7 +150,7 @@ const ThePlayer = () => {
           </button>
           <button
             aria-label='pause or play song'
-            className='outline-none focus:shadow-focus rounded-full '
+            className='outline-none focus-visible:shadow-focus rounded-full '
             type='button'
             onClick={handlePlayPause}>
             {isPlaying ? <Pause /> : <Play />}
@@ -158,7 +158,7 @@ const ThePlayer = () => {
           <button
             aria-label='next song'
             type='button'
-            className='outline-none focus:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors rotate-180 hidden sm:block disabled:cursor-auto'
+            className='outline-none focus-visible:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors rotate-180 hidden sm:block disabled:cursor-auto'
             disabled={isLoading}
             onClick={onPlayNext}>
             <StepBack />
@@ -199,7 +199,7 @@ const ThePlayer = () => {
             aria-label='mute song'
             type='button'
             onClick={handleMute}
-            className=' text-neutral-400 outline-none focus:shadow-focus rounded-full hover:text-white transition-colors'>
+            className=' text-neutral-400 outline-none focus-visible:shadow-focus rounded-full hover:text-white transition-colors'>
             {volume < 0.01 ? (
               <VolumeMute />
             ) : volume >= 0.5 ? (

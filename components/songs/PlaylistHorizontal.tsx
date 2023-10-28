@@ -21,7 +21,7 @@ const PlaylistHorizontal = ({
     <Link
       onClick={() => !hasSession && authModal.onOpen()}
       href={to}
-      className='flex-1 max-w-max outline-none focus:shadow-focus'>
+      className='flex-1 max-w-max outline-none focus-visible:shadow-focus'>
       <div className='flex group  items-center relative bg-gray-md bg-opacity-30 overflow-hidden backdrop-blur-40 md:w-52 w-full pr-[clamp(2rem,10vw,5rem)] md:p-1 rounded md:gap-4 gap-2 hover:backdrop-brightness-110 transition'>
         <Image src={image} alt={`a ${name} playlist`} width={40} height={40} />
         <p className='text-xs md:text-sm'>{name}</p>

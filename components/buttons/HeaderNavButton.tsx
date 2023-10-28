@@ -16,7 +16,7 @@ const HeaderNavButton = ({ forward }: HeaderNavButtonProps) => {
       aria-label='navigate'
       type='button'
       onClick={() => navigate()}
-      className={`bg-black bg-opacity-30 hover:bg-opacity-50 transition-all rounded-full p-1 outline-none focus:shadow-focus ${
+      className={`bg-black bg-opacity-30 hover:bg-opacity-50 transition-all rounded-full p-1 outline-none focus-visible:shadow-focus ${
         forward && 'rotate-180'
       }`}>
       <ChevronLeft className='w-5 h-5' />
