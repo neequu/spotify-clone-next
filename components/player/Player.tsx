@@ -28,6 +28,8 @@ const ThePlayer = () => {
 
   const onPlayNext = async () => {
     if (!player.activeId) return;
+    setProgress(0);
+    handleProgressChange([0]);
     // await new Promise((r) => setTimeout(r, 40));
 
     const currentIndex = player.ids.indexOf(player.activeId);
@@ -42,6 +44,8 @@ const ThePlayer = () => {
   const onPlayPrevious = async () => {
     if (!player.activeId) return;
     // await new Promise((r) => setTimeout(r, 40));
+    setProgress(0);
+    handleProgressChange([0]);
 
     const currentIndex = player.ids.indexOf(player.activeId);
 
@@ -130,8 +134,7 @@ const ThePlayer = () => {
   };
 
   return (
-    <footer className='z-50 fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black hidden bare:flex px-4 items-center'>
-      {JSON.stringify(player)}
+    <footer className='z-50  fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black hidden bare:flex px-4 items-center'>
       <div className='flex-1'>
         <PlayerSong song={song} />
       </div>
@@ -171,7 +174,7 @@ const ThePlayer = () => {
             onTimeUpdate={getProgress}
           />
         </div>
-        <div className='flex items-center'>
+        <div className='flex items-center justify-center'>
           <span className='w-9 flex justify-start text-[0.625rem] text-neutral-300'>
             {getCurrentTime()}
           </span>

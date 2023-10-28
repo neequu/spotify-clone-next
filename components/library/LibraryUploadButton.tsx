@@ -24,7 +24,7 @@ const LibraryUploadButton = ({ user }: LibraryUploadButtonProps) => {
       onClick={handleClick}
       type='button'
       aria-label='add song'
-      className='text-neutral-400 hover:text-white transition-colors'>
+      className='text-neutral-400 hover:text-white transition-colors rounded-full outline-none focus:shadow-focus'>
       <Plus className='w-5' />
     </button>
   );

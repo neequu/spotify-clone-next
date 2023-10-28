@@ -1,7 +1,7 @@
 import { Song } from '@/types/supabase';
 import SongMediaItem from './SongMediaItem';
 import LikeButton from './buttons/liked/LikeButton';
-import PlayButton from './buttons/PlayButton';
+import PlayButton from './buttons/play/PlayButton';
 export const revalidate = 0;
 
 const SearchResults = async ({
@@ -18,8 +18,13 @@ const SearchResults = async ({
       {searchResultsPresent &&
         searchResults.map(async (song, idx) => (
           <SongMediaItem key={song.id} song={song}>
+            <PlayButton
+              song={song}
+              songs={searchResults}
+              className='order-first w-10'>
+              <div className='w-10'>{idx + 1}</div>
+            </PlayButton>
             <LikeButton key={song.id} songId={song.id} />
-            <PlayButton song={song} songs={searchResults} />
           </SongMediaItem>
         ))}
     </ul>

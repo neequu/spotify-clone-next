@@ -18,7 +18,7 @@ const SongMediaItem = async ({ song, children }: SongMediaItemProps) => {
     .getPublicUrl(song.image_path!);
 
   return (
-    <li className='select-none min-h-[56px] relative group p-1 rounded overflow-hidden flex justify-between items-center hover:bg-neutral-800 transition-colors pr-4'>
+    <li className=' min-h-[56px] relative group p-1 rounded overflow-hidden flex items-center hover:bg-neutral-800 transition-colors pr-4'>
       <div className='flex items-center gap-3'>
         <div className='lg:w-12 md:w-11 w-10 aspect-square relative'>
           <Image
@@ -35,8 +35,7 @@ const SongMediaItem = async ({ song, children }: SongMediaItemProps) => {
             className='w-full
           truncate
           leading-tight
-          text-[0.78125rem]
-          select-none'
+          text-[0.78125rem]'
             title={song.title || ''}>
             {song.title}
           </p>
@@ -45,7 +44,6 @@ const SongMediaItem = async ({ song, children }: SongMediaItemProps) => {
           w-full 
           leading-tight
           truncate 
-          select-none
           text-[0.78125rem] text-neutral-400'
             title={song.artist || ''}>
             {song.artist}

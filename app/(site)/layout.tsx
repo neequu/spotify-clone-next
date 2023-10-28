@@ -19,7 +19,7 @@ export default async function RootLayout({
 }) {
   return (
     <body
-      className={`${font.className} flex md:flex-row justify-between flex-col min-h-screen gap-2 bg-gray-main md:bg-gray-bg min-w-[170px] md:px-2 text-white overflow-hidden`}>
+      className={`${font.className} select-none flex md:flex-row justify-between flex-col min-h-screen gap-2 bg-gray-main md:bg-gray-bg min-w-[170px] md:px-2 text-white overflow-hidden`}>
       <ToastProvider />
       <ModalProvider />
       <aside className='z-50 sticky bottom-0 flex flex-col gap-2 bg-opacity-20 backdrop-blur mt-2 md:h-screen order-2 md:order-none'>
