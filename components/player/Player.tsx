@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import useGetSongById from '@/hooks/useGetSongById';
 import usePlayer from '@/hooks/usePlayer';
 import useSongUrl from '@/hooks/useSongUrl';
-import PlayerContent from './PlayerContent';
 import { VolumeFull, VolumeLow, VolumeMute } from '../icons/volume';
 
 import Pause from '../icons/Pause';
@@ -16,37 +15,40 @@ import { Slider } from '../ui/slider';
 // export const revalidate = 0;
 
 const ThePlayer = () => {
-  // const player = usePlayer();
-  const songs = [
-    'https://nlqimebrpdwlvxhpmbre.supabase.co/storage/v1/object/public/songs/song-zzz111-qwe-1k4lo34v1q6',
-    'https://nlqimebrpdwlvxhpmbre.supabase.co/storage/v1/object/public/songs/song-1-1-4pklo74tkp3',
-    'https://nlqimebrpdwlvxhpmbre.supabase.co/storage/v1/object/public/songs/song-scrapee%20my%20knee-softheart-1d4lnvhqdxg',
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const onPlayNext = () => {
-    if (currentIndex < songs.length - 1) {
-      setCurrentIndex((p) => p + 1);
-    } else {
-      setCurrentIndex(0);
-    }
-    handlePlay();
-  };
-
-  const onPlayPrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((p) => p - 1);
-    } else {
-      setCurrentIndex(songs.length - 1);
-    }
-  };
-
+  const player = usePlayer();
+  const { song, isLoading } = useGetSongById(player.activeId);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(1);
   const [prevVolume, setPrevVolume] = useState(volume);
   const [isPlaying, setIsPlaying] = useState(true);
+
+  const [currentId, setCurrentId] = useState(
+    player.ids.indexOf(player.activeId || 0)
+  );
+  const songUrl = useSongUrl(song);
+  if (!song) return null;
+
+  const onPlayNext = () => {
+    if (currentId < player.ids.length - 1) {
+      player.setId(currentId + 1);
+      setCurrentId((p) => p! + 1);
+    } else {
+      setCurrentId(0);
+      player.setId(0);
+    }
+    handlePlay();
+  };
+
+  const onPlayPrevious = () => {
+    if (currentId > 0) {
+      player.setId(currentId - 1);
+      setCurrentId((p) => p! - 1);
+    } else {
+      setCurrentId(player.ids.length - 1);
+      player.setId(player.ids.length - 1);
+    }
+  };
 
   const handlePlay = () => {
     audioRef.current?.play();
@@ -126,18 +128,10 @@ const ThePlayer = () => {
 
   return (
     <footer className='z-50 fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black hidden bare:flex px-4 items-center'>
+      {JSON.stringify(player)}
+      {currentId}
       <div className='flex-1'>
-        <PlayerSong
-          song={{
-            id: 1,
-            artist: '9tails',
-            created_at: '123',
-            image_path: 'image-1am-9tails-85clnul8bqf',
-            song_path: 'song-1am-9tails-85clnul8bqf',
-            user_id: 'c3fcb383-0c2c-447f-a5f0-7ccdbf49ecba',
-            title: '1am',
-          }}
-        />
+        <PlayerSong song={song} />
       </div>
       <div className='flex flex-col flex-1'>
         <div className='flex items-center gap-2 justify-center mb-1'>
@@ -164,9 +158,11 @@ const ThePlayer = () => {
           </button>
           <audio
             ref={audioRef}
-            src={songs[currentIndex]}
+            src={songUrl}
             onEnded={onPlayNext}
             autoPlay
+            onPlaying={handlePlay}
+            onPause={handlePause}
             onTimeUpdate={getProgress}
           />
         </div>

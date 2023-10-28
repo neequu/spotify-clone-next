@@ -12,7 +12,6 @@ const useGetSongById = (id: number | undefined) => {
   const supabaseClient = createClientComponentClient<Database>();
 
   useEffect(() => {
-    console.log(id);
     if (!id) return;
 
     const getSong = async () => {
