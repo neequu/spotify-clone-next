@@ -4,7 +4,7 @@ import LikeButton from './buttons/liked/LikeButton';
 import PlayButton from './buttons/play/PlayButton';
 export const revalidate = 0;
 
-const SearchResults = async ({
+const SearchResults = ({
   searchResults,
   resultsLength,
 }: {

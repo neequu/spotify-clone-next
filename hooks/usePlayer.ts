@@ -1,8 +1,8 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 interface PlayerStore {
   ids: number[];
-  activeId: number;
+  activeId: number | undefined;
   setId: (id: number) => void;
   setIds: (ids: number[]) => void;
   reset: () => void;
@@ -10,10 +10,10 @@ interface PlayerStore {
 
 const usePlayer = create<PlayerStore>((set) => ({
   ids: [],
-  activeId: 0,
+  activeId: undefined,
   setId: (id) => set({ activeId: id }),
   setIds: (ids) => set({ ids: ids }),
-  reset: () => set({ ids: [], activeId: 0 }),
+  reset: () => set({ ids: [], activeId: undefined }),
 }));
 
 export default usePlayer;

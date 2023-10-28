@@ -22,7 +22,7 @@ const ThePlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const songUrl = useSongUrl(song);
-  if (!song) return null;
+  if (!song || player.activeId === undefined) return null;
 
   const onPlayNext = () => {
     if (!player.activeId) return;
@@ -53,11 +53,11 @@ const ThePlayer = () => {
     player.setId(player.ids[currentIndex - 1]);
   };
 
-  const handlePlay = async () => {
+  const handlePlay = () => {
     audioRef.current?.play();
     setIsPlaying(true);
   };
-  const handlePause = async () => {
+  const handlePause = () => {
     audioRef.current?.pause();
     setIsPlaying(false);
   };

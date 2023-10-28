@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { getlikedSongs } from '../../actions';
 import LikedSongs from '@/components/LikedSongs';
-import { Suspense } from 'react';
 
 const LikedSongsPage = async () => {
   const likedSongs = await getlikedSongs();

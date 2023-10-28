@@ -8,7 +8,7 @@ interface SongMediaItemProps {
   children?: React.ReactNode;
 }
 
-const SongMediaItem = async ({ song, children }: SongMediaItemProps) => {
+const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
   const cookieStore = cookies();
   const supabase = createServerComponentClient<Database>({
     cookies: () => cookieStore,

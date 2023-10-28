@@ -27,7 +27,6 @@ const ProfileButton = ({ user }: { user: User }) => {
   const handleSignOut = async () => {
     const { error } = await supabaseClient.auth.signOut();
     router.refresh();
-    // todo: reset playing song
     player.reset();
 
     if (error) {
