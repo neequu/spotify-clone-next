@@ -23,6 +23,7 @@ const PlayerSong = ({ song }: PlayerSongProps) => {
             alt={song?.title || 'song cover image'}
             className='rounded aspect-square object-cover'
             fill
+            sizes='52px'
             quality={60}
           />
         </div>
