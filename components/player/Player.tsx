@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import useGetSongById from "@/hooks/useGetSongById";
-import usePlayer from "@/hooks/usePlayer";
-import useSongUrl from "@/hooks/useSongUrl";
+import { useState, useEffect, useRef } from 'react';
+import useGetSongById from '@/hooks/useGetSongById';
+import usePlayer from '@/hooks/usePlayer';
+import useSongUrl from '@/hooks/useSongUrl';
 
-import PlayerSong from "./PlayerSong";
-import PlayerControls from "./PlayerControls";
-import PlayerProgress from "./PlayerProgress";
-import PlayerVolume from "./PlayerVolume";
+import PlayerSong from './PlayerSong';
+import PlayerControls from './PlayerControls';
+import PlayerProgress from './PlayerProgress';
+import PlayerVolume from './PlayerVolume';
 
 // export const revalidate = 0;
 
@@ -24,12 +24,10 @@ const ThePlayer = () => {
   const songUrl = useSongUrl(song);
   if (!song) return null;
 
-  const onPlayNext = async () => {
+  const onPlayNext = () => {
     if (!player.activeId) return;
     setProgress(0);
     handleProgressChange([0]);
-    // audioRef.current.volume = volume;
-    // await new Promise((r) => setTimeout(r, 40));
 
     const currentIndex = player.ids.indexOf(player.activeId);
     if (currentIndex === player.ids.length - 1) {
@@ -40,9 +38,8 @@ const ThePlayer = () => {
     player.setId(player.ids[currentIndex + 1]);
   };
 
-  const onPlayPrevious = async () => {
+  const onPlayPrevious = () => {
     if (!player.activeId) return;
-    // await new Promise((r) => setTimeout(r, 40));
     setProgress(0);
     handleProgressChange([0]);
 
@@ -114,11 +111,11 @@ const ThePlayer = () => {
   };
 
   return (
-    <footer className="fixed bottom-[64px] left-0 right-0 z-50 hidden h-[52px] items-center px-4 bare:flex md:bottom-0 md:h-[80px] md:bg-black">
-      <div className="flex-1">
+    <footer className='fixed bottom-[64px] left-0 right-0 z-50 hidden h-[52px] items-center px-4 bare:flex md:bottom-0 md:h-[80px] md:bg-black'>
+      <div className='flex-1'>
         <PlayerSong song={song} />
       </div>
-      <div className="flex flex-col md:flex-1">
+      <div className='flex flex-col md:flex-1'>
         <PlayerControls
           handlePlayPause={handlePlayPause}
           isLoading={isLoading}
@@ -141,7 +138,7 @@ const ThePlayer = () => {
           handleProgressChange={handleProgressChange}
         />
       </div>
-      <div className="hidden flex-1 justify-end md:flex">
+      <div className='hidden flex-1 justify-end md:flex'>
         <PlayerVolume
           handleMute={handleMute}
           handleVolumeChange={handleVolumeChange}

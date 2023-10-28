@@ -1,7 +1,6 @@
-import SearchElement from "@/components/SearchElement";
-import SearchResults from "@/components/SearchResults";
-import { getSongsByTitle } from "../../actions";
-import TheHeader from "@/components/TheHeader";
+import SearchElement from '@/components/SearchElement';
+import SearchResults from '@/components/SearchResults';
+import { getSongsByTitle } from '../../actions';
 
 export const revalidate = 0;
 
@@ -17,8 +16,8 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const searchResultsLength = searchResults?.length;
 
   return (
-    <main className="gradient-dark  h-screen flex-1 overflow-auto px-2 pb-[64px] pt-[60px] md:px-layout-p md:pb-0">
-      <h1 className="font-semibold xs:text-xl md:text-2xl">Search</h1>
+    <main className='gradient-dark  h-screen flex-1 overflow-auto px-2 pb-[64px] pt-[60px] md:px-layout-p md:pb-0'>
+      <h1 className='font-semibold xs:text-xl md:text-2xl'>Search</h1>
       <section>
         <SearchElement query={query} resultsLength={searchResultsLength} />
       </section>
