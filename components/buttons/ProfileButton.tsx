@@ -46,8 +46,8 @@ const ProfileButton = ({ user }: { user: User }) => {
             <button
               aria-label='show drpodown menu'
               type='button'
-              className='w-8  aspect-square relative rounded-full overflow-hidden border-2 border-neutral-800 outline-none focus-visible:shadow-focus'>
-              <Image src={`${avatar}`} alt='user image' fill />
+              className='w-8 aspect-square relative rounded-full overflow-hidden border-2 border-neutral-800 outline-none focus-visible:shadow-focus'>
+              <Image src={`${avatar}`} alt='user image' fill sizes='32px' />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className='w-56'>
