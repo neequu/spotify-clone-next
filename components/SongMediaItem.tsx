@@ -20,13 +20,12 @@ const SongMediaItem = async ({ song, children }: SongMediaItemProps) => {
   return (
     <li className=' min-h-[56px] relative group p-1 rounded overflow-hidden flex items-center hover:bg-neutral-800 transition-colors pr-4'>
       <div className='flex items-center gap-3'>
-        <div className='lg:w-12 md:w-11 w-10 aspect-square relative'>
+        <div className='lg:w-12 md:w-11 min-w-[40px] aspect-square relative'>
           <Image
             src={songImage.publicUrl}
             alt={song.title || 'song cover image'}
             className='md:rounded aspect-square object-cover'
             fill
-            sizes='50'
             quality={60}
           />
         </div>

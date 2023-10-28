@@ -23,7 +23,8 @@ const PlayButton = ({
       }}
       className={`hover:brightness-110 flex justify-center rounded-full ${className} outline-none`}
       aria-label={`play ${song.title} by ${song.artist}`}>
-      <div className={`${children && 'group-hover:block hidden'}`}>
+      <div
+        className={`${children && 'group-hover:flex justify-center hidden '}`}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='1em'

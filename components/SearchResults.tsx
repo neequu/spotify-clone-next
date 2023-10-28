@@ -21,7 +21,7 @@ const SearchResults = async ({
             <PlayButton
               song={song}
               songs={searchResults}
-              className='order-first w-10'>
+              className='order-first w-10 md:block hidden'>
               <div className='w-10'>{idx + 1}</div>
             </PlayButton>
             <LikeButton key={song.id} songId={song.id} />

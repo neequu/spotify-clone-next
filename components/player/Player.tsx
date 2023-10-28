@@ -134,11 +134,11 @@ const ThePlayer = () => {
   };
 
   return (
-    <footer className='z-50  fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black hidden bare:flex px-4 items-center'>
+    <footer className='z-50 fixed right-0 left-0 bottom-[64px] md:bottom-0 md:h-[80px] h-[52px] md:bg-black bare:flex hidden px-4 items-center'>
       <div className='flex-1'>
         <PlayerSong song={song} />
       </div>
-      <div className='flex flex-col flex-1'>
+      <div className='flex flex-col md:flex-1'>
         <div className='flex items-center gap-2 justify-center mb-1'>
           <button
             className='outline-none focus-visible:shadow-focus rounded-full text-neutral-400 hover:text-white transition-colors hidden sm:block disabled:cursor-auto'
@@ -150,7 +150,7 @@ const ThePlayer = () => {
           </button>
           <button
             aria-label='pause or play song'
-            className='outline-none focus-visible:shadow-focus rounded-full '
+            className='ml-auto md:ml-0 outline-none focus-visible:shadow-focus rounded-full '
             type='button'
             onClick={handlePlayPause}>
             {isPlaying ? <Pause /> : <Play />}
@@ -174,7 +174,7 @@ const ThePlayer = () => {
             onTimeUpdate={getProgress}
           />
         </div>
-        <div className='flex items-center justify-center'>
+        <div className='hidden md:flex items-center justify-center '>
           <span className='w-9 flex justify-start text-[0.625rem] text-neutral-300'>
             {getCurrentTime()}
           </span>
@@ -193,7 +193,7 @@ const ThePlayer = () => {
           </span>
         </div>
       </div>
-      <div className='flex justify-end flex-1'>
+      <div className='justify-end flex-1 md:flex hidden'>
         <div className=' flex gap-2 items-center  group'>
           <button
             aria-label='mute song'

@@ -19,7 +19,7 @@ const LikedSongs = ({ likedSongs }: LikedSongsProps) => {
               <PlayButton
                 song={song}
                 songs={likedSongs}
-                className='order-first w-10'>
+                className='order-first w-10 hidden md:block'>
                 <div className='w-10'>{idx + 1}</div>
               </PlayButton>
               <LikeButton key={song.id} songId={song.id} />
