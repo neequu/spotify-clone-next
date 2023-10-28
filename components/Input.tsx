@@ -1,4 +1,4 @@
-import { useFormStatus } from 'react-dom';
+import { useFormStatus } from "react-dom";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -7,7 +7,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 const Input = ({
   className,
-  type = 'text',
+  type = "text",
   disabled,
   required = true,
   ...props
@@ -16,7 +16,7 @@ const Input = ({
   return (
     <input
       type={type}
-      className={`flex w-full rounded-md bg-neutral-700 md:p-1.5 px-1 py-[2px] placeholder:text-neutral-400 outline-none border-transparent border focus:border-neutral-600  disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+      className={`flex w-full rounded-md border border-transparent bg-neutral-700 px-1 py-[2px] outline-none placeholder:text-neutral-400 focus:border-neutral-600 disabled:cursor-not-allowed  disabled:opacity-50 md:p-1.5 ${className}`}
       disabled={pending}
       required={required}
       {...props}

@@ -1,5 +1,5 @@
-import { getLikedSongById } from '@/app/actions';
-import LikeButtonInner from './LikeButtonInner';
+import { getLikedSongById } from "@/app/actions";
+import LikeButtonInner from "./LikeButtonInner";
 
 export const revalidate = 0;
 

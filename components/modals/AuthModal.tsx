@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Modal from './Modal';
-import useAuthModal from '@/hooks/useAuthModal';
-import AuthForm from '../form/AuthForm';
+import Modal from "./Modal";
+import useAuthModal from "@/hooks/useAuthModal";
+import AuthForm from "../form/AuthForm";
 // import dynamic from 'next/dynamic'
 
 const AuthModal = () => {
@@ -16,10 +16,11 @@ const AuthModal = () => {
 
   return (
     <Modal
-      title='Welcome'
-      description='Sign in for full access to the app'
+      title="Welcome"
+      description="Sign in for full access to the app"
       isOpen={isOpen}
-      onChange={() => handleChange(false)}>
+      onChange={() => handleChange(false)}
+    >
       <AuthForm />
     </Modal>
   );

@@ -1,10 +1,10 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { Database } from '@/types/supabase';
-import { cookies } from 'next/headers';
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/types/supabase";
+import { cookies } from "next/headers";
 
-import HeaderNavButton from './buttons/HeaderNavButton';
-import ProfileButton from './buttons/ProfileButton';
-import LoginPanel from './auth/LoginPanel';
+import HeaderNavButton from "./buttons/HeaderNavButton";
+import ProfileButton from "./buttons/ProfileButton";
+import LoginPanel from "./auth/LoginPanel";
 
 // export const dynamic = 'force-dynamic';
 
@@ -20,9 +20,9 @@ const TheHeader = async () => {
   const user = session?.user;
 
   return (
-    <header className='md:p-4 p-2 absolute right-0 left-0 top-0 z-50'>
-      <div className='flex items-center md:justify-between justify-end'>
-        <div className='hidden md:flex gap-2'>
+    <header className="absolute left-0 right-0 top-0 z-50 p-2 md:p-4">
+      <div className="flex items-center justify-end md:justify-between">
+        <div className="hidden gap-2 md:flex">
           <HeaderNavButton />
           <HeaderNavButton forward={true} />
         </div>

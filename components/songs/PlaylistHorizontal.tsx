@@ -1,7 +1,7 @@
-'use client';
-import useAuthModal from '@/hooks/useAuthModal';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import useAuthModal from "@/hooks/useAuthModal";
+import Image from "next/image";
+import Link from "next/link";
 
 interface PlaylistHorizontalProps {
   image: string;
@@ -21,10 +21,11 @@ const PlaylistHorizontal = ({
     <Link
       onClick={() => !hasSession && authModal.onOpen()}
       href={to}
-      className='flex-1 max-w-max outline-none focus-visible:shadow-focus'>
-      <div className='flex group  items-center relative bg-gray-md bg-opacity-30 overflow-hidden backdrop-blur-40 md:w-52 w-full pr-[clamp(2rem,10vw,5rem)] md:p-1 rounded md:gap-4 gap-2 hover:backdrop-brightness-110 transition'>
+      className="max-w-max flex-1 outline-none focus-visible:shadow-focus"
+    >
+      <div className="backdrop-blur-40 group  relative flex w-full items-center gap-2 overflow-hidden rounded bg-gray-md bg-opacity-30 pr-[clamp(2rem,10vw,5rem)] transition hover:backdrop-brightness-110 md:w-52 md:gap-4 md:p-1">
         <Image src={image} alt={`a ${name} playlist`} width={40} height={40} />
-        <p className='text-xs md:text-sm'>{name}</p>
+        <p className="text-xs md:text-sm">{name}</p>
       </div>
     </Link>
   );

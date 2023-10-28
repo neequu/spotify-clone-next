@@ -1,31 +1,31 @@
-import Image from 'next/image';
-import { getlikedSongs } from '../../actions';
-import LikedSongs from '@/components/LikedSongs';
+import Image from "next/image";
+import { getlikedSongs } from "../../actions";
+import LikedSongs from "@/components/LikedSongs";
 
 const LikedSongsPage = async () => {
   const likedSongs = await getlikedSongs();
 
   const formattedString = () => {
     const len = likedSongs?.length;
-    return `${len} ${len === 1 ? 'song' : 'songs'}`;
+    return `${len} ${len === 1 ? "song" : "songs"}`;
   };
 
   return (
-    <main className='flex-1 md:px-4 px-2  md:gradient-purple gradient-purple-mobile pt-[60px] overflow-auto h-screen pb-[64px] md:pb-0'>
-      <div className='flex items-end gap-4'>
+    <main className="md:gradient-purple gradient-purple-mobile h-screen flex-1 overflow-auto px-2 pb-[64px] pt-[60px] md:px-4 md:pb-0">
+      <div className="flex items-end gap-4">
         <Image
-          src='/images/liked-songs.png'
-          alt='liked songs'
+          src="/images/liked-songs.png"
+          alt="liked songs"
           width={160}
           height={160}
-          className='md:rounded-md object-cover hidden md:block'
+          className="hidden object-cover md:block md:rounded-md"
         />
         <div>
-          <p className='mb-4 md:mb-6 hidden md:block'>Playlist</p>
-          <h1 className='md:text-[clamp(2rem,5vw,3.75rem)] font-bold md:mb-8 text-xl'>
+          <p className="mb-4 hidden md:mb-6 md:block">Playlist</p>
+          <h1 className="text-xl font-bold md:mb-8 md:text-[clamp(2rem,5vw,3.75rem)]">
             Liked Songs
           </h1>
-          <p className='text-xs md:text-sm text-neutral-300 md:text-white'>
+          <p className="text-xs text-neutral-300 md:text-sm md:text-white">
             {formattedString()}
           </p>
         </div>

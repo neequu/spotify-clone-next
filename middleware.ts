@@ -1,8 +1,8 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
-import { NextResponse } from 'next/server';
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { NextResponse } from "next/server";
 
-import type { NextRequest } from 'next/server';
-import type { Database } from '@/types/supabase';
+import type { NextRequest } from "next/server";
+import type { Database } from "@/types/supabase";
 
 export async function middleware(req: NextRequest) {
   const requestUrl = new URL(req.url);
@@ -15,7 +15,7 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   const protectedRoute =
-    pathname.startsWith('/liked-songs') || pathname.startsWith('/library');
+    pathname.startsWith("/liked-songs") || pathname.startsWith("/library");
 
   if (!session && protectedRoute) {
     return NextResponse.redirect(requestUrl.origin);

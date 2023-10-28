@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { Database, Song } from '@/types/supabase';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
+import { Database, Song } from "@/types/supabase";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const useGetSongById = (id: number | undefined) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,9 +18,9 @@ const useGetSongById = (id: number | undefined) => {
       setIsLoading(true);
       try {
         const { data, error } = await supabaseClient
-          .from('songs')
+          .from("songs")
           .select()
-          .eq('id', id)
+          .eq("id", id)
           .single();
 
         if (error) {

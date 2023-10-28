@@ -1,10 +1,10 @@
-'use client';
-import { Heart, HeartFill } from '@/components/icons/heart';
-import { likeSong, unlikeSong } from '@/app/actions';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import useAuthModal from '@/hooks/useAuthModal';
+"use client";
+import { Heart, HeartFill } from "@/components/icons/heart";
+import { likeSong, unlikeSong } from "@/app/actions";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import useAuthModal from "@/hooks/useAuthModal";
 
 export const revalidate = 0;
 
@@ -29,7 +29,7 @@ const LikeButtonInner = ({ songId, likedSong }: LikeButtonInnerProps) => {
         authModal.onOpen();
         throw new Error(res.error);
       }
-      toast.success('Added to library');
+      toast.success("Added to library");
       router.refresh();
     } catch (e: any) {
       setLiked(false);
@@ -44,7 +44,7 @@ const LikeButtonInner = ({ songId, likedSong }: LikeButtonInnerProps) => {
         authModal.onOpen();
         throw new Error(res.error);
       }
-      toast.success('Removed from library');
+      toast.success("Removed from library");
       router.refresh();
     } catch (e: any) {
       setLiked(true);
@@ -60,13 +60,14 @@ const LikeButtonInner = ({ songId, likedSong }: LikeButtonInnerProps) => {
   return (
     <button
       onClick={handleLikeButtonClick}
-      type='button'
-      aria-label='like'
-      className={`ml-auto focus:outline-none focus-visible:shadow-focus rounded-full ${
+      type="button"
+      aria-label="like"
+      className={`ml-auto rounded-full focus:outline-none focus-visible:shadow-focus ${
         liked
-          ? 'text-accent hover:scale-110'
-          : 'text-neutral-400 hover:text-white'
-      } transition`}>
+          ? "text-accent hover:scale-110"
+          : "text-neutral-400 hover:text-white"
+      } transition`}
+    >
       {liked ? <HeartFill /> : <Heart />}
     </button>
   );

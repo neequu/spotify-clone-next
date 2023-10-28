@@ -1,7 +1,7 @@
-import useUploadModal from '@/hooks/useUploadModal';
+import useUploadModal from "@/hooks/useUploadModal";
 
-import Modal from './Modal';
-import UploadForm from '../form/UploadForm';
+import Modal from "./Modal";
+import UploadForm from "../form/UploadForm";
 
 const UploadModal = () => {
   const uploadModal = useUploadModal();
@@ -13,10 +13,11 @@ const UploadModal = () => {
   };
   return (
     <Modal
-      title='Upload your song'
-      description='You can add a song and a cover'
+      title="Upload your song"
+      description="You can add a song and a cover"
       isOpen={uploadModal.isOpen}
-      onChange={handleChange}>
+      onChange={handleChange}
+    >
       <UploadForm handleChange={handleChange} />
     </Modal>
   );

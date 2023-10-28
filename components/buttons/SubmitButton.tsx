@@ -1,36 +1,37 @@
-'use client';
-import { CircleDashed } from 'lucide-react';
-import { useFormStatus } from 'react-dom';
+"use client";
+import { CircleDashed } from "lucide-react";
+import { useFormStatus } from "react-dom";
 
 export default function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
     <button
-      type='submit'
-      aria-label='upload song'
+      type="submit"
+      aria-label="upload song"
       aria-disabled={pending}
       disabled={pending}
-      className='
+      className="
             w-full 
             rounded-md
             border
-            font-light
             border-transparent
-            disabled:cursor-not-allowed 
+            bg-accent2
+            py-[2px] 
+            text-sm
+            font-light
+            transition-colors
+            hover:bg-accent2-dark
+            disabled:cursor-not-allowed
             disabled:bg-gray-500
             md:py-2
-            py-[2px]
-            hover:bg-accent2-dark
-            transition-colors
-            bg-accent2
-            text-sm
-          '>
-      <span className='flex justify-center items-center overflow-hidden'>
+          "
+    >
+      <span className="flex items-center justify-center overflow-hidden">
         {pending ? (
-          <CircleDashed className='animate-spin h-5' />
+          <CircleDashed className="h-5 animate-spin" />
         ) : (
-          'Upload song'
+          "Upload song"
         )}
       </span>
     </button>

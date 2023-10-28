@@ -1,8 +1,8 @@
-'use client';
-import useAuthModal from '@/hooks/useAuthModal';
-import useUploadModal from '@/hooks/useUploadModal';
-import { User } from '@supabase/auth-helpers-nextjs';
-import { Plus } from 'lucide-react';
+"use client";
+import useAuthModal from "@/hooks/useAuthModal";
+import useUploadModal from "@/hooks/useUploadModal";
+import { User } from "@supabase/auth-helpers-nextjs";
+import { Plus } from "lucide-react";
 
 interface LibraryUploadButtonProps {
   user: User | undefined;
@@ -22,10 +22,11 @@ const LibraryUploadButton = ({ user }: LibraryUploadButtonProps) => {
   return (
     <button
       onClick={handleClick}
-      type='button'
-      aria-label='add song'
-      className='text-neutral-400 hover:text-white transition-colors rounded-full outline-none focus-visible:shadow-focus'>
-      <Plus className='w-5' />
+      type="button"
+      aria-label="add song"
+      className="rounded-full text-neutral-400 outline-none transition-colors hover:text-white focus-visible:shadow-focus"
+    >
+      <Plus className="w-5" />
     </button>
   );
 };

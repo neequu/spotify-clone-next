@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import PlayButton from '../buttons/play/PlayButton';
+import Image from "next/image";
+import Link from "next/link";
+import PlayButton from "../buttons/play/PlayButton";
 
-import { Song } from '@/types/supabase';
-import { SupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { Song } from "@/types/supabase";
+import { SupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 const Playlist = async ({
   song,
@@ -15,52 +15,56 @@ const Playlist = async ({
   supabase: SupabaseClient;
 }) => {
   const { data: songImage } = supabase.storage
-    .from('images')
+    .from("images")
     .getPublicUrl(song.image_path!);
 
   return (
     <div
-      className='grid group bg-gray-md bg-opacity-60 backdrop-blur-40 hover:bg-neutral-800 transition
-      md:p-2 md:pb-9 pb-5 rounded w-full '>
-      <div className='relative min-w-[80px] aspect-square'>
+      className="backdrop-blur-40 group grid w-full rounded bg-gray-md bg-opacity-60
+      pb-5 transition hover:bg-neutral-800 md:p-2 md:pb-9 "
+    >
+      <div className="relative aspect-square min-w-[80px]">
         <Image
           src={songImage.publicUrl}
-          alt={song.title || 'song cover art'}
+          alt={song.title || "song cover art"}
           fill
-          sizes='33vw'
-          className='md:rounded-md rounded-t-sm object-cover'
+          sizes="33vw"
+          className="rounded-t-sm object-cover md:rounded-md"
         />
         <PlayButton
           songs={songs}
           song={song}
-          className='absolute opacity-0 group-hover:opacity-100 group-hover:bottom-2 bottom-0 right-2 transition-[bottom_filter_opacity] text-black bg-accent p-2'
+          className="absolute bottom-0 right-2 bg-accent p-2 text-black opacity-0 transition-[bottom_filter_opacity] group-hover:bottom-2 group-hover:opacity-100"
         />
       </div>
-      <div className='grid mt-3 px-1.5 md:px-0'>
+      <div className="mt-3 grid px-1.5 md:px-0">
         <p
-          className='
-            truncate 
-            font-bold
+          className="
+            mb-0.5 
             w-full
+            truncate
             text-sm
-            md:text-base
-            mb-0.5'
-          title={song.title || ''}>
+            font-bold
+            md:text-base"
+          title={song.title || ""}
+        >
           <Link
             href={`/songs/${song.id}`}
-            className='border-b pb-[2px] border-transparent hover:border-neutral-500 transition-colors outline-none focus:border-neutral-500'>
+            className="border-b border-transparent pb-[2px] outline-none transition-colors hover:border-neutral-500 focus:border-neutral-500"
+          >
             {song.title}
           </Link>
         </p>
         <p
-          className='
-          cursor-default
-            w-full
+          className="
+          w-full
+            cursor-default
             truncate
-            md:text-sm 
-            text-xs
-            text-neutral-400'
-          title={song.artist || ''}>
+            text-xs 
+            text-neutral-400
+            md:text-sm"
+          title={song.artist || ""}
+        >
           {song.artist}
         </p>
       </div>
