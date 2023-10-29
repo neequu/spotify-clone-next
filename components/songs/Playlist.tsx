@@ -2,24 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PlayButton from '../buttons/PlayButton';
 
-import { Database, Song } from '@/types/supabase';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import { Song } from '@/types/supabase';
+import getImageUrl from '@/composables/getImageUrl';
 
-const Playlist = async ({
-  song,
-  songs,
-}: {
-  song: Song;
-  songs: Song[];
-}) => {
-  const cookieStore = cookies();
-  const supabase = createServerComponentClient<Database>({
-    cookies: () => cookieStore,
-  });
-  const { data: songImage } = supabase.storage
-    .from('images')
-    .getPublicUrl(song.image_path!);
+const Playlist = async ({ song, songs }: { song: Song; songs: Song[] }) => {
+  const songImageUrl = getImageUrl(song);
 
   return (
     <div
@@ -27,7 +14,7 @@ const Playlist = async ({
       pb-5 transition hover:bg-neutral-800 md:p-2 md:pb-9 '>
       <div className='relative aspect-square min-w-[80px]'>
         <Image
-          src={songImage.publicUrl}
+          src={songImageUrl}
           alt={song.title || 'song cover art'}
           fill
           sizes='33vw'

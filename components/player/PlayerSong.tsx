@@ -2,7 +2,7 @@
 
 import { Song } from '@/types/supabase';
 import Image from 'next/image';
-import useCoverImageUrl from '@/hooks/useCoverImageUrl';
+import useGetImageUrl from '@/hooks/useGetImageUrl';
 import Link from 'next/link';
 
 export const revalidate = 0;
@@ -12,14 +12,14 @@ interface PlayerSongProps {
 }
 
 const PlayerSong = ({ song }: PlayerSongProps) => {
-  const songImage = useCoverImageUrl(song);
+  const songImageUrl = useGetImageUrl(song);
 
   return (
     <div className=' flex items-center gap-6 overflow-hidden'>
       <div className='flex flex-1 items-center gap-3 sm:flex-initial'>
         <div className='relative aspect-square min-w-[36px] md:w-[52px]'>
           <Image
-            src={songImage.publicUrl}
+            src={songImageUrl}
             alt={song?.title || 'song cover image'}
             className='aspect-square rounded object-cover'
             fill

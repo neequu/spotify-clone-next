@@ -2,25 +2,15 @@ import { Song } from '@/types/supabase';
 import SongMediaItem from './SongMediaItem';
 import LikeButton from './buttons/liked/LikeButton';
 import PlayButton from './buttons/PlayButton';
-import { getlikedSongs } from '@/app/actions';
 
 interface LikedSongsProps {
   likedSongs: Song[];
 }
 
-const LikedSongs = async () => {
-  const likedSongs = await getlikedSongs();
+const LikedSongs = async ({likedSongs}:{likedSongs:Song[]}) => {
   const hasSongs = likedSongs && !!likedSongs.length;
-  const formatLength = () => {
-    const len = likedSongs.length;
-    return `${len} ${len === 1 ? 'song' : 'songs'}`;
-  };
+
   return (
-    <>
-      <p className='text-xs text-neutral-300 md:text-sm md:text-white md:ml-44 md:-mt-6'>
-        {formatLength()}
-      </p>
-      <div className='mt-8 border-t border-neutral-800 pt-2 md:mt-10'>
         <ul className='grid md:gap-1'>
           {hasSongs ? (
             likedSongs.map((song, idx) => (
@@ -40,8 +30,6 @@ const LikedSongs = async () => {
             </div>
           )}
         </ul>
-      </div>
-    </>
   );
 };
 

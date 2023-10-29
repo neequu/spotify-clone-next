@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import useGetSongById from '@/hooks/useGetSongById';
 import usePlayer from '@/hooks/usePlayer';
 import useSongUrl from '@/hooks/useSongUrl';

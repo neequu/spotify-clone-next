@@ -2,16 +2,16 @@
 import { User } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { Database, Song } from '@/types/supabase';
-import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
-import uniqid from 'uniqid';
-import { revalidatePath } from 'next/cache';
 
-const getSupabaseClient = async () =>
-  createServerActionClient<Database>({ cookies });
+// create supabase action client
+const getSupabaseClient = async () => {
+  const createServerActionClient = (await import('@supabase/auth-helpers-nextjs')).createServerActionClient
+  return createServerActionClient<Database>({ cookies });
+}
 
 // get all songs from database
 export async function getSongs() {
-  const supabase = createServerActionClient<Database>({ cookies });
+  const supabase = await getSupabaseClient();
   try {
     const { data: songsData, error: songsError } = await supabase
       .from('songs')
@@ -23,10 +23,32 @@ export async function getSongs() {
     if (songsError) {
       throw new Error('error fetching songs');
     }
+    const revalidatePath = (await import('next/cache')).revalidatePath
+    
     revalidatePath('/');
     return songsData || [];
+
   } catch (e: any) {
-    console.log(e);
+    // return {error: e.message}
+  }
+}
+// get song by id
+export async function getSongById(id:number) {
+  const supabase = await getSupabaseClient();
+  try {
+    const { data: songsData, error: songsError } = await supabase
+      .from('songs')
+      .select()
+      .eq('id', id)
+      .single()
+
+    if (songsError) {
+      throw new Error('error fetching a song with id ' + id);
+    }
+
+    return songsData
+  } catch (e: any) {
+    // return {error: e.message}
   }
 }
 // get songs of logged in user
@@ -44,15 +66,15 @@ export async function getSongsByUserId(user: User | undefined) {
       });
 
     if (songsError) {
-      throw new Error('error fetching all songs');
+      throw new Error('error fetching users songs');
     }
 
     return songsData || [];
   } catch (e: any) {
-    console.log(e);
+    // return {error: e.message}
   }
 }
-// get songs of logged in user
+// get songs by title
 export async function getSongsByTitle(query: string) {
   const supabase = await getSupabaseClient();
   if (!query) return [];
@@ -70,10 +92,10 @@ export async function getSongsByTitle(query: string) {
 
     return songsData || [];
   } catch (e: any) {
-    console.log(e);
+    // return {error: e.message}
   }
 }
-// get user's  liked songs
+// get user's liked songs
 export async function getLikedSongById(id: number) {
   const supabase = await getSupabaseClient();
   try {
@@ -99,6 +121,7 @@ export async function getLikedSongById(id: number) {
     return null;
   }
 }
+// add song to liked song db
 export async function likeSong(songId: number) {
   const supabase = await getSupabaseClient();
   try {
@@ -126,7 +149,7 @@ export async function likeSong(songId: number) {
     return { error: e.message };
   }
 }
-// remove like from a song
+// remove song from liked song db
 export async function unlikeSong(songId: number) {
   const supabase = await getSupabaseClient();
   try {
@@ -188,13 +211,15 @@ export async function getlikedSongs() {
     return [];
   }
 }
-
+// add song to songs db
 export async function submitSong(prev: any, formData: FormData) {
   const supabase = await getSupabaseClient();
   const song = formData.get('song');
   const image = formData.get('image');
   const title = formData.get('title') as string;
   const artist = formData.get('artist') as string;
+
+  const uniqid = (await import('uniqid')).default
 
   const uniqueId = uniqid();
   try {
@@ -226,6 +251,7 @@ export async function submitSong(prev: any, formData: FormData) {
       throw new Error(uploadError.message);
     }
 
+    const revalidatePath = (await import('next/cache')).revalidatePath
     revalidatePath('/');
     return { message: 'success' };
   } catch (e: any) {

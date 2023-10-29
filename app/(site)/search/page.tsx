@@ -22,10 +22,12 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
         <SearchElement query={query} resultsLength={searchResultsLength} />
       </section>
       <section>
-        <SearchResults
+        {searchResultsLength &&
+          <SearchResults
           searchResults={searchResults}
           resultsLength={searchResultsLength}
-        />
+          />
+        }
       </section>
     </main>
   );
