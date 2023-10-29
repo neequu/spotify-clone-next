@@ -1,10 +1,10 @@
-import LibrarySongList from './LibrarySongList';
-import LibraryUploadButton from './LibraryUploadButton';
+import LibrarySongList from "./LibrarySongList";
+import LibraryUploadButton from "./LibraryUploadButton";
 
-import { getSongsByUserId } from '@/app/actions';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { Database } from '@/types/supabase';
-import { cookies } from 'next/headers';
+import { getSongsByUserId } from "@/app/actions";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/types/supabase";
+import { cookies } from "next/headers";
 interface TheLibraryProps {
   children?: React.ReactNode;
 }
@@ -20,13 +20,13 @@ const TheLibrary = async ({ children }: TheLibraryProps) => {
   const userSongs = (await getSongsByUserId(user)) || [];
 
   return (
-    <section className='flex flex-col h-screen gap-3'>
-      <div className='flex items-center justify-between'>
+    <section className="flex flex-col gap-3 md:h-screen">
+      <div className="mt-6 flex items-center justify-between md:mt-0">
         {children}
         <LibraryUploadButton user={user} />
       </div>
       {!data.session || error ? (
-        <div className='h-screen text-sm text-neutral-400'>
+        <div className="h-screen text-sm text-neutral-400">
           You need to sign in to use your library
         </div>
       ) : (

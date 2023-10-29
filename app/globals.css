@@ -21,6 +21,6 @@ html, body {
 @layer components {
   .gradient-green {@apply bg-gray-main bg-gradient-to-b from-accent-dark  from-[22px] via-[#30705599] via-[80px]  to-gray-main to-[180px];}
   .gradient-dark {@apply bg-gradient-to-b from-gray-main via-page to-gray-main;}
-  .gradient-purple { @apply bg-gradient-to-b from-purple-800 from-[44px] via-violet-900 via-[80px] to-gray-main to-[272px];}
+  .gradient-purple { @apply bg-gradient-to-b from-purple-800 from-[20%] to-violet-900 to-[50%]}
   .gradient-purple-mobile { @apply bg-gradient-to-b from-purple-800 from-[24px] via-violet-900 via-[60px] to-gray-main to-[140px];}
 }
