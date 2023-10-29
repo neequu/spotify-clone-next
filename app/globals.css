@@ -23,5 +23,4 @@ html, body {
   .gradient-purple {@apply bg-gradient-to-b from-purple-600 via-violet-900 to-gray-main}
   .gradient-dark {@apply bg-gradient-to-b from-gray-main via-page to-gray-main;}
   .gradient-liked {@apply bg-gradient-to-b from-gray-main via-[#221826aa] to-gray-main to-[50%];}
-  .gradient-purple-mobile { @apply bg-gradient-to-b from-purple-800 from-[24px] via-violet-900 via-[60px] to-gray-main to-[140px];}
 }

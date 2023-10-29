@@ -25,9 +25,7 @@ const PlayButton = ({
       aria-label={`play ${song.title} by ${song.artist}`}
     >
       <div
-        className={`${
-          children && "flex justify-center md:hidden md:group-hover:flex"
-        }`}
+        className={`${children && "hidden justify-center group-hover:flex "}`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +39,7 @@ const PlayButton = ({
           ></path>
         </svg>
       </div>
-      <div className="hidden md:block md:group-hover:hidden">{children}</div>
+      <div className="group-hover:hidden">{children}</div>
     </button>
   );
 };
