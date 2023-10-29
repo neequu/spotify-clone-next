@@ -1,7 +1,7 @@
 import { Song } from '@/types/supabase';
 import SongMediaItem from './SongMediaItem';
 import LikeButton from './buttons/liked/LikeButton';
-import PlayButton from './buttons/play/PlayButton';
+import PlayButton from './buttons/PlayButton';
 export const revalidate = 0;
 
 const SearchResults = ({

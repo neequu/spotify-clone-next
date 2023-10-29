@@ -1,8 +1,7 @@
 import { Song } from '@/types/supabase';
 import SongMediaItem from './SongMediaItem';
 import LikeButton from './buttons/liked/LikeButton';
-import PlayButton from './buttons/play/PlayButton';
-import { Suspense } from 'react';
+import PlayButton from './buttons/PlayButton';
 
 interface LikedSongsProps {
   likedSongs: Song[];

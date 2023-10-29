@@ -1,30 +1,27 @@
 'use client';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import toast from 'react-hot-toast';
 import {
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuSub,
   DropdownMenuTrigger,
+  DropdownMenu,
 } from '@/components/ui/dropdown-menu';
 import { UserCircle } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import toast from 'react-hot-toast';
 import {
   User,
   createClientComponentClient,
 } from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/types/supabase';
-import Image from 'next/image';
 import usePlayer from '@/hooks/usePlayer';
-import { DropdownMenu } from '../ui/dropdown-menu';
 
 const ProfileButton = ({ user }: { user: User }) => {
   const router = useRouter();
-  const supabaseClient = createClientComponentClient<Database>();
 
   const player = usePlayer();
   const handleSignOut = async () => {
+    const supabaseClient = createClientComponentClient<Database>();
     const { error } = await supabaseClient.auth.signOut();
     router.refresh();
     player.reset();

@@ -12,9 +12,8 @@ const LibraryUploadButton = ({ user }: LibraryUploadButtonProps) => {
   const authModal = useAuthModal();
   const uploadModal = useUploadModal();
   const handleClick = () => {
-    if (!user) {
-      return authModal.onOpen();
-    }
+    if (!user) return authModal.onOpen();
+
     return uploadModal.onOpen();
   };
 

@@ -10,8 +10,6 @@ import PlayerControls from './PlayerControls';
 import PlayerProgress from './PlayerProgress';
 import PlayerVolume from './PlayerVolume';
 
-// export const revalidate = 0;
-
 const ThePlayer = () => {
   const player = usePlayer();
   const { song, isLoading } = useGetSongById(player.activeId);

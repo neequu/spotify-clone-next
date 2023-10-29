@@ -1,6 +1,6 @@
 import SearchElement from '@/components/SearchElement';
 import SearchResults from '@/components/SearchResults';
-import { getSongsByTitle } from '../../actions';
+import { getSongsByTitle } from '@/app/actions';
 
 export const revalidate = 0;
 

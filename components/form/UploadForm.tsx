@@ -4,6 +4,7 @@ import Input from '../Input';
 import SubmitButton from '../buttons/SubmitButton';
 import { useFormState } from 'react-dom';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const UploadForm = ({
   handleChange,
@@ -16,8 +17,11 @@ const UploadForm = ({
     if (state?.message === 'success') {
       const open = false;
       handleChange(open);
+      toast.success('Song uploaded!');
+    } else if (state?.error) {
+      toast.error('Error uploading a song');
     }
-  }, [state]);
+  }, [state, handleChange]);
 
   return (
     <form action={formAction} className='grid gap-y-3 text-xs md:text-sm'>
