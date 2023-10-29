@@ -2,18 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PlayButton from '../buttons/PlayButton';
 
-import { Song } from '@/types/supabase';
-import { SupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { Database, Song } from '@/types/supabase';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 const Playlist = async ({
   song,
   songs,
-  supabase,
 }: {
   song: Song;
   songs: Song[];
-  supabase: SupabaseClient;
 }) => {
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  });
   const { data: songImage } = supabase.storage
     .from('images')
     .getPublicUrl(song.image_path!);

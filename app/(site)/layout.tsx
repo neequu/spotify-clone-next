@@ -4,6 +4,7 @@ import ModalProvider from '@/providers/ModalProvider';
 import ToastProvider from '@/providers/ToastProvider';
 import TheHeader from '@/components/TheHeader';
 import { Figtree } from 'next/font/google';
+import { Suspense } from 'react';
 
 const font = Figtree({
   subsets: ['latin'],
@@ -29,7 +30,9 @@ export default function RootLayout({
         <TheHeader />
         {children}
       </div>
-      <ThePlayer />
+      <Suspense>
+        <ThePlayer />
+      </Suspense>
     </body>
   );
 }

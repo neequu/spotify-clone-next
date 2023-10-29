@@ -20,6 +20,7 @@ const ThePlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const songUrl = useSongUrl(song);
+  // if (!song && player.activeId) return <div>loading...</div>;
   if (!song || player.activeId === undefined) return null;
 
   const onPlayNext = () => {

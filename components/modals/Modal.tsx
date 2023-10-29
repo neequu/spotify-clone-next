@@ -4,7 +4,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 
 interface ModalProps {
   isOpen: boolean;
@@ -21,6 +21,8 @@ const Modal = ({
   description,
   children,
 }: ModalProps) => {
+  if (!isOpen) return null;
+
   return (
     <>
       <Dialog open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
