@@ -10,7 +10,7 @@ const LikedSongsPage = async () => {
     return `${len} ${len === 1 ? "song" : "songs"}`;
   };
   return (
-    <main className="gradient-dark relative h-screen flex-1 overflow-auto  pb-[64px] md:pb-0">
+    <main className="gradient-liked relative h-screen flex-1 overflow-auto  pb-[64px] md:pb-0">
       <div className="gradient-purple flex items-end gap-2 border-b border-neutral-800 px-2 pb-8 pt-[48px] md:gap-4 md:px-4 md:pb-10 md:pt-[60px]">
         <div className="relative aspect-square w-[40px] shadow-2xl sm:w-[10vw] sm:max-w-[100px] md:w-[20vw] md:max-w-[200px]">
           <Image
@@ -31,7 +31,7 @@ const LikedSongsPage = async () => {
           </p>
         </div>
       </div>
-      <section className="mt-2 md:mt-4">
+      <section className="mt-2 px-2 md:mt-4 md:px-4">
         <LikedSongs likedSongs={likedSongs} />
       </section>
     </main>

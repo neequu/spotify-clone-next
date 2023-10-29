@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <main className="gradient-dark h-screen flex-1 overflow-auto  pb-[64px]  md:rounded md:pb-0">
-      <div className="bg-accent px-2 pt-[48px] md:px-4 md:pt-[60px]">
+      <div className="gradient-green px-2 pb-4 pt-[48px] md:px-4 md:pt-[60px]">
         <h1 className="font-semibold xs:text-xl md:text-2xl">
           {session ? "Welcome back!" : "Welcome new comer!"}
         </h1>
