@@ -10,8 +10,8 @@ interface SongMediaItemProps {
   children?: React.ReactNode;
 }
 
-const SongMediaItem = ({ song, children, songs }: SongMediaItemProps) => {
-  const songImageUrl = getImageUrl(song);
+const SongMediaItem = async ({ song, children, songs }: SongMediaItemProps) => {
+  const songImageUrl = await getImageUrl(song);
 
   return (
     // <li className="group relative flex min-h-[56px] items-center overflow-hidden rounded p-1 pr-4 transition-colors hover:bg-neutral-800">

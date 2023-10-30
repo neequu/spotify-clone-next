@@ -1,17 +1,18 @@
-import { Database } from '@/types/supabase';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import { Song } from '@/types/supabase';
+import { Database } from "@/types/supabase";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Song } from "@/types/supabase";
+import { cookies } from "next/headers";
 
-const getImageUrl = (song: Song) => {
-  if (!song || !song.image_path) return '';
+const getImageUrl = async (song: Song) => {
+  "use server";
+  if (!song || !song.image_path) return "";
 
   const cookieStore = cookies();
   const supabase = createServerComponentClient<Database>({
     cookies: () => cookieStore,
   });
   const { data: songImage } = supabase.storage
-    .from('images')
+    .from("images")
     .getPublicUrl(song.image_path);
 
   return songImage.publicUrl;

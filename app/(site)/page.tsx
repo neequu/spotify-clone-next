@@ -36,7 +36,7 @@ export default async function Home() {
         <div className="mt-2 md:mt-4 ">
           <Suspense
             fallback={
-              <div className="flex justify-center">
+              <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Spinner />
               </div>
             }

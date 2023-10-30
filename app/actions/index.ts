@@ -1,10 +1,11 @@
 "use server";
 import { User } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { Database, Song } from "@/types/supabase";
 
 // create supabase action client
 const getSupabaseClient = async () => {
+  const cookies = (await import("next/headers")).cookies;
+
   const createServerActionClient = (
     await import("@supabase/auth-helpers-nextjs")
   ).createServerActionClient;

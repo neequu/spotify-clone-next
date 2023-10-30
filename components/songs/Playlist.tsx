@@ -6,7 +6,7 @@ import { Song } from "@/types/supabase";
 import getImageUrl from "@/composables/getImageUrl";
 
 const Playlist = async ({ song, songs }: { song: Song; songs: Song[] }) => {
-  const songImageUrl = getImageUrl(song);
+  const songImageUrl = await getImageUrl(song);
 
   return (
     <div

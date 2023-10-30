@@ -13,7 +13,7 @@ const page = async ({ params }: { params: { id: string } }) => {
     redirect("/not-found");
   }
 
-  const songImageUrl = getImageUrl(song);
+  const songImageUrl = await getImageUrl(song);
 
   return (
     <main className="gradient-dark h-screen overflow-auto pb-[110px] md:pb-[94px]">
@@ -40,7 +40,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       <section className="mt-2 flex px-2 text-base md:mt-4 md:px-4">
         <Suspense
           fallback={
-            <div className="flex h-full flex-1 items-center justify-center">
+            <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Spinner />
             </div>
           }
