@@ -7,7 +7,7 @@ interface PlaylistHorizontalProps {
   image: string;
   name: string;
   to: string;
-  hasSession?: boolean;
+  hasSession: boolean;
 }
 
 const PlaylistHorizontal = ({

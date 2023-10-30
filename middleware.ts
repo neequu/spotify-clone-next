@@ -18,7 +18,7 @@ export async function middleware(req: NextRequest) {
     pathname.startsWith("/liked-songs") || pathname.startsWith("/library");
 
   if (!session && protectedRoute) {
-    return NextResponse.redirect(requestUrl.origin);
+    return NextResponse.redirect("/");
   }
 
   return res;
