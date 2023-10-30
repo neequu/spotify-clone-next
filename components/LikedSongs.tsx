@@ -22,7 +22,9 @@ const LikedSongs = async ({ likedSongs }: { likedSongs: Song[] }) => {
             >
               <div className="w-4">{idx + 1}</div>
             </PlayButton>
-            <LikeButton songId={song.id} />
+            <div className="ml-auto grid w-3 place-content-center md:w-5">
+              <LikeButton songId={song.id} />
+            </div>
           </SongMediaItem>
         ))
       ) : (

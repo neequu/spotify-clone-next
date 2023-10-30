@@ -62,7 +62,7 @@ const LikeButtonInner = ({ songId, likedSong }: LikeButtonInnerProps) => {
       onClick={handleLikeButtonClick}
       type="button"
       aria-label="like"
-      className={`ml-auto rounded-full focus:outline-none focus-visible:shadow-focus ${
+      className={`rounded-full focus:outline-none focus-visible:shadow-focus ${
         liked
           ? "text-accent hover:scale-110"
           : "text-neutral-400 hover:text-white"

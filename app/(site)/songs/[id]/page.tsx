@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import SongInfo from "./SongInfo";
 import Image from "next/image";
+import SongMediaItem from "@/components/SongMediaItem";
+import LikeButton from "@/components/buttons/liked/LikeButton";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const song = await getSongById(+params.id);
@@ -37,7 +39,10 @@ const page = async ({ params }: { params: { id: string } }) => {
           </p>
         </div>
       </SongInfo>
-      <section className="mt-2 flex px-2 text-base md:mt-4 md:px-4">
+      <section className="mt-2 px-2 text-base md:mt-4 md:px-4">
+        <div className="aspect-square w-14">
+          <LikeButton songId={song.id} />
+        </div>
         <Suspense
           fallback={
             <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
