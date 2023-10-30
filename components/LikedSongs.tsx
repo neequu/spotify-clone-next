@@ -18,9 +18,9 @@ const LikedSongs = async ({ likedSongs }: { likedSongs: Song[] }) => {
             <PlayButton
               song={song}
               songs={likedSongs}
-              className="order-first hidden w-10 md:block"
+              className="order-first hidden w-4 md:block"
             >
-              <div className="w-10">{idx + 1}</div>
+              <div className="w-4">{idx + 1}</div>
             </PlayButton>
             <LikeButton songId={song.id} />
           </SongMediaItem>

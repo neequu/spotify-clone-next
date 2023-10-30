@@ -2,18 +2,21 @@ import getImageUrl from "@/composables/getImageUrl";
 import { Song } from "@/types/supabase";
 import Image from "next/image";
 import Link from "next/link";
+import SongMediaItemWrapper from "./SongMediaItemWrapper";
 
 interface SongMediaItemProps {
   song: Song;
+  songs?: Song[];
   children?: React.ReactNode;
 }
 
-const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
+const SongMediaItem = ({ song, children, songs }: SongMediaItemProps) => {
   const songImageUrl = getImageUrl(song);
 
   return (
-    <li className=" group relative flex min-h-[56px] items-center overflow-hidden rounded p-1 pr-4 transition-colors hover:bg-neutral-800">
-      <div className="flex items-center gap-3">
+    // <li className="group relative flex min-h-[56px] items-center overflow-hidden rounded p-1 pr-4 transition-colors hover:bg-neutral-800">
+    <SongMediaItemWrapper song={song} songs={songs}>
+      <div className="flex flex-1 items-center gap-3">
         <div className="relative aspect-square min-w-[40px] md:w-11 lg:w-12">
           <Image
             src={songImageUrl}
@@ -50,9 +53,10 @@ const SongMediaItem = ({ song, children }: SongMediaItemProps) => {
             {song.artist}
           </p>
         </div>
+        {children}
       </div>
-      {children}
-    </li>
+    </SongMediaItemWrapper>
+    // </li>
   );
 };
 
