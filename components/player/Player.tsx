@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import useGetSongById from '@/hooks/useGetSongById';
-import usePlayer from '@/hooks/usePlayer';
-import useSongUrl from '@/hooks/useSongUrl';
+import { useState, useRef } from "react";
+import useGetSongById from "@/hooks/useGetSongById";
+import usePlayer from "@/hooks/usePlayer";
+import useSongUrl from "@/hooks/useSongUrl";
 
-import PlayerSong from './PlayerSong';
-import PlayerControls from './PlayerControls';
-import PlayerProgress from './PlayerProgress';
-import PlayerVolume from './PlayerVolume';
+import PlayerSong from "./PlayerSong";
+import PlayerControls from "./PlayerControls";
+import PlayerProgress from "./PlayerProgress";
+import PlayerVolume from "./PlayerVolume";
 
 const ThePlayer = () => {
   const player = usePlayer();
@@ -110,11 +110,11 @@ const ThePlayer = () => {
   };
 
   return (
-    <footer className='fixed bottom-[64px] left-0 right-0 z-50 hidden h-[52px] items-center px-4 bare:flex md:bottom-0 md:h-[80px] md:bg-black'>
-      <div className='flex-1'>
+    <footer className="fixed bottom-[64px] left-0 right-0 z-50 hidden h-[52px] items-center px-4 bare:flex md:bottom-0 md:h-[80px] md:bg-black">
+      <div className="flex-1">
         <PlayerSong song={song} />
       </div>
-      <div className='flex flex-col md:flex-1'>
+      <div className="flex flex-col md:flex-1">
         <PlayerControls
           handlePlayPause={handlePlayPause}
           isLoading={isLoading}
@@ -137,7 +137,7 @@ const ThePlayer = () => {
           handleProgressChange={handleProgressChange}
         />
       </div>
-      <div className='hidden flex-1 justify-end md:flex'>
+      <div className="hidden flex-1 justify-end md:flex">
         <PlayerVolume
           handleMute={handleMute}
           handleVolumeChange={handleVolumeChange}
