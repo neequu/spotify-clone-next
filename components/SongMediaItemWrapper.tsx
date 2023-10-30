@@ -18,7 +18,7 @@ const SongMediaItemWrapper = ({
 
   return (
     <li
-      onDoubleClick={() => onPlay(song.id)}
+      onDoubleClickCapture={() => onPlay(song.id)}
       className="group relative flex min-h-[56px] items-center overflow-hidden rounded p-1 pr-4 transition-colors hover:bg-neutral-800"
     >
       {children}

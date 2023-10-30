@@ -26,7 +26,7 @@ const SongInfo = ({
   return (
     <div
       className={`flex flex-col gap-4 border-b border-neutral-800 px-2 pb-4 pt-[48px] md:flex-row md:items-end md:px-4 md:pb-10 md:pt-[64px] ${
-        !colors.length && "animate-pulse bg-page"
+        !colors.length ? "animate-pulse bg-page" : ""
       }`}
       style={styling}
     >
