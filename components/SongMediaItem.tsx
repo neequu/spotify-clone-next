@@ -14,7 +14,6 @@ const SongMediaItem = async ({ song, children, songs }: SongMediaItemProps) => {
   const songImageUrl = await getImageUrl(song);
 
   return (
-    // <li className="group relative flex min-h-[56px] items-center overflow-hidden rounded p-1 pr-4 transition-colors hover:bg-neutral-800">
     <SongMediaItemWrapper song={song} songs={songs}>
       <div className="flex flex-1 items-center gap-3">
         <div className="relative aspect-square min-w-[40px] md:w-11 lg:w-12">
@@ -56,7 +55,6 @@ const SongMediaItem = async ({ song, children, songs }: SongMediaItemProps) => {
         {children}
       </div>
     </SongMediaItemWrapper>
-    // </li>
   );
 };
 

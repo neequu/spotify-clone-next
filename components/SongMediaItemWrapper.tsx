@@ -15,7 +15,6 @@ const SongMediaItemWrapper = ({
   songs,
 }: SongMediaItemWrapperProps) => {
   const onPlay = usePlaySong(songs);
-
   return (
     <li
       onDoubleClickCapture={() => onPlay(song.id)}

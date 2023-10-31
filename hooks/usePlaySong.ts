@@ -15,7 +15,10 @@ const usePlaySong = (songs: Song[] | undefined) => {
     }
 
     player.setId(id);
-    if (!songs) return;
+    if (!songs) {
+      player.setIds([id]);
+      return;
+    }
 
     const ids = songs.map((song) => song.id);
     player.setIds(ids);

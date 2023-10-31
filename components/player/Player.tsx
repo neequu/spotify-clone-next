@@ -39,6 +39,7 @@ const ThePlayer = () => {
 
   const onPlayPrevious = () => {
     if (!player.activeId) return;
+
     setProgress(0);
     handleProgressChange([0]);
 
