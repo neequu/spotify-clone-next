@@ -14,9 +14,19 @@ const SongInfo = ({
   const [colors, setColors] = useState<string[]>([]);
 
   useEffect(() => {
-    prominent(songImageUrl, { format: "hex", amount: 2 }).then((colors) =>
-      setColors(colors as string[]),
-    );
+    async function getColors() {
+      try {
+        const colors = await prominent(songImageUrl, {
+          format: "hex",
+          amount: 2,
+        });
+        setColors(colors as string[]);
+      } catch (e) {
+        setColors(["#404040", "#9198e5"]);
+      }
+    }
+
+    getColors();
   }, [songImageUrl]);
 
   const styling = {

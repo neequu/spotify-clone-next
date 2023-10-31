@@ -18,14 +18,14 @@ const SongLyrics = async ({ song }: { song: Song }) => {
   };
   const lyrics = await handleSongLyrics();
   return (
-    <div className="sm:ml-0 md:ml-14 lg:ml-20 ">
+    <>
       <h2 className="mb-4 text-xs">
         lyrics for {song.title} by {song.artist}
       </h2>
       {lyrics.map((l, idx) => (
         <p key={idx}>{l}</p>
       ))}
-    </div>
+    </>
   );
 };
 

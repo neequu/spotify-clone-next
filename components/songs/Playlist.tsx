@@ -24,7 +24,7 @@ const Playlist = async ({ song, songs }: { song: Song; songs: Song[] }) => {
         <PlayButton
           songs={songs}
           song={song}
-          className="absolute bottom-0 right-2 bg-accent p-2 text-black opacity-0 transition-[bottom_filter_opacity] group-hover:bottom-2 group-hover:opacity-100"
+          className="absolute bottom-2 right-2 w-3 transition-[bottom_filter_opacity] md:bottom-0 md:w-8 md:bg-accent md:p-2 md:text-black md:opacity-0 md:group-hover:bottom-2 md:group-hover:opacity-100"
         />
       </div>
       <div className="mt-3 grid px-1.5 md:px-0">

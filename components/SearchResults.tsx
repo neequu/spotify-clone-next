@@ -22,7 +22,7 @@ const SearchResults = ({
             songs={searchResults}
             className="order-first hidden w-4 md:block"
           >
-            <div className="w-4">{idx + 1}</div>
+            <div>{idx + 1}</div>
           </PlayButton>
           <div className="ml-auto grid w-3 place-content-center md:w-5">
             <LikeButton songId={song.id} />

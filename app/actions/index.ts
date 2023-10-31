@@ -30,9 +30,7 @@ export async function getSongs() {
 
     revalidatePath("/");
     return songsData || [];
-  } catch (e: any) {
-    // return {error: e.message}
-  }
+  } catch (e: any) {}
 }
 // get song by id
 export async function getSongById(id: number) {
@@ -49,9 +47,7 @@ export async function getSongById(id: number) {
     }
 
     return songsData;
-  } catch (e) {
-    // return {error: e.message}
-  }
+  } catch (e) {}
 }
 // get songs of logged in user
 export async function getSongsByUserId(user: User | undefined) {
@@ -72,9 +68,7 @@ export async function getSongsByUserId(user: User | undefined) {
     }
 
     return songsData || [];
-  } catch (e: any) {
-    // return {error: e.message}
-  }
+  } catch (e: any) {}
 }
 // get songs by title
 export async function getSongsByTitle(query: string) {
@@ -93,9 +87,7 @@ export async function getSongsByTitle(query: string) {
     }
 
     return songsData || [];
-  } catch (e: any) {
-    // return {error: e.message}
-  }
+  } catch (e: any) {}
 }
 // get user's liked songs
 export async function getLikedSongById(id: number) {
@@ -198,7 +190,7 @@ export async function getlikedSongs() {
       });
 
     if (error) {
-      throw new Error("error unliking a song");
+      throw new Error("error gettin liked songs");
     }
 
     if (!data.length) return [];

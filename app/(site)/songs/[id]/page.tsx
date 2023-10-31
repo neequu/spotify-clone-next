@@ -6,8 +6,8 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import SongInfo from "./SongInfo";
 import Image from "next/image";
-import SongMediaItem from "@/components/SongMediaItem";
 import LikeButton from "@/components/buttons/liked/LikeButton";
+import PlayButton from "@/components/buttons/PlayButton";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const song = await getSongById(+params.id);
@@ -39,18 +39,37 @@ const page = async ({ params }: { params: { id: string } }) => {
           </p>
         </div>
       </SongInfo>
-      <section className="mt-2 px-2 text-base md:mt-4 md:px-4">
-        <div className="aspect-square w-14">
-          <LikeButton songId={song.id} />
-        </div>
+      <section className="mt-2 grid items-start px-2 sm:ml-0 md:ml-10 md:mt-4 md:px-4 lg:ml-14 xl:grid-cols-2">
         <Suspense
           fallback={
-            <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="grid h-full w-full place-content-center">
               <Spinner />
             </div>
           }
         >
-          <SongLyrics song={song} />
+          <div className="mt-4 xl:mt-0">
+            <SongLyrics song={song} />
+          </div>
+          <div className="order-first flex items-center justify-center gap-4 border border-neutral-600 p-2 text-xs sm:gap-6 md:p-4 xl:order-none xl:p-6 xl:text-base">
+            <PlayButton
+              song={song}
+              songs={[song]}
+              className="w-5 rounded-full bg-accent p-1 text-black md:w-8 md:p-2 lg:w-14 lg:p-4"
+            />
+            <div className="flex aspect-square w-5 min-w-[24px] items-center justify-center md:w-8 lg:w-10 lg:min-w-[40px]">
+              <LikeButton songId={song.id} />
+            </div>
+            <p className="flex flex-wrap items-center gap-1">
+              <span>{song.title}</span>
+              <span>&#183;</span>
+              <span>{song.artist}</span>
+              <span>&#183;</span>
+              <span>
+                <span className="hidden sm:inline-flex">Upload date:</span>{" "}
+                {new Date(song.created_at).toLocaleDateString()}
+              </span>
+            </p>
+          </div>
         </Suspense>
       </section>
     </main>

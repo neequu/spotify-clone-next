@@ -1,20 +1,12 @@
 import Spinner from "@/components/Spinner";
 import PlaylistHorizontal from "@/components/songs/PlaylistHorizontal";
 import SongGrid from "@/components/songs/SongGrid";
+import getSessionServer from "@/composables/getSessionServer";
 
-import { Database } from "@/types/supabase";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const cookieStore = cookies();
-  const supabase = createServerComponentClient<Database>({
-    cookies: () => cookieStore,
-  });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const session = await getSessionServer();
 
   return (
     <main className="gradient-dark h-screen flex-1 overflow-auto  pb-[64px]  md:rounded md:pb-0">

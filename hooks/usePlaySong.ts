@@ -1,17 +1,15 @@
-import { Database, Song } from "@/types/supabase";
+import { Song } from "@/types/supabase";
 import usePlayer from "./usePlayer";
 import useAuthModal from "./useAuthModal";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import getSessionClient from "@/composables/getSessionClient";
 
 const usePlaySong = (songs: Song[] | undefined) => {
   const player = usePlayer();
   const authModal = useAuthModal();
 
   const playSong = async (id: number) => {
-    const supabaseClient = createClientComponentClient<Database>();
-    const {
-      data: { session },
-    } = await supabaseClient.auth.getSession();
+    const session = await getSessionClient();
+
     if (!session?.user) {
       return authModal.onOpen();
     }
