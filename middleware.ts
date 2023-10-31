@@ -5,11 +5,11 @@ import type { NextRequest } from "next/server";
 import type { Database } from "@/types/supabase";
 
 export async function middleware(req: NextRequest) {
+  const requestUrl = new URL(req.url);
   const res = NextResponse.next();
   const supabase = createMiddlewareClient<Database>({ req, res });
   const {
     data: { session },
-    error,
   } = await supabase.auth.getSession();
 
   const { pathname } = req.nextUrl;
@@ -17,8 +17,8 @@ export async function middleware(req: NextRequest) {
   const protectedRoute =
     pathname.startsWith("/liked-songs") || pathname.startsWith("/library");
 
-  if ((!session || error) && protectedRoute) {
-    return NextResponse.redirect("/");
+  if (!session && protectedRoute) {
+    return NextResponse.redirect(requestUrl.origin);
   }
 
   return res;
