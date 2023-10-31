@@ -54,7 +54,10 @@
 ### Форма добавления песни
 ![Upload](https://github.com/neequu/spotify-clone-next/assets/69749247/45e377e1-76f0-4784-ad05-99cbd99886d9)
 ### Вид с мобильного устройства
-![Mobile](https://github.com/neequu/spotify-clone-next/assets/69749247/3dd4f0c1-4594-4bbe-85bb-01dbab0ab1ec)
+<div align="center">
+  
+  ![Mobile](https://github.com/neequu/spotify-clone-next/assets/69749247/3dd4f0c1-4594-4bbe-85bb-01dbab0ab1ec)
+</div>
 
 Ссылка на сайт: https://spotify-clone-next-six.vercel.app
 
