@@ -3,10 +3,8 @@ import React from "react";
 
 const loading = () => {
   return (
-    <div>
-      <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <Spinner />
-      </div>
+    <div className="gradient-dark fixed inset-0 z-10 grid animate-pulse place-content-center">
+      <Spinner />
     </div>
   );
 };

@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import { prominent } from "color.js";
-import { Song } from "@/types/supabase";
 import { useEffect, useState } from "react";
 
 const SongInfo = ({

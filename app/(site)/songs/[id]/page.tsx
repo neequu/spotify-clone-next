@@ -42,7 +42,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       <section className="mt-2 grid items-start px-2 sm:ml-0 md:ml-10 md:mt-4 md:px-4 lg:ml-14 xl:grid-cols-2">
         <Suspense
           fallback={
-            <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="gradient-dark fixed inset-0 z-10 grid animate-pulse place-content-center">
               <Spinner />
             </div>
           }
