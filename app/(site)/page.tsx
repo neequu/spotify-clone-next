@@ -2,7 +2,6 @@ import Spinner from "@/components/Spinner";
 import PlaylistHorizontal from "@/components/songs/PlaylistHorizontal";
 import SongGrid from "@/components/songs/SongGrid";
 import getSessionServer from "@/composables/getSessionServer";
-
 import { Suspense } from "react";
 
 export default async function Home() {

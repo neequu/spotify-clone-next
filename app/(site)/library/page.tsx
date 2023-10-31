@@ -2,7 +2,13 @@ import TheLibrary from "@/components/library/TheLibrary";
 import PlaylistHorizontal from "@/components/songs/PlaylistHorizontal";
 import { Database } from "@/types/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Metadata } from "next";
 import { cookies } from "next/headers";
+
+export const metadata: Metadata = {
+  title: "Library · Nextify",
+  description: "View your library on Nextify",
+};
 
 const page = async () => {
   const cookieStore = cookies();

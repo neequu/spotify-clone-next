@@ -8,8 +8,24 @@ import SongInfo from "./SongInfo";
 import Image from "next/image";
 import LikeButton from "@/components/buttons/liked/LikeButton";
 import PlayButton from "@/components/buttons/PlayButton";
+import { Metadata } from "next";
 
-const page = async ({ params }: { params: { id: string } }) => {
+interface SongParams {
+  params: { id: string };
+}
+
+export async function generateMetadata({
+  params,
+}: SongParams): Promise<Metadata> {
+  const song = await getSongById(+params.id);
+
+  return {
+    title: `${song?.title} · Nextify`,
+    description: `Lyrics and information about ${song?.title} by ${song?.artist}`,
+  };
+}
+
+const page = async ({ params }: SongParams) => {
   const song = await getSongById(+params.id);
   if (!song) {
     redirect("/not-found");
@@ -61,9 +77,9 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
             <p className="flex flex-wrap items-center gap-1">
               <span>{song.title}</span>
-              <span>&#183;</span>
+              <span>·</span>
               <span>{song.artist}</span>
-              <span>&#183;</span>
+              <span>·</span>
               <span>
                 <span className="hidden sm:inline-flex">Upload date:</span>{" "}
                 {new Date(song.created_at).toLocaleDateString()}

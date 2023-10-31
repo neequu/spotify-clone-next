@@ -1,6 +1,12 @@
 import Image from "next/image";
 import LikedSongs from "@/components/LikedSongs";
 import { getlikedSongs } from "@/app/actions";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Liked songs · Nextify",
+  description: "View your liked songs on Nextify",
+};
 
 const LikedSongsPage = async () => {
   const likedSongs = await getlikedSongs();
