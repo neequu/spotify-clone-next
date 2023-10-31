@@ -22,9 +22,10 @@ const ThePlayer = () => {
   const songUrl = useSongUrl(song);
   if (!song || player.activeId === undefined) return null;
 
-  const onPlayNext = async () => {
+  const onPlayNext = () => {
     if (!player.activeId) return;
-
+    setProgress(0);
+    handleProgressChange([0]);
     const currentIndex = player.ids.indexOf(player.activeId);
     if (currentIndex === player.ids.length - 1) {
       const firstItem = player.ids[0];
@@ -32,25 +33,20 @@ const ThePlayer = () => {
       return;
     }
     player.setId(player.ids[currentIndex + 1]);
-    await new Promise((r) => setTimeout(r, 100));
-    setProgress(0);
-    handleProgressChange([0]);
   };
 
-  const onPlayPrevious = async () => {
+  const onPlayPrevious = () => {
     if (!player.activeId) return;
 
     const currentIndex = player.ids.indexOf(player.activeId);
-
+    setProgress(0);
+    handleProgressChange([0]);
     if (currentIndex === 0) {
       const lastItem = player.ids[player.ids.length - 1];
       player.setId(lastItem);
       return;
     }
     player.setId(player.ids[currentIndex - 1]);
-    await new Promise((r) => setTimeout(r, 100));
-    setProgress(0);
-    handleProgressChange([0]);
   };
 
   const handlePlay = () => {

@@ -22,8 +22,8 @@ const LikedSongsPage = async () => {
           />
         </div>
         <div>
-          <p className="mb-4 hidden md:block">Playlist</p>
-          <h1 className="max-w-[80vw] truncate text-xs font-bold sm:text-xl md:max-w-[40vw] md:py-4 md:text-[clamp(1rem,7vw,3rem)]">
+          <p className="hidden md:block">Playlist</p>
+          <h1 className="max-w-[80vw] truncate text-xs font-bold sm:py-2 sm:text-xl md:max-w-[40vw] md:py-6 md:text-[clamp(1rem,7vw,3rem)]">
             Liked Songs
           </h1>
           <p className="text-xs text-neutral-300 md:text-sm md:text-white">
