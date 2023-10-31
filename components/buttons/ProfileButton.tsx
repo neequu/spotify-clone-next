@@ -1,20 +1,20 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import toast from 'react-hot-toast';
+"use client";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import toast from "react-hot-toast";
 import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenu,
-} from '@/components/ui/dropdown-menu';
-import { UserCircle } from 'lucide-react';
+} from "@/components/ui/dropdown-menu";
+import { UserCircle } from "lucide-react";
 import {
   User,
   createClientComponentClient,
-} from '@supabase/auth-helpers-nextjs';
-import { Database } from '@/types/supabase';
-import usePlayer from '@/hooks/usePlayer';
+} from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/types/supabase";
+import usePlayer from "@/hooks/usePlayer";
 
 const ProfileButton = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -27,10 +27,9 @@ const ProfileButton = ({ user }: { user: User }) => {
     player.reset();
 
     if (error) {
-      console.log(error);
       toast.error(error.message);
     } else {
-      toast.success('Signed Out!');
+      toast.success("Signed Out!");
     }
   };
   const avatar = user?.user_metadata?.avatar_url;
@@ -40,13 +39,14 @@ const ProfileButton = ({ user }: { user: User }) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
-              aria-label='show drpodown menu'
-              type='button'
-              className='w-8 aspect-square relative rounded-full overflow-hidden border-2 border-neutral-800 outline-none focus-visible:shadow-focus'>
-              <Image src={`${avatar}`} alt='user image' fill sizes='32px' />
+              aria-label="show drpodown menu"
+              type="button"
+              className="relative aspect-square w-8 overflow-hidden rounded-full border-2 border-neutral-800 outline-none focus-visible:shadow-focus"
+            >
+              <Image src={`${avatar}`} alt="user image" fill sizes="32px" />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className='w-56'>
+          <DropdownMenuContent className="w-56">
             {/* <DropdownMenuItem>Profile</DropdownMenuItem> */}
             <DropdownMenuItem onClick={handleSignOut}>
               Sign Out
@@ -54,7 +54,7 @@ const ProfileButton = ({ user }: { user: User }) => {
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <button aria-label='show drpodown menu' type='button'>
+        <button aria-label="show drpodown menu" type="button">
           <UserCircle strokeWidth={1.5} />
         </button>
       )}
