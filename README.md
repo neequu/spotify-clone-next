@@ -1,6 +1,6 @@
 # [Music App (~ spotify clone ~)](https://spotify-clone-next-six.vercel.app/)
 
-Мой pet-project и совместо первый проект на Next.js. О функционале и особенностях можно почитать [ниже](#технологии)
+Мой pet-project и совместо первый проект на Next.js. О функционале и особенностях можно почитать [ниже](#технологии-стек)
 
 ## Lighthouse Report
 
