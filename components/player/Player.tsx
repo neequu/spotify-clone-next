@@ -20,13 +20,10 @@ const ThePlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const songUrl = useSongUrl(song);
-  // if (!song && player.activeId) return <div>loading...</div>;
   if (!song || player.activeId === undefined) return null;
 
-  const onPlayNext = () => {
+  const onPlayNext = async () => {
     if (!player.activeId) return;
-    setProgress(0);
-    handleProgressChange([0]);
 
     const currentIndex = player.ids.indexOf(player.activeId);
     if (currentIndex === player.ids.length - 1) {
@@ -35,13 +32,13 @@ const ThePlayer = () => {
       return;
     }
     player.setId(player.ids[currentIndex + 1]);
-  };
-
-  const onPlayPrevious = () => {
-    if (!player.activeId) return;
-
+    await new Promise((r) => setTimeout(r, 100));
     setProgress(0);
     handleProgressChange([0]);
+  };
+
+  const onPlayPrevious = async () => {
+    if (!player.activeId) return;
 
     const currentIndex = player.ids.indexOf(player.activeId);
 
@@ -51,6 +48,9 @@ const ThePlayer = () => {
       return;
     }
     player.setId(player.ids[currentIndex - 1]);
+    await new Promise((r) => setTimeout(r, 100));
+    setProgress(0);
+    handleProgressChange([0]);
   };
 
   const handlePlay = () => {
@@ -82,7 +82,7 @@ const ThePlayer = () => {
   };
 
   const handleProgressChange = (time: number[]) => {
-    if (!audioRef.current) return;
+    if (!audioRef.current || !audioRef.current.currentTime) return;
 
     const [newProgress] = time;
     if (newProgress === undefined) return;
@@ -112,39 +112,45 @@ const ThePlayer = () => {
 
   return (
     <footer className="fixed bottom-[64px] left-0 right-0 z-50 hidden h-[52px] items-center px-4 bare:flex md:bottom-0 md:h-[80px] md:bg-black">
-      <div className="flex-1">
-        <PlayerSong song={song} />
-      </div>
-      <div className="flex flex-col md:flex-1">
-        <PlayerControls
-          handlePlayPause={handlePlayPause}
-          isLoading={isLoading}
-          isPlaying={isPlaying}
-          onPlayNext={onPlayNext}
-          onPlayPrevious={onPlayPrevious}
-        />
-        <audio
-          ref={audioRef}
-          src={songUrl}
-          onEnded={onPlayNext}
-          autoPlay
-          onPlaying={handlePlay}
-          onPause={handlePause}
-          onTimeUpdate={getProgress}
-        />
-        <PlayerProgress
-          audioRef={audioRef}
-          progress={progress}
-          handleProgressChange={handleProgressChange}
-        />
-      </div>
-      <div className="hidden flex-1 justify-end md:flex">
-        <PlayerVolume
-          handleMute={handleMute}
-          handleVolumeChange={handleVolumeChange}
-          volume={volume}
-        />
-      </div>
+      {!song && player.activeId ? (
+        <div>loading...</div>
+      ) : (
+        <>
+          <div className="flex-1">
+            <PlayerSong song={song} />
+          </div>
+          <div className="flex flex-col md:flex-1">
+            <PlayerControls
+              handlePlayPause={handlePlayPause}
+              isLoading={isLoading}
+              isPlaying={isPlaying}
+              onPlayNext={onPlayNext}
+              onPlayPrevious={onPlayPrevious}
+            />
+            <audio
+              ref={audioRef}
+              src={songUrl}
+              onEnded={onPlayNext}
+              autoPlay
+              onPlaying={handlePlay}
+              onPause={handlePause}
+              onTimeUpdate={getProgress}
+            />
+            <PlayerProgress
+              audioRef={audioRef}
+              progress={progress}
+              handleProgressChange={handleProgressChange}
+            />
+          </div>
+          <div className="hidden flex-1 justify-end md:flex">
+            <PlayerVolume
+              handleMute={handleMute}
+              handleVolumeChange={handleVolumeChange}
+              volume={volume}
+            />
+          </div>
+        </>
+      )}
     </footer>
   );
 };

@@ -14,7 +14,7 @@ const LikedSongs = async ({ likedSongs }: { likedSongs: Song[] }) => {
     <ul className="grid md:gap-1">
       {hasSongs ? (
         likedSongs.map((song, idx) => (
-          <SongMediaItem song={song} key={song.id}>
+          <SongMediaItem song={song} key={song.id} songs={likedSongs}>
             <PlayButton
               song={song}
               songs={likedSongs}

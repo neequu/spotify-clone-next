@@ -6,7 +6,7 @@ import SongMediaItemWrapper from "./SongMediaItemWrapper";
 
 interface SongMediaItemProps {
   song: Song;
-  songs?: Song[];
+  songs: Song[];
   children?: React.ReactNode;
 }
 

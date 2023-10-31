@@ -3,8 +3,8 @@ import { PlayRound } from "../icons/play";
 import StepBack from "../icons/StepBack";
 
 interface PlayerControlsProps {
-  onPlayPrevious: () => void;
-  onPlayNext: () => void;
+  onPlayPrevious: () => Promise<void>;
+  onPlayNext: () => Promise<void>;
   isLoading: boolean;
   handlePlayPause: () => void;
   isPlaying: boolean;
