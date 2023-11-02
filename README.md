@@ -52,7 +52,7 @@
 ![Song page](https://github.com/neequu/spotify-clone-next/assets/69749247/05db822a-2bf6-46d7-b21b-6cbc7787b2fc)
 ### [Страница лайкнутых песен](https://spotify-clone-next-six.vercel.app/liked-songs)
 ![Liked page](https://github.com/neequu/spotify-clone-next/assets/69749247/ea22f697-155e-4a5d-95fd-65d99d1b7494)
-### Форма добавления песни
+### Форма добавления песни (язык в файл-инпуте зависит от языка браузера 💢)
 ![Upload](https://github.com/neequu/spotify-clone-next/assets/69749247/45e377e1-76f0-4784-ad05-99cbd99886d9)
 ### Вид с мобильного устройства
 <div align="center">
