@@ -214,8 +214,8 @@ export async function submitSong(prev: any, formData: FormData) {
   const artist = formData.get("artist") as string;
 
   const uniqid = (await import("uniqid")).default;
-
   const uniqueId = uniqid();
+
   try {
     const {
       data: { session },
