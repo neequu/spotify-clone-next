@@ -1,4 +1,5 @@
 import Spinner from "@/components/Spinner";
+import SongGridSkeleton from "@/components/skeletongs/SongGridSkeleton";
 import PlaylistHorizontal from "@/components/songs/PlaylistHorizontal";
 import SongGrid from "@/components/songs/SongGrid";
 import getSessionServer from "@/composables/getSessionServer";
@@ -25,15 +26,11 @@ export default async function Home() {
       <section className="mt-6 px-2 md:mt-8 md:px-4">
         <h2 className="font-semibold xs:text-xl">Newest songs</h2>
         <div className="mt-2 md:mt-4 ">
-          <Suspense
-            fallback={
-              <div className="gradient-dark fixed inset-0 z-10 grid place-content-center">
-                <Spinner />
-              </div>
-            }
-          >
-            <SongGrid />
-          </Suspense>
+          <div className="grid grid-cols-songs place-content-start gap-4 pb-24 md:grid-cols-songs-md lg:grid-cols-songs-lg">
+            <Suspense fallback={<SongGridSkeleton amount={4} />}>
+              <SongGrid />
+            </Suspense>
+          </div>
         </div>
       </section>
     </main>

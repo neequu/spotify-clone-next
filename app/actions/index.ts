@@ -54,8 +54,6 @@ export async function getSongsByUserId(user: User | undefined) {
   const supabase = await getSupabaseClient();
   try {
     if (!user) return;
-    // todo: remove
-    await new Promise((r) => setTimeout(r, 100000));
     const { data: songsData, error: songsError } = await supabase
       .from("songs")
       .select()

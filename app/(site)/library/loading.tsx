@@ -3,7 +3,7 @@ import React from "react";
 
 const loading = () => {
   return (
-    <div className="gradient-dark fixed inset-0 z-10 grid place-content-center">
+    <div className="gradient-dark grid h-screen animate-pulse place-content-center">
       <Spinner />
     </div>
   );
