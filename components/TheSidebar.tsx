@@ -3,7 +3,7 @@ import { ListMusic } from "lucide-react";
 import TheLibrary from "./library/TheLibrary";
 import TheNavbar from "./TheNavbar";
 import { Suspense } from "react";
-import Spinner from "./Spinner";
+import LibrarySkeleton from "./skeletongs/LibrarySkeleton";
 
 const TheSidebar = () => {
   return (
@@ -12,8 +12,8 @@ const TheSidebar = () => {
       <div className="hidden w-full rounded bg-gray-main md:block md:p-3 lg:p-layout-p">
         <Suspense
           fallback={
-            <div className="flex h-screen justify-center pt-10">
-              <Spinner />
+            <div className="h-full">
+              <LibrarySkeleton amount={4} />
             </div>
           }
         >
