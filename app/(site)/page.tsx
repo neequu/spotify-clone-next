@@ -1,5 +1,5 @@
 import Spinner from "@/components/Spinner";
-import SongGridSkeleton from "@/components/skeletongs/SongGridSkeleton";
+import SongGridSkeleton from "@/components/skeletons/SongGridSkeleton";
 import PlaylistHorizontal from "@/components/songs/PlaylistHorizontal";
 import SongGrid from "@/components/songs/SongGrid";
 import getSessionServer from "@/composables/getSessionServer";

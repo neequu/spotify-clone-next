@@ -3,7 +3,7 @@ import { ListMusic } from "lucide-react";
 import TheLibrary from "./library/TheLibrary";
 import TheNavbar from "./TheNavbar";
 import { Suspense } from "react";
-import LibrarySkeleton from "./skeletongs/LibrarySkeleton";
+import LibrarySkeleton from "./skeletons/LibrarySkeleton";
 
 const TheSidebar = () => {
   return (

@@ -9,6 +9,7 @@ import Image from "next/image";
 import LikeButton from "@/components/buttons/liked/LikeButton";
 import PlayButton from "@/components/buttons/PlayButton";
 import { Metadata } from "next";
+import SongLyricsSkeleton from "@/components/skeletons/SongLyricsSkeleton";
 
 interface SongParams {
   params: { id: string };
@@ -56,37 +57,31 @@ const page = async ({ params }: SongParams) => {
         </div>
       </SongInfo>
       <section className="mt-2 grid items-start px-2 sm:ml-0 md:ml-10 md:mt-4 md:px-4 lg:ml-14 xl:grid-cols-2">
-        <Suspense
-          fallback={
-            <div className="gradient-dark fixed inset-0 z-10 grid animate-pulse place-content-center">
-              <Spinner />
-            </div>
-          }
-        >
+        <Suspense fallback={<SongLyricsSkeleton />}>
           <div className="mt-4 xl:mt-0">
             <SongLyrics song={song} />
           </div>
-          <div className="order-first flex items-center justify-center gap-4 border border-neutral-600 p-2 text-xs sm:gap-6 md:p-4 xl:order-none xl:p-6 xl:text-base">
-            <PlayButton
-              song={song}
-              songs={[song]}
-              className="w-5 rounded-full bg-accent p-1 text-black md:w-8 md:p-2 lg:w-14 lg:p-4"
-            />
-            <div className="flex aspect-square w-5 min-w-[24px] items-center justify-center md:w-8 lg:w-10 lg:min-w-[40px]">
-              <LikeButton songId={song.id} />
-            </div>
-            <p className="flex flex-wrap items-center gap-1">
-              <span>{song.title}</span>
-              <span>·</span>
-              <span>{song.artist}</span>
-              <span>·</span>
-              <span>
-                <span className="hidden sm:inline-flex">Upload date:</span>{" "}
-                {new Date(song.created_at).toLocaleDateString()}
-              </span>
-            </p>
-          </div>
         </Suspense>
+        <div className="order-first flex items-center justify-center gap-4 border border-neutral-600 p-2 text-xs sm:gap-6 md:p-4 xl:order-none xl:p-6 xl:text-base">
+          <PlayButton
+            song={song}
+            songs={[song]}
+            className="w-5 rounded-full bg-accent p-1 text-black md:w-8 md:p-2 lg:w-14 lg:p-4"
+          />
+          <div className="flex aspect-square w-5 min-w-[24px] items-center justify-center md:w-8 lg:w-10 lg:min-w-[40px]">
+            <LikeButton songId={song.id} />
+          </div>
+          <p className="flex flex-wrap items-center gap-1">
+            <span>{song.title}</span>
+            <span>·</span>
+            <span>{song.artist}</span>
+            <span>·</span>
+            <span>
+              <span className="hidden sm:inline-flex">Upload date:</span>{" "}
+              {new Date(song.created_at).toLocaleDateString()}
+            </span>
+          </p>
+        </div>
       </section>
     </main>
   );
