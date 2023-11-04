@@ -3,6 +3,7 @@ import LibrarySongList from "./LibrarySongList";
 import LibraryUploadButton from "./LibraryUploadButton";
 
 import { getSongsByUserId } from "@/app/actions";
+import { Suspense } from "react";
 
 interface TheLibraryProps {
   children?: React.ReactNode;
@@ -25,7 +26,9 @@ const TheLibrary = async ({ children }: TheLibraryProps) => {
           You need to sign in to use your library
         </div>
       ) : (
-        <LibrarySongList userSongs={userSongs} />
+        <Suspense fallback="loaidng..">
+          <LibrarySongList userSongs={userSongs} />
+        </Suspense>
       )}
     </section>
   );

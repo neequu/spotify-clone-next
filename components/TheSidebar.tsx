@@ -12,9 +12,15 @@ const TheSidebar = () => {
       <div className="hidden w-full rounded bg-gray-main md:block md:p-3 lg:p-layout-p">
         <Suspense
           fallback={
-            <div className="h-full">
-              <LibrarySkeleton amount={4} />
-            </div>
+            <>
+              <div className="mb-4 flex items-center gap-2 font-bold text-neutral-400">
+                <ListMusic strokeWidth="1.5" />
+                <span className="hidden lg:block">Your library</span>
+              </div>
+              <div className="h-screen">
+                <LibrarySkeleton amount={4} />
+              </div>
+            </>
           }
         >
           <TheLibrary>
