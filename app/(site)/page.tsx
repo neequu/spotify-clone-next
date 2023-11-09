@@ -8,8 +8,6 @@ import { Suspense } from "react";
 export default async function Home() {
   const session = await getSessionServer();
 
-  throw new Error('hello');
-
   return (
     <main className="gradient-dark h-screen flex-1 overflow-auto  pb-[64px]  md:rounded md:pb-0">
       <div className="gradient-green px-2 pb-4 pt-[48px] md:px-4 md:pt-[60px]">
