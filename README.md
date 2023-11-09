@@ -7,7 +7,7 @@
 На всех страницах сайта высокие показатели проиводительности и SEO.
 [Проверить](https://pagespeed.web.dev/analysis/https-spotify-clone-next-six-vercel-app/k6jh8i46at?form_factor=desktop)
 
-![image](https://github.com/neequu/spotify-clone-next/assets/69749247/70a42a3a-16c9-41f2-90bc-37c087f8f6fd)
+![image](https://github.com/neequu/spotify-clone-next/assets/69749247/43dc5cb6-9548-46f5-818a-e8f0dddfa4c2)
 
 ## Технологии (стек)
 
