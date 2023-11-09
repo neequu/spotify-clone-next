@@ -1,4 +1,3 @@
-import Spinner from "@/components/Spinner";
 import SongGridSkeleton from "@/components/skeletons/SongGridSkeleton";
 import PlaylistHorizontal from "@/components/songs/PlaylistHorizontal";
 import SongGrid from "@/components/songs/SongGrid";
@@ -27,7 +26,7 @@ export default async function Home() {
         <h2 className="font-semibold xs:text-xl">Newest songs</h2>
         <div className="mt-2 md:mt-4 ">
           <div className="grid grid-cols-songs place-content-start gap-4 pb-24 md:grid-cols-songs-md lg:grid-cols-songs-lg">
-            <Suspense fallback={<SongGridSkeleton amount={4} />}>
+            <Suspense fallback={<SongGridSkeleton amount={6} />}>
               <SongGrid />
             </Suspense>
           </div>

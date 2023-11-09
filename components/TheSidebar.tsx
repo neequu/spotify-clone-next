@@ -18,7 +18,7 @@ const TheSidebar = () => {
                 <span className="hidden lg:block">Your library</span>
               </div>
               <div className="h-screen">
-                <LibrarySkeleton amount={4} />
+                <LibrarySkeleton amount={6} />
               </div>
             </>
           }
