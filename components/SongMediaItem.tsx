@@ -1,4 +1,4 @@
-import getImageUrl from "@/composables/getImageUrl";
+import getImageUrl from "@/app/actions/getImageUrl";
 import { Song } from "@/types/supabase";
 import Image from "next/image";
 import Link from "next/link";

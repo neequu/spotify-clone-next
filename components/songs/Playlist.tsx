@@ -3,7 +3,7 @@ import Link from "next/link";
 import PlayButton from "../buttons/PlayButton";
 
 import { Song } from "@/types/supabase";
-import getImageUrl from "@/composables/getImageUrl";
+import getImageUrl from "@/app/actions/getImageUrl";
 
 const Playlist = async ({ song, songs }: { song: Song; songs: Song[] }) => {
   const songImageUrl = await getImageUrl(song);

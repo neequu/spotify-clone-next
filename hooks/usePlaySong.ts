@@ -1,7 +1,7 @@
 import { Song } from "@/types/supabase";
 import usePlayer from "./usePlayer";
 import useAuthModal from "./useAuthModal";
-import getSessionClient from "@/composables/getSessionClient";
+import getSessionClient from "@/utils/getSessionClient";
 
 const usePlaySong = (songs: Song[] | undefined) => {
   const player = usePlayer();

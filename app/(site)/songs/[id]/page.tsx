@@ -1,7 +1,7 @@
 import { getSongById } from "@/app/actions";
 import SongLyrics from "@/components/SongLyrics";
 import Spinner from "@/components/Spinner";
-import getImageUrl from "@/composables/getImageUrl";
+import getImageUrl from "@/app/actions/getImageUrl";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import SongInfo from "./SongInfo";

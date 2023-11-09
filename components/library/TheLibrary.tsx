@@ -1,4 +1,4 @@
-import getSessionServer from "@/composables/getSessionServer";
+import getSessionServer from "@/app/actions/getSessionServer";
 import LibrarySongList from "./LibrarySongList";
 import LibraryUploadButton from "./LibraryUploadButton";
 

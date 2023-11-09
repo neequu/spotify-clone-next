@@ -1,7 +1,7 @@
 import HeaderNavButton from "./buttons/HeaderNavButton";
 import ProfileButton from "./buttons/ProfileButton";
 import LoginPanel from "./auth/LoginPanel";
-import getSessionServer from "@/composables/getSessionServer";
+import getSessionServer from "@/app/actions/getSessionServer";
 
 const TheHeader = async () => {
   const session = await getSessionServer();
